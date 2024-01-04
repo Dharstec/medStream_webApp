@@ -1,0 +1,47 @@
+<div class="grid-container p-5">
+    <div class="big-column">
+        <!-- <img width="" src="../../assets/map_vc.svg" alt="Video Thumbnail"> -->
+
+        <div class="recommend-cards">
+          <!-- <div *ngFor="let video of recommendList" class="recommend-card" (click)="routeToSingleCase(video._id)"> -->
+            <!-- {{current_case_dtls.youtubeUrl}} width="560" -->
+            <iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe>
+            <!-- <img [src]="current_case_dtls.thumbnail" style="width: 100%;" alt="Video Thumbnail"> -->
+            <div class="ml-3">
+              <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.title }}</p>
+              <p style="color: #FFFFFF80;
+              ;font-weight: 600;">{{'Week of'}} {{ current_case_dtls.createdAt | date:'longDate' }}</p>
+            </div>
+         
+          <!-- </div> -->
+        </div>
+
+        <mat-expansion-panel style="background: #2E2E2E;padding: 12px;color: #fff;">
+          <mat-expansion-panel-header>
+            <mat-panel-title style="font-weight: 500;">
+              Description
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <hr/>
+          <p class="des_text">{{current_case_dtls.desciription}}</p>
+          
+        </mat-expansion-panel>
+    </div>
+  
+    <div class="small-column">
+        <img width="" src="../../assets/add_medicine.svg" alt="Video Thumbnail">
+
+
+      <div class="recommend-cards">
+        <div *ngFor="let video of recommendList" class="recommend-card" (click)="routeToSingleCase(video._id)">
+          <img [src]="video.thumbnail" style="width: 40%;" alt="Video Thumbnail">
+          <div class="ml-3">
+            <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
+            <p style="color: #FFFFFF80;
+            ;font-weight: 600;">{{'Week of'}} {{ video.createdAt | date:'longDate' }}</p>
+          </div>
+       
+        </div>
+      </div>
+    </div>
+  </div>

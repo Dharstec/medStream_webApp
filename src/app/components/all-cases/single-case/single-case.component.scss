@@ -1,0 +1,45 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 6fr 2fr; 
+    height: 100vh; /* Full viewport height */
+    background-color: #141414;
+
+  }
+  
+  .small-column {
+    // background: #2E2E2E;
+    // padding: 20px;
+    // margin: 20px;
+  }
+  
+  .big-column {
+    background-color: #141414;
+    padding-right: 12px;
+    // padding: 20px 0px 20px 0px;
+  }
+  
+  .recommend-cards{
+    cursor: pointer !important;
+  }
+  
+  .recommend-card {
+    // width: 31%; /* Adjust as needed */
+    margin: 10px 0px;
+    display: flex;
+  }
+  .des_text{
+    line-height: 28px;
+  }
+  .video-card img {
+    width: 22rem;
+    height: 18rem;
+  }
+  
+  mat-expansion-panel{
+    margin: 40px 0px 40px 0px;
+  }
+  
+  hr {
+    border-color: #FF4E4566; /* Set the color you want, e.g., red */
+    margin: 10px 0px 10px 0px !important;
+  }

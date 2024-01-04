@@ -1,0 +1,34 @@
+<div class="background">
+    <!-- <div *ngFor="let i of starCount" class="star"></div> -->
+    <div class="glassy-form-container">
+        <div class="glassy-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="header" style="text-align: center;"><img src="assets\med.png"
+                        style="width: 14rem;height: 5rem;"></div>
+                <h2 class="header" style="text-align: center;color: #fff;font-weight: 600;">SIGN IN TO YOUR ACCOUNT</h2>
+                <div class="section-b col-md-12">
+                    <mat-label>Email Id</mat-label>
+                    <input class="input" type="email" name="email" matInput formControlName="email" maxlength="50"
+                        required>
+                    <!-- <mat-error *ngIf="submitted && form.get('email')?.errors?.required">
+                  {{'Email is required'}}</mat-error>
+                  <mat-error *ngIf="submitted && form.get('email')?.errors?.pattern">
+                    {{'Email is Invalid'}}</mat-error> -->
+                </div>
+                <div class="section-b col-md-12">
+                    <mat-label>Password</mat-label>
+                    <input class="input" type="password" name="password" matInput formControlName="password"
+                        maxlength="50" required>
+                    <!-- <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
+                  {{'Password is required'}}</mat-error> -->
+
+                </div>
+                <div class="disflex">
+                    <button class="disBut" mat-flat-button color="primary" type="submit">{{'Sign In' |
+                        uppercase}}</button>
+                </div>
+                <a class="header" style="text-align: center;color: #fff;font-weight: 500;">Forget password?</a>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 6fr; /* Two columns: 1 small and 2 big */
+    height: 100vh; /* Full viewport height */
+    background-color: #141414;
+  }
+  
+  .small-column {
+    background: #2E2E2E;
+    padding: 20px;
+    margin: 20px;
+    .filter_list{
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+  }
+  
+  .big-column {
+    background-color: #141414;
+    padding: 20px 0px 20px 0px;
+  }
+  
+  .video-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    cursor: pointer !important;
+  }
+  
+  .video-card {
+    width: 31%; /* Adjust as needed */
+    margin-bottom: 20px;
+  }
+  
+  .video-card img {
+    width: 22rem;
+    height: 18rem;
+  }
+  
+  mat-expansion-panel{
+    margin: 40px 0px 40px 0px;
+  }
+  
+  hr {
+    border-color: #FF4E4566; /* Set the color you want, e.g., red */
+    margin: 10px 0px 10px 0px !important;
+  }

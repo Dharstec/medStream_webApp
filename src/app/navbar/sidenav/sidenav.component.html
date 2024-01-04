@@ -1,0 +1,36 @@
+<div class="row">
+  <nav class="navbar col-12" style="position: fixed;
+  width: 100%;
+  z-index: 1000;">
+    <div class="logo"><img src="assets/medstream.svg" style="width: 12rem;"/></div>
+
+    <ul class="nav-links">
+
+      <input type="checkbox" id="checkbox_toggle" />
+      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+
+      <div class="menu">
+        <li class="services">
+          <a href="javascript:void(0)" routerLink='/user/all-cases'>Home</a>
+
+        </li>
+        <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases'  routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">All Cases</a></li>
+
+        <li class="vertical-bar"><a href="javascript:void(0)">Schedule</a></li>
+
+       
+
+        <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li>
+        <li class="vertical-bar"><a href="javascript:void(0)">Institutions</a></li> 
+      </div>
+    </ul>
+    <div class="search-container">
+      <div class="normal-search">
+
+        <input type="text" class="search" name="" id="" placeholder="Search..">
+        <mat-icon class="search-icon">search</mat-icon>
+      </div>
+    </div>
+  </nav>
+</div>

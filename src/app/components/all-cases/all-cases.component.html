@@ -1,0 +1,58 @@
+<div class="grid-container">
+    <div class="small-column">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #FFFFFF80;
+          ;font-weight: 500;">
+            {{'Category' | uppercase}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr/>
+        <ng-container *ngFor="let list of categoryList">
+          <mat-checkbox class="filter_list" >{{list.category}}</mat-checkbox>
+          <!-- <p class="filter_list">{{list.category}}</p> -->
+        </ng-container>
+        
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #FFFFFF80;
+          ;font-weight: 500;">
+            {{'subCategory' | uppercase}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr/>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #FFFFFF80;
+          ;font-weight: 500;">
+            {{'Date Range' | uppercase}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr/>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title style="color: #FFFFFF80;
+          ;font-weight: 500;">
+            {{'Experts' | uppercase}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <hr/>
+  
+      </mat-expansion-panel>
+    </div>
+  
+    <div class="big-column">
+      <!-- Big column content goes here -->
+      <div class="video-cards">
+        <div *ngFor="let video of allCases" class="video-card" (click)="routeToSingleCase(video._id)">
+          <img [src]="video.thumbnail" alt="Video Thumbnail">
+          <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
+          <p style="color: #FFFFFF80;
+          ;font-weight: 600;">{{'Week of'}} {{ video.createdAt | date:'longDate' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
