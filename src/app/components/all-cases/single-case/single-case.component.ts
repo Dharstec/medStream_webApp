@@ -29,7 +29,13 @@ export class SingleCaseComponent {
   getCaseDetails(): void {
     this.api.apiGetDetailsCall(this.current_case_id,'singlecase').subscribe((data) => {
       this.current_case_dtls = data.data;
-      this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.current_case_dtls.youtubeUrl);
+      let splitData =this.current_case_dtls.youtubeUrl.split('?')
+      console.log("splitData",splitData)
+      let videoID = splitData[0].split('be/')[1]
+     let embdURL =`https://www.youtube.com/embed/${videoID}`
+      this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(embdURL);
+      // console.log("videoURL",this.videoURL)
+      // this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.current_case_dtls.youtubeUrl);
       this.getRecommendCase( this.current_case_dtls.category);
     })
   }

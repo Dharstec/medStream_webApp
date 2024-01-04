@@ -5,7 +5,8 @@
         <div class="recommend-cards">
           <!-- <div *ngFor="let video of recommendList" class="recommend-card" (click)="routeToSingleCase(video._id)"> -->
             <!-- {{current_case_dtls.youtubeUrl}} width="560" -->
-            <iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe>
+            <!-- <iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe> -->
+            <iframe style="width: 100%;" height="400" [src]= "videoURL"frameborder="0" allowfullscreen></iframe>
             <!-- <img [src]="current_case_dtls.thumbnail" style="width: 100%;" alt="Video Thumbnail"> -->
             <div class="ml-3">
               <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.title }}</p>
