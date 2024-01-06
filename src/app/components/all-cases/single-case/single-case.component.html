@@ -10,11 +10,23 @@
             <!-- <img [src]="current_case_dtls.thumbnail" style="width: 100%;" alt="Video Thumbnail"> -->
             <div class="ml-3">
               <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.title }}</p>
-              <p style="color: #FFFFFF80;
-              ;font-weight: 600;">{{'Week of'}} {{ current_case_dtls.createdAt | date:'longDate' }}</p>
+              <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ current_case_dtls.createdAt | date:'longDate' }}</p>
             </div>
          
           <!-- </div> -->
+        </div>
+        <div class="ml-3 mt-5" style="display: flex;">
+          <p style="background-color: white;border-radius: 50%;width: 5%;"></p>
+          <div class="ml-2"  style="display: block;">
+            <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution }}</p>
+            <p style="color: #FFFFFF80;;font-weight: 600;">Chennai, India.</p>
+          </div>
+          <button class="share_btn">
+            <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
+            <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
+          </button>
+         
+
         </div>
 
         <mat-expansion-panel style="background: #2E2E2E;padding: 12px;color: #fff;">
@@ -27,6 +39,9 @@
           <p class="des_text">{{current_case_dtls.desciription}}</p>
           
         </mat-expansion-panel>
+
+        <!-- <hyvor-talk-comments website-id="10253" page-id="" id="comments-container"></hyvor-talk-comments> -->
+        <!-- <Comment website-id="10253" page-id="" id="comments-container"></Comment> -->
     </div>
   
     <div class="small-column">

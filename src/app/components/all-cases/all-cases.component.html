@@ -9,7 +9,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of categoryList">
-          <mat-checkbox class="filter_list" >{{list.category}}</mat-checkbox>
+          <mat-checkbox class="filter_list" [checked]="list.active" (click)="changeCategoryFilter(list,$event)">{{list.category}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
         
@@ -22,6 +22,11 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <hr/>
+        <ng-container *ngFor="let list of subCategoryList">
+          <mat-checkbox class="filter_list" [checked]="list.active"  >{{list.name}}</mat-checkbox>
+          <!-- <p class="filter_list">{{list.category}}</p> -->
+        </ng-container>
+        
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -31,6 +36,18 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <hr/>
+        <mat-form-field>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1 disabled></mat-datepicker>
+          <input matInput [matDatepicker]="picker1" placeholder="DD/MM/YYYY">
+        
+        </mat-form-field>
+        <mat-form-field>
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2 disabled></mat-datepicker>
+          <input matInput [matDatepicker]="picker2" placeholder="DD/MM/YYYY">
+        
+        </mat-form-field>
       </mat-expansion-panel>
       <mat-expansion-panel>
         <mat-expansion-panel-header>

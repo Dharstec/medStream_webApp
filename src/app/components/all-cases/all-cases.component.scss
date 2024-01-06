@@ -12,8 +12,10 @@
     .filter_list{
       margin-bottom: 8px;
       color: #ffffff;
+      display: flex;
     }
   }
+
   
   .big-column {
     background-color: #141414;
@@ -39,6 +41,9 @@
   
   mat-expansion-panel{
     margin: 40px 0px 40px 0px;
+  }
+  mat-expansion-panel-body{
+    padding: 0px 24px;
   }
   
   hr {
