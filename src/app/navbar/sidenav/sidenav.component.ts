@@ -1,5 +1,7 @@
 import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { navMenuBar } from '../navdata';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 interface SideNavToggle {
   screenWidth: number;
   collapsed: boolean;
@@ -24,6 +26,10 @@ onResize(event:any){
    }
 }
 
+constructor(private authService: AuthService, private router: Router) {
+
+ }
+
   ngOnInit(): void {
   this.screenWidth=window.innerWidth;
 }
@@ -34,5 +40,13 @@ onResize(event:any){
   closeSidenav(): void {
     this.collapsed = false;
     this.onToogleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
+  }
+
+  profile(){
+    if(this.authService.isLoggedIn()){
+      this.authService.setLoggedInStatus(false)
+      localStorage.clear()
+    }
+    this.router.navigate(['/auth/login'])
   }
 }

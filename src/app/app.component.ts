@@ -22,14 +22,14 @@ export class AppComponent implements OnInit, OnDestroy {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (event['url'] == '/auth/login') {
-          this.show = false;
+          this.show = true;
         } else {
           this.show = true;
         }
       }
     });
     if (this.router.url == '/auth/login') {
-      this.show = false;
+      this.show = true;
     } else {
       this.show = true;
     }

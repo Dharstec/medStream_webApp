@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
-    this.getLiveCasesList();
+    // this.getLiveCasesList();
   }
   getLiveCasesList(): void {
     this.api.apiGetCall('allcase').subscribe((data) => {

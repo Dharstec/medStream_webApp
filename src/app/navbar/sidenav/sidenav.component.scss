@@ -8,10 +8,14 @@
   // border-bottom: 1px solid #fff;
 }
 
-.nav-links a {
-  color: #fff;
-  text-decoration: none;
-}
+.nav-links{
+  margin: auto;
+  a {
+    color: #fff;
+    text-decoration: none;
+    
+  }
+} 
 
 /* LOGO */
 .logo {
@@ -152,6 +156,7 @@ input[type=checkbox] {
 
 .search-container {
   position: relative;
+  margin-left: auto;
 
   .normal-search {
     .search {
