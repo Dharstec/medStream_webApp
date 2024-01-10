@@ -11,7 +11,7 @@
 
       <div class="menu">
         <li class="services">
-          <a href="javascript:void(0)" routerLink='/user/all-cases'>Home</a>
+          <a href="javascript:void(0)" routerLink='/user/home'>Home</a>
 
         </li>
         <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases'  routerLinkActive="active"
@@ -25,12 +25,17 @@
         <li class="vertical-bar"><a href="javascript:void(0)">Institutions</a></li> 
       </div>
     </ul>
-    <div class="search-container">
-      <div class="normal-search">
-
-        <input type="text" class="search" name="" id="" placeholder="Search..">
-        <mat-icon class="search-icon">search</mat-icon>
+    <!-- <div> -->
+      <div class="search-container mr-2">
+        <div class="normal-search">
+  
+          <input type="text" class="search" name="" id="" placeholder="Search..">
+          <mat-icon class="search-icon">search</mat-icon>
+        </div>
+        <!-- <span mat-menu-item><mat-icon class="iconCls">logout</mat-icon>Logout</span> -->
       </div>
-    </div>
+      <mat-icon (click)="profile()" style="cursor: pointer;">person</mat-icon>
+    <!-- </div> -->
+   
   </nav>
 </div>

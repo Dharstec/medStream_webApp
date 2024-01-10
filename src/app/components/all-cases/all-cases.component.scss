@@ -33,6 +33,12 @@
     width: 31%; /* Adjust as needed */
     margin-bottom: 20px;
   }
+  .case_title{
+    color: white;
+    font-weight: 600;
+    margin: 5px 0px 5px 0px;
+    width: 70%;
+  }
   
   .video-card img {
     width: 22rem;
@@ -44,6 +50,13 @@
   }
   mat-expansion-panel-body{
     padding: 0px 24px;
+  }
+
+  ::ng-deep .mat-calendar-content{
+    background-color: #fff;
+  }
+  ::ng-deep .mat-datepicker-content-container{
+    background-color: #fff;
   }
   
   hr {

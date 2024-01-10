@@ -9,7 +9,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of categoryList">
-          <mat-checkbox class="filter_list" [checked]="list.active" (click)="changeCategoryFilter(list,$event)">{{list.category}}</mat-checkbox>
+          <mat-checkbox class="filter_list" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'category')">{{list.category}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
         
@@ -23,7 +23,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of subCategoryList">
-          <mat-checkbox class="filter_list" [checked]="list.active"  >{{list.name}}</mat-checkbox>
+          <mat-checkbox class="filter_list" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'sub')">{{list.name}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
         
@@ -38,14 +38,14 @@
         <hr/>
         <mat-form-field>
           <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1 disabled></mat-datepicker>
-          <input matInput [matDatepicker]="picker1" placeholder="DD/MM/YYYY">
+          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+          <input matInput [matDatepicker]="picker1"  [(ngModel)]="startDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
         
         </mat-form-field>
         <mat-form-field>
           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2 disabled></mat-datepicker>
-          <input matInput [matDatepicker]="picker2" placeholder="DD/MM/YYYY">
+          <mat-datepicker #picker2 disabled="false" style="background-color: #fff;"></mat-datepicker>
+          <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
         
         </mat-form-field>
       </mat-expansion-panel>
@@ -53,11 +53,14 @@
         <mat-expansion-panel-header>
           <mat-panel-title style="color: #FFFFFF80;
           ;font-weight: 500;">
-            {{'Experts' | uppercase}}
+            {{'Institutions' | uppercase}}
           </mat-panel-title>
         </mat-expansion-panel-header>
         <hr/>
-  
+        <ng-container *ngFor="let list of institutionsFilterList">
+          <mat-checkbox class="filter_list" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'institute')">{{list.name}}</mat-checkbox>
+          <!-- <p class="filter_list">{{list.category}}</p> -->
+        </ng-container>
       </mat-expansion-panel>
     </div>
   
@@ -66,7 +69,7 @@
       <div class="video-cards">
         <div *ngFor="let video of allCases" class="video-card" (click)="routeToSingleCase(video._id)">
           <img [src]="video.thumbnail" alt="Video Thumbnail">
-          <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
+          <p class="case_title">{{ video.title }}</p>
           <p style="color: #FFFFFF80;
           ;font-weight: 600;">{{'Week of'}} {{ video.createdAt | date:'longDate' }}</p>
         </div>
