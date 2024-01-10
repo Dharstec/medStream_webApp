@@ -8,7 +8,7 @@
             <!-- <iframe style="width: 100%;" height="400" src="https://www.youtube.com/embed/1ozGKlOzEVc" frameborder="0" allowfullscreen></iframe> -->
             <iframe style="width: 100%;" height="400" [src]= "videoURL"frameborder="0" allowfullscreen></iframe>
             <!-- <img [src]="current_case_dtls.thumbnail" style="width: 100%;" alt="Video Thumbnail"> -->
-            <div class="ml-3">
+            <div class="ml-3 mt-3">
               <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.title }}</p>
               <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ current_case_dtls.createdAt | date:'longDate' }}</p>
             </div>
@@ -39,7 +39,7 @@
           <p class="des_text">{{current_case_dtls.desciription}}</p>
           
         </mat-expansion-panel>
-
+        <!-- <div id="hyvor-talk-comments"></div> -->
         <!-- <hyvor-talk-comments website-id="10253" page-id="" id="comments-container"></hyvor-talk-comments> -->
         <!-- <Comment website-id="10253" page-id="" id="comments-container"></Comment> -->
     </div>

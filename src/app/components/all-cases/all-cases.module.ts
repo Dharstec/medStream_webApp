@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AllCasesComponent } from './all-cases.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material.module';
+
 import { SingleCaseComponent } from './single-case/single-case.component';
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
     SingleCaseComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule
+    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule
   ]
 })
 export class AllCasesModule { }
