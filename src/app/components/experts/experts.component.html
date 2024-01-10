@@ -1,0 +1,30 @@
+<!-- <p style="color: aliceblue; padding: 10px;">experts works!</p> -->
+<!-- <fa-icon [icon]="coffee"></fa-icon> -->
+
+<div class="mainContainer" style="    display: flex;justify-content: center;width: 100%;height: 100%;">
+    <div class="container">
+        <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
+            <mat-card style="color: #FFFFFF;" *ngFor="let exps of experts" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)">
+                <img mat-card-image [src]="exps.image" class="image">
+             <div class="contBox">
+                <mat-card-title>{{exps.name}}</mat-card-title>
+                <mat-card-subtitle>
+                    {{exps.designation}}
+                </mat-card-subtitle>
+                <mat-card-subtitle>
+                    {{exps.institution}}
+                </mat-card-subtitle>
+                <mat-card-content class="text-wrap-example">
+                    {{exps.introduction}}
+                </mat-card-content>
+             </div>
+             <div class="icons">
+                <fa-icon [icon]="fb" class="icon"></fa-icon>
+                <fa-icon [icon]="x" class="icon"></fa-icon>
+                <fa-icon [icon]="insta" class="icon"></fa-icon>
+                <fa-icon [icon]="li" class="icon"></fa-icon>
+             </div>
+            </mat-card>
+          </div>
+    </div>
+</div>
