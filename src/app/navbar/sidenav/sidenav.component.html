@@ -10,18 +10,22 @@
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
       <div class="menu">
-        <li class="services">
-          <a href="javascript:void(0)" routerLink='/user/home'>Home</a>
-
-        </li>
+        <!-- <li class="services">
+          <a href="javascript:void(0)" routerLink='/user/all-cases'>Home</a>
+        </li> -->
+        <li><a class="sidenav-link-text" routerLink='/user/landing'  routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+          <li class="vertical-bar"><a href="javascript:void(0)">Schedule</a></li>
         <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases'  routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}">All Cases</a></li>
 
-        <li class="vertical-bar"><a href="javascript:void(0)">Schedule</a></li>
+        <!-- <li class="vertical-bar"><a href="javascript:void(0)">Schedule</a></li> -->
 
        
 
-        <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li>
+        <!-- <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li> -->
+        <li><a class="sidenav-link-text vertical-bar" routerLink='/user/experts'  routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact:true}">Experts</a></li>
         <li class="vertical-bar"><a href="javascript:void(0)">Institutions</a></li> 
       </div>
     </ul>

@@ -6,11 +6,11 @@
 
   }
   
-  .small-column {
-    // background: #2E2E2E;
-    // padding: 20px;
-    // margin: 20px;
-  }
+  // .small-column {
+  //   background: #2E2E2E;
+  //   padding: 20px;
+  //   margin: 20px;
+  // }
   
   .big-column {
     background-color: #141414;
@@ -38,6 +38,7 @@
     border-radius: 24px;
     border: 0px;
     display: flex;
+    justify-content: center;
   }
   .video-card img {
     width: 22rem;

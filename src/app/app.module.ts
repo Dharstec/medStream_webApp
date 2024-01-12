@@ -16,16 +16,19 @@ import { FormsModule } from '@angular/forms';
 import { AuthGuard } from './services/core/auth.guard';
 import { ErrorInterceptor } from './services/core/error-interceptor';
 import { JwtInterceptor } from './services/core/jwt-interceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ExpertsComponent } from './components/experts/experts.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
-    HeadersComponent
+    HeadersComponent,ExpertsComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
-   SplashScreenModule,HttpClientModule,FormsModule
+   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule
   ],
   providers: [DatePipe,AuthGuard,
     {
@@ -37,6 +40,8 @@ import { JwtInterceptor } from './services/core/jwt-interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true,
-  },],  bootstrap: [AppComponent]
+  }
+  // schemas: [fa-icon],
+],  bootstrap: [AppComponent]
 })
 export class AppModule { }

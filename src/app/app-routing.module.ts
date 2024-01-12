@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './services/core/auth.guard';
+import { ExpertsComponent } from './components/experts/experts.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'user/home', pathMatch: 'full' },
@@ -9,6 +11,8 @@ const routes: Routes = [
   { path: 'auth', loadChildren: () => (import('./auth/auth.module')).then((m) => m.AuthModule)},
   { path: 'user/home', loadChildren: () => (import('./home/home.module')).then((m) => m.HomeModule) },
   { path: 'user/all-cases', loadChildren: () => (import('./components/all-cases/all-cases.module')).then((m) => m.AllCasesModule),canActivate:[AuthGuard] },
+  { path: 'user/landing' , component:HomeComponent },
+  { path: 'user/experts', component:ExpertsComponent }
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: '', redirectTo: 'auth/login', pathMatch: 'full' }, // Default route
 
