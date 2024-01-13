@@ -16,6 +16,7 @@ export class SingleCaseComponent {
   current_case_dtls: any;
   videoURL:any
   instName: any;
+  isShareClicked: boolean = false;
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route:ActivatedRoute) {
     window.scrollTo(0, 0);
    }
@@ -55,5 +56,13 @@ export class SingleCaseComponent {
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
 this.router.navigate(['/user/all-cases/single-case',caseId]));
     // this.ngOnInit()
+  }
+
+  onShareButtonClick() {
+    this.isShareClicked = !this.isShareClicked;
+  }
+
+  onCloseButtonClick() {
+    this.isShareClicked = false;
   }
 }

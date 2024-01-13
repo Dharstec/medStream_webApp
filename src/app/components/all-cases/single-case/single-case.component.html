@@ -21,12 +21,25 @@
             <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution.name }}</p>
             <p style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.institution.city}}, {{current_case_dtls.institution.country}} </p>
           </div>
-          <button class="share_btn">
+          <!-- <button class="share_btn">
             <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
             <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
-          </button>
-         
-
+          </button> -->
+            <button class="share_btn" (click)="onShareButtonClick()">
+                <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
+                <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
+            </button>
+        
+        <div *ngIf="isShareClicked" class="share-overlay">
+            <button class="close-btn" (click)="onCloseButtonClick()">
+                <mat-icon style="color: #fff;">close</mat-icon>
+            </button>
+            <share-buttons theme="circles-dark"
+                [include]="['copy', 'facebook', 'email', 'messenger','sms', 'twitter', 'telegram', 'whatsapp', 'mix', 'line', 'linkedin', 'pinterest', 'print', 'reddit', 'tumblr', 'viber', 'vk', 'xing']"
+                [showIcon]="true" [showText]="false" url="https://www.instagram.com/dhanasekar___1110/"
+                description="dhanasekar instagram" twitterAccount="rodrigokamada" class="pt-5">
+            </share-buttons>
+        </div>
         </div>
 
         <mat-expansion-panel style="background: #2E2E2E;padding: 12px;color: #fff;" expanded>
