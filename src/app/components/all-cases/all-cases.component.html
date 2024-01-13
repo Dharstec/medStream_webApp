@@ -1,67 +1,86 @@
 <div class="grid-container">
     <div class="small-column">
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: #FFFFFF80;
-          ;font-weight: 500;">
-            {{'Category' | uppercase}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <hr/>
-        <ng-container *ngFor="let list of categoryList">
-          <mat-checkbox class="filter_list mt-3" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'category')">{{list.category}}</mat-checkbox>
-          <!-- <p class="filter_list">{{list.category}}</p> -->
-        </ng-container>
-        
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: #FFFFFF80;
-          ;font-weight: 500;">
-            {{'subCategory' | uppercase}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <hr/>
-        <ng-container *ngFor="let list of subCategoryList">
-          <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'sub')">{{list.name}}</mat-checkbox>
-          <!-- <p class="filter_list">{{list.category}}</p> -->
-        </ng-container>
-        
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: #FFFFFF80;
-          ;font-weight: 500;">
-            {{'Date Range' | uppercase}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <hr/>
-        <mat-form-field>
-          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-          <mat-datepicker #picker1 disabled="false"></mat-datepicker>
-          <input matInput [matDatepicker]="picker1"  [(ngModel)]="startDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
-        
-        </mat-form-field>
-        <mat-form-field>
-          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-          <mat-datepicker #picker2 disabled="false" style="background-color: #fff;"></mat-datepicker>
-          <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
-        
-        </mat-form-field>
-      </mat-expansion-panel>
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title style="color: #FFFFFF80;
-          ;font-weight: 500;">
-            {{'Institutions' | uppercase}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <hr/>
-        <ng-container *ngFor="let list of institutionsFilterList">
-          <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'institute')">{{list.name}}</mat-checkbox>
-          <!-- <p class="filter_list">{{list.category}}</p> -->
-        </ng-container>
-      </mat-expansion-panel>
+      <div class="sticky_sideNav">
+        <div class="clear_filter" (click)="clearFilter()">Clear All Filter</div>
+        <div>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'Category' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <ng-container *ngFor="let list of categoryList">
+              <mat-checkbox class="filter_list mt-3" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'category')">{{list.category}}</mat-checkbox>
+              <!-- <p class="filter_list">{{list.category}}</p> -->
+            </ng-container>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'subCategory' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <ng-container *ngFor="let list of subCategoryList">
+              <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'sub')">{{list.name}}</mat-checkbox>
+              <!-- <p class="filter_list">{{list.category}}</p> -->
+            </ng-container>
+            
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'Date Range' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <mat-form-field>
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+              <input matInput [matDatepicker]="picker1"  [(ngModel)]="startDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
+            
+            </mat-form-field>
+            <mat-form-field>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2 disabled="false" style="background-color: #fff;"></mat-datepicker>
+              <input matInput [matDatepicker]="picker2" [(ngModel)]="endDate" (dateChange)="changeCategoryFilter('',$event,'date')"  placeholder="DD/MM/YYYY" disabled>
+            
+            </mat-form-field>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'Institutions' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <ng-container *ngFor="let list of institutionsFilterList">
+              <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'institute')">{{list.name}}</mat-checkbox>
+              <!-- <p class="filter_list">{{list.category}}</p> -->
+            </ng-container>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'Operators' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <ng-container *ngFor="let list of operatorFilterList">
+              <mat-checkbox class="filter_list" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'operator')">{{list.name}}</mat-checkbox>
+              <!-- <p class="filter_list">{{list.category}}</p> -->
+            </ng-container>
+          </mat-expansion-panel>
+        </div>
+      </div>
+    
     </div>
   
     <div class="big-column">

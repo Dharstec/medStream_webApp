@@ -18,7 +18,6 @@ import { ErrorInterceptor } from './services/core/error-interceptor';
 import { JwtInterceptor } from './services/core/jwt-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpertsComponent } from './components/experts/experts.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
@@ -28,7 +27,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [
     BrowserModule,
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
-   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule
+   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule
   ],
   providers: [DatePipe,AuthGuard,
     {
