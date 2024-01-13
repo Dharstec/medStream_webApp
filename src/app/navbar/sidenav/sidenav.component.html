@@ -35,10 +35,9 @@
       <div class="search-container mr-2">
         <div class="normal-search">
   
-          <input type="text" class="search" name="" id="" placeholder="Search..">
+          <input type="text" class="search" (keyup)="globalSearch($event)"  [(ngModel)]="searchFilter" name="" id="" placeholder="Search..">
           <mat-icon class="search-icon">search</mat-icon>
         </div>
-        <!-- <span mat-menu-item><mat-icon class="iconCls">logout</mat-icon>Logout</span> -->
       </div>
       <mat-icon (click)="profile()" style="cursor: pointer;">person</mat-icon>
     <!-- </div> -->

@@ -19,9 +19,6 @@ import { JwtInterceptor } from './services/core/jwt-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpertsComponent } from './components/experts/experts.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ShareModule } from 'ngx-sharebuttons';
-import { ShareIconsModule } from 'ngx-sharebuttons/icons';
-import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
@@ -31,7 +28,7 @@ import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
   imports: [
     BrowserModule,
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
-   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule,ShareModule,ShareIconsModule,ShareButtonsModule,
+   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule
   ],
   providers: [DatePipe,AuthGuard,
     {

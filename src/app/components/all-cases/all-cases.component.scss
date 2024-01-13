@@ -9,6 +9,8 @@
     background: #2E2E2E;
     padding: 20px;
     margin: 20px;
+    position: sticky;
+    top: 107px;
     .filter_list{
       margin-bottom: 8px;
       color: #ffffff;
@@ -45,6 +47,20 @@
     // height: 18rem;
     width: 100%;
   }
+  .clear_filter{
+    padding: 0 24px;
+    float: right;
+    color: #FFFFFF80;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.sticky_sideNav{
+  position: sticky;
+  top: 125px;
+  display: inline-block;
+  overflow-x: auto;
+  max-height: calc(100vh - 100px)
+}
   
   mat-expansion-panel{
     margin: 40px 0px 40px 0px;
