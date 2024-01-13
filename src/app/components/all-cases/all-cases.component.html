@@ -9,7 +9,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of categoryList">
-          <mat-checkbox class="filter_list" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'category')">{{list.category}}</mat-checkbox>
+          <mat-checkbox class="filter_list mt-3" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'category')">{{list.category}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
         
@@ -23,7 +23,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of subCategoryList">
-          <mat-checkbox class="filter_list" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'sub')">{{list.name}}</mat-checkbox>
+          <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'sub')">{{list.name}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
         
@@ -58,7 +58,7 @@
         </mat-expansion-panel-header>
         <hr/>
         <ng-container *ngFor="let list of institutionsFilterList">
-          <mat-checkbox class="filter_list" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'institute')">{{list.name}}</mat-checkbox>
+          <mat-checkbox class="filter_list  mt-3" [checked]="list.active"  (click)="changeCategoryFilter(list,$event,'institute')">{{list.name}}</mat-checkbox>
           <!-- <p class="filter_list">{{list.category}}</p> -->
         </ng-container>
       </mat-expansion-panel>

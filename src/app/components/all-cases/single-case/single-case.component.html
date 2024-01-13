@@ -18,8 +18,8 @@
         <div class="ml-3 mt-5" style="display: flex;">
           <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
           <div class="ml-2"  style="display: block;">
-            <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution }}</p>
-            <p style="color: #FFFFFF80;;font-weight: 600;">Chennai, India.</p>
+            <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution.name }}</p>
+            <p style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.institution.city}}, {{current_case_dtls.institution.country}} </p>
           </div>
           <button class="share_btn">
             <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
@@ -36,7 +36,7 @@
             </mat-panel-title>
           </mat-expansion-panel-header>
           <hr/>
-          <p class="des_text">{{current_case_dtls.desciription}}</p>
+          <p class="des_text">{{current_case_dtls.description}}</p>
           
         </mat-expansion-panel>
         <!-- <div id="hyvor-talk-comments"></div> -->
@@ -50,7 +50,7 @@
 
       <div class="recommend-cards">
         <div *ngFor="let video of recommendList" class="recommend-card" (click)="routeToSingleCase(video._id)">
-            <img [src]="video.thumbnail" style="width: 40%;" alt="Video Thumbnail">
+            <img [src]="video.thumbnail" style="width: 100%;" alt="Video Thumbnail">
           <div class="ml-3">
             <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
             <p style="color: #FFFFFF80;

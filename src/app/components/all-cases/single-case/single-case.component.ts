@@ -15,6 +15,7 @@ export class SingleCaseComponent {
   recommendList: any;
   current_case_dtls: any;
   videoURL:any
+  instName: any;
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route:ActivatedRoute) {
     window.scrollTo(0, 0);
    }
@@ -37,6 +38,7 @@ export class SingleCaseComponent {
       // console.log("videoURL",this.videoURL)
       // this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.current_case_dtls.youtubeUrl);
       this.getRecommendCase( this.current_case_dtls.category);
+      console.log(this.current_case_dtls.institution)
     })
   }
   getRecommendCase(category): void {
@@ -45,6 +47,7 @@ export class SingleCaseComponent {
       this.recommendList = data.data;
     })
   }
+
 
 
   routeToSingleCase(caseId){
