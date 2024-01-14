@@ -6,7 +6,7 @@ import { ExpertsComponent } from './components/experts/experts.component';
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'user/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'user/landing', pathMatch: 'full' },
   // { path: '', redirectTo: 'liveCases/list', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => (import('./auth/auth.module')).then((m) => m.AuthModule)},
   { path: 'user/landing', loadChildren: () => (import('./home/home.module')).then((m) => m.HomeModule) },
