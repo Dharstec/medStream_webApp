@@ -24,7 +24,9 @@ export class AllCasesComponent {
   institutionsFilterList: any=[];
   operatorFilterList: any=[];
   constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,
-    private util: UtilService) { }
+    private util: UtilService) {
+      window.scrollTo(0, 0);
+     }
 
   ngOnInit(): void {
     this.util.getObservable().subscribe((res) => {

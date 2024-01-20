@@ -19,6 +19,8 @@ html, body { height: 100%; }
 body { margin: 0;font-family:sans-serif !important;   background-color: #141414;
 }
 
+
+
 html,
 body {
   height: 100%;
@@ -166,7 +168,39 @@ border: none !important;
   border: 1px solid #fff !important;
 
 }
+// schedule calendar 
 
+.cal-month-view {
+  background-color: #141414;
+}
+.cal-week-view {
+  background-color: #141414;
+}
+.cal-day-view {
+  background-color: #141414;
+}
+
+.cal-month-view .cal-cell-row:hover {
+  background-color: #141414;
+}
+
+.cal-month-view .cal-day-cell.cal-today {
+  background-color: #e8fde7;
+  color: #141414;
+}
+
+.cal-week-view .cal-header.cal-today {
+  background-color: #e8fde7;
+  color: #141414;
+}
+
+.cal-month-view .cal-cell-row .cal-cell:hover, .cal-month-view .cal-cell.cal-has-events.cal-open {
+  background-color:#2E2E2E // #ededed;
+}
+
+.cal-week-view .cal-hour-odd{
+  background-color:#2E2E2E 
+}
 //scroll
 
 ::-webkit-scrollbar {

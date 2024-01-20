@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.api.apiPostCall(payload, 'login').subscribe(data => {
         if(data.data.accessToken){
           localStorage.setItem('token', data.data.accessToken)
+          localStorage.setItem('region', data.data.region)
           this.router.navigate(['/user/landing'])  
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: 'LoggedIn Successfully',
