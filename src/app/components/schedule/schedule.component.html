@@ -1,4 +1,9 @@
 <div class="schedule-container">
+  <mat-form-field class="timezoneField" *ngIf="!logggedIn">
+    <mat-select  placeholder="TimeZone"  [(ngModel)]="regionTimeZone" (selectionChange)="getScheduleCasesList(regionTimeZone)" >
+      <mat-option *ngFor="let row of regionTimeZoneList;let i =index" [value]="row">{{row}}</mat-option>
+    </mat-select>
+  </mat-form-field>
     <div class="mt-4 row text-center w-100 mb-3">
         <div class="col-md-4">
           <div class="btn-group">

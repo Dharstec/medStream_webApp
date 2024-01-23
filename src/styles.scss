@@ -208,6 +208,21 @@ border: none !important;
 
 }
 
+// mat-select
+
+.mat-mdc-text-field-wrapper{
+  background-color: #2E2E2E !important;
+}
+
+.mat-mdc-form-field-flex{
+ background-color: #2E2E2E !important;
+}
+
+.cdk-overlay-pane{
+  color: #fff;
+  background-color:#2E2E2E  ;
+}
+
 /* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
