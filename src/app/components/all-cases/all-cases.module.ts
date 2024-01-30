@@ -4,6 +4,7 @@ import { AllCasesComponent } from './all-cases.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from 'src/app/material.module';
+import { DisqusModule } from 'ngx-disqus';
 
 import { SingleCaseComponent } from './single-case/single-case.component';
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     SingleCaseComponent
   ],
   imports: [
+    DisqusModule,
     CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule
   ]
 })

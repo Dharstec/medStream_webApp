@@ -33,6 +33,7 @@
     "firebase": "^9.23.0",
     "lodash": "^4.17.21",
     "moment": "^2.30.1",
+    "ngx-disqus": "^3.0.1",
     "ngx-sharebuttons": "^13.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

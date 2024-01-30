@@ -500,9 +500,9 @@ export class ScheduleComponent {
   }
 
   getWorldTimezoneList(): void {
-    this.api.apiGetWorldTimeZone().subscribe((data:any) => {
-      this.regionTimeZoneList = data
-    })
+    // this.api.apiGetWorldTimeZone().subscribe((data:any) => {
+    //   this.regionTimeZoneList = data
+    // })
   }
 
   getScheduleCasesList(timeZone?:any): void {

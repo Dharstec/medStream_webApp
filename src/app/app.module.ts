@@ -19,6 +19,8 @@ import { JwtInterceptor } from './services/core/jwt-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpertsComponent } from './components/experts/experts.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DISQUS_SHORTNAME } from 'ngx-disqus';
+
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
@@ -40,6 +42,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true,
+  },
+  {
+    provide: DISQUS_SHORTNAME,
+    useValue: 'disqus_shortname'
   }
   // schemas: [fa-icon],
 ],  bootstrap: [AppComponent]
