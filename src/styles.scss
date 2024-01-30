@@ -99,6 +99,9 @@ li {
 .mat-mdc-select-arrow {
   color: #3979EC;
 }
+.mat-mdc-select{
+  margin-bottom: 8px;
+}
 
 .mat-mdc-form-field.mat-focused.mat-primary .mat-mdc-select-arrow {
   color: #3979EC;
@@ -201,12 +204,6 @@ border: none !important;
 .cal-week-view .cal-hour-odd{
   background-color:#2E2E2E 
 }
-//scroll
-
-::-webkit-scrollbar {
-  width: 10px;
-
-}
 
 // mat-select
 
@@ -224,6 +221,13 @@ border: none !important;
 }
 
 /* Track */
+
+//scroll
+
+::-webkit-scrollbar {
+  width: 10px;
+
+}
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey; 
   height: 20px;

@@ -28,18 +28,26 @@ onResize(event:any){
    }
 }
 searchFilter: any;
+userdata:any
+loggedIn:any=false
 constructor(private authService: AuthService,
   private util:UtilService,
    private router: Router) {
-
  }
 
   ngOnInit(): void {
   this.screenWidth=window.innerWidth;
+  console.log("autheservice",this.authService.isLoggedIn())
   this.util.getObservable().subscribe((res) => {
-    if(res.globalSearch && res.globalSearch){
-      console.log('navsearch',res.globalSearch)
+    if(res.globalSearch || res.loggedIn){
       this.searchFilter = res.globalSearch=='null'? '':this.searchFilter
+      this.loggedIn= this.authService.isLoggedIn() ? true : res.loggedIn
+      if(this.loggedIn){
+        this.userdata={
+          "email":localStorage.getItem("userEmail"),
+          "region":localStorage.getItem("userRegion")
+        }
+      }
     }
   })
 }
@@ -58,10 +66,12 @@ constructor(private authService: AuthService,
     this.util.setObservable('globalSearch',filterValue)
   }
 
-  profile(){
+  logout(){
     if(this.authService.isLoggedIn()){
       this.authService.setLoggedInStatus(false)
       localStorage.clear()
+      this.util.setObservable('loggedIn',false)
+      this.loggedIn=false
     }
     this.router.navigate(['/auth/login'])
   }

@@ -130,7 +130,7 @@ export class ScheduleComponent {
   userTimeZone: any;
   regionTimeZone: any='Asia/Kolkata';
   regionTimeZoneList: any;
-  logggedIn:boolean=false
+  loggedIn:boolean=false
 
   constructor(private authService: AuthService,private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
     window.scrollTo(0, 0);
@@ -491,10 +491,10 @@ export class ScheduleComponent {
         "Pacific/Tongatapu",
         "WET"
     ]
-    this.logggedIn=false
+    this.loggedIn=false
     this.getScheduleCasesList(this.regionTimeZone)
     }else{
-      this.logggedIn=true
+      this.loggedIn=true
       this.getScheduleCasesList()
     }
   }
@@ -506,7 +506,7 @@ export class ScheduleComponent {
   }
 
   getScheduleCasesList(timeZone?:any): void {
-    this.userTimeZone = timeZone ? timeZone : localStorage.getItem('region')
+    this.userTimeZone = timeZone ? timeZone : localStorage.getItem('userRegion')
     this.api.apiGetCall(`schedulecase?timeZone=${this.userTimeZone}`).subscribe((data) => {
       this.allScheduleList = data.data;
       this.events=[]
