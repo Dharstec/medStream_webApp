@@ -19,7 +19,6 @@ export class SingleCaseComponent {
   instName: any;
   isShareClicked: boolean = false;
   pageId: String;
-  URL:String;
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
   }
@@ -29,8 +28,6 @@ export class SingleCaseComponent {
     console.log("--", this.current_case_id)
     
     this.getCaseDetails()
-    this.pageId = "/test123"
-    this.URL = "http://localhost:4200/user/all-cases/single-case/65ae3101aebad4621f917882"
 
   }
 
@@ -41,6 +38,7 @@ export class SingleCaseComponent {
       let splitData = this.current_case_dtls.youtubeUrl.split('?')
       console.log("splitData", splitData)
       let videoID = splitData[0].split('be/')[1]
+      this.pageId = videoID
       let embdURL = `https://www.youtube.com/embed/${videoID}`
       this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(embdURL);
       // console.log("videoURL",this.videoURL)

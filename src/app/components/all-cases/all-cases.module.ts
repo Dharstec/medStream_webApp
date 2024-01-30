@@ -28,8 +28,8 @@ const routes: Routes = [
     SingleCaseComponent
   ],
   imports: [
-    DisqusModule,
-    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule
+    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,
+    DisqusModule
   ]
 })
 export class AllCasesModule { }

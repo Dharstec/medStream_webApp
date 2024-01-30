@@ -21,6 +21,7 @@ import { ExpertsComponent } from './components/experts/experts.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DISQUS_SHORTNAME } from 'ngx-disqus';
 
+
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
@@ -45,7 +46,7 @@ import { DISQUS_SHORTNAME } from 'ngx-disqus';
   },
   {
     provide: DISQUS_SHORTNAME,
-    useValue: 'disqus_shortname'
+    useValue: 'medstream'
   }
   // schemas: [fa-icon],
 ],  bootstrap: [AppComponent]
