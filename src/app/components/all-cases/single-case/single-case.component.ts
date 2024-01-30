@@ -19,6 +19,7 @@ export class SingleCaseComponent {
   instName: any;
   isShareClicked: boolean = false;
   pageId: String;
+  URL:String;
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
   }
@@ -28,7 +29,8 @@ export class SingleCaseComponent {
     console.log("--", this.current_case_id)
     
     this.getCaseDetails()
-    this.pageId = this.router.url
+    this.pageId = "/test123"
+    this.URL = "http://localhost:4200/user/all-cases/single-case/65ae3101aebad4621f917882"
 
   }
 
