@@ -1,0 +1,41 @@
+/* app.component.css */
+
+// .card-container {
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: space-around;
+//   }
+  
+//   .example-card {
+//     max-width: 400px;
+//     margin: 16px;
+//   }
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+}
+.card-container{
+    position: relative;
+}
+.overlay{
+    // background-color: rgba(0, 0, 0, 0.585);
+    position: absolute;
+    bottom: 5%;
+    // left: 20%;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+.overlay-title{
+    // font-family: Roboto;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 70px;
+    letter-spacing: 0em;
+    color: #FFFFFF;
+    text-align: center;
+    ;   
+}
+
+
+  

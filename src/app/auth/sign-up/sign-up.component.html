@@ -1,0 +1,51 @@
+<div class="background">
+    <div class="glassy-form-container">
+      <div class="glassy-form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="header" style="text-align: center;">
+            <h2 class="header" style="color: #fff;font-weight: 600;">Sign Up</h2>
+          </div>
+          <div class="section-b col-md-12">
+            <mat-label>Name</mat-label>
+            <input class="input" type="text" name="name" matInput formControlName="name" required>
+          </div>
+          <div class="section-b col-md-12">
+            <mat-label>Email</mat-label>
+            <input class="input" type="email" name="email" matInput formControlName="email" required>
+            <mat-error *ngIf="form.get('email').invalid && (form.get('email').dirty || submitted)">
+              {{ form.get('email').errors?.pattern ? 'Email is Invalid' : 'Email is required'}}
+            </mat-error>
+          </div>
+          <div style="background-color: #111111;" class="section-b col-md-12 timezone">
+            <mat-label>Time Zone</mat-label>
+            <mat-select style="background-color: #111111;" formControlName="timeZone">
+              <mat-option style="background-color: #111111; color: #fff;" *ngFor="let timeZone of timeZones" [value]="timeZone.value">
+                {{ timeZone.label }}
+              </mat-option>
+            </mat-select>
+          </div>
+          <div class="section-b col-md-12">
+            <mat-label>Password</mat-label>
+            <input class="input" type="password" name="password" matInput formControlName="password" required>
+            <mat-error *ngIf="form.get('password').invalid && (form.get('password').dirty || submitted)">
+              Password must be at least 8 characters long and contain at least one uppercase letter, one numeric value, and one special character.
+            </mat-error>
+          </div>
+          <div class="section-b col-md-12">
+            <mat-label>Confirm Password</mat-label>
+            <input class="input" type="password" name="confirmPassword" matInput formControlName="confirmPassword" required>
+            <mat-error *ngIf="form.get('confirmPassword').hasError('required') && (form.get('confirmPassword').dirty || submitted)">
+              Please confirm your password.
+            </mat-error>
+            <mat-error *ngIf="form.get('confirmPassword').hasError('passwordMismatch') && (form.get('confirmPassword').dirty || submitted)">
+              Passwords do not match.
+            </mat-error>
+          </div>
+          <div class="disflex">
+            <button [disabled]="form.invalid" class="disBut" mat-flat-button color="primary" type="submit">Sign Up</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,31 @@
+<!-- <p style="padding: 10px; color: white;">hello</p> -->
+  <!-- <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <mat-card class="cards p-5" *ngFor="let member of members" fxFlex.gt-md="calc(33.33% - 25px)" fxFlex.md="calc(50% - 25px)" fxFlex.sm="calc(100% - 25px)">
+      <img mat-card-image [src]="member.url" alt="Photo of {{member.title}}" class="responsive-image">
+      <mat-card-content>
+        <mat-card-header>
+            <mat-card-title >{{member.title}}</mat-card-title>
+          </mat-card-header>
+      </mat-card-content>
+    </mat-card>
+  </div> -->
+  <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="25px">
+    <mat-card class="cards p-5" *ngFor="let member of members" fxFlex.gt-md="calc(33.33% - 25px)" fxFlex.md="calc(50% - 25px)" fxFlex.sm="calc(100% - 25px)">
+      <div class="card-container">
+        <img mat-card-image routerLink="/singleInstitute" [src]="member.url" alt="Photo of {{member.title}}" class="responsive-image">
+        <div class="overlay">
+            <mat-card-header>
+              <mat-card-title class="overlay-title">{{member.title}}</mat-card-title>
+            </mat-card-header>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <!-- image-cards.component.html -->
+  
+  
+  
+  
+
+  
+  
