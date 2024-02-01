@@ -9,6 +9,7 @@ export class UtilService {
 
   private globalObservables: any = {
     globalSearch: null,
+    loggedIn: false,
   }
   
   private globalObj = new BehaviorSubject(this.globalObservables);

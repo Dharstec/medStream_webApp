@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-
+import * as moment from 'moment-timezone';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,11 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class SignUpComponent implements OnInit {
   form: FormGroup;
   submitted = false;
-  timeZones = [
-    { label: 'UK', value: 'UK' },
-    { label: 'US/Eastern', value: 'US/Eastern' },
-    { label: 'US/Central', value: 'US/Central' },
-  ];
+  timeZones = [];
 
   constructor(private fb: FormBuilder, 
               private router: Router, 
@@ -25,6 +21,10 @@ export class SignUpComponent implements OnInit {
               private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.timeZones = moment.tz.names().map(timeZone => ({
+      label: timeZone,
+      value: timeZone
+    }));
     this.form = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

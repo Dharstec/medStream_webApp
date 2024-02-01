@@ -154,6 +154,30 @@ input[type=checkbox] {
   }
 }
 
+.matMenu {
+  // width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // padding: 2px 15px 2px 15px;
+  padding: 12px;
+  cursor: pointer;
+  row-gap: 10px;
+}
+
+.user-info {
+  margin-top: 5px;
+}
+
+mat-icon {
+  margin-right: 5px;
+}
+
+.disFlex{
+  display: flex !important;
+}
+
+
 .search-container {
   position: relative;
   margin-left: auto;

@@ -19,13 +19,12 @@ import { JwtInterceptor } from './services/core/jwt-interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpertsComponent } from './components/experts/experts.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { InstitutionComponent } from './components/institution/institution.component';
-import { SingleInstituteComponent } from './components/institution/single-institute/single-institute.component';
+import { DISQUS_SHORTNAME } from 'ngx-disqus';
+
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
-    HeadersComponent,ExpertsComponent,InstitutionComponent,SingleInstituteComponent
-    
+    HeadersComponent,ExpertsComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +41,10 @@ import { SingleInstituteComponent } from './components/institution/single-instit
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
       multi: true,
+  },
+  {
+    provide: DISQUS_SHORTNAME,
+    useValue: 'medstream'
   }
   // schemas: [fa-icon],
 ],  bootstrap: [AppComponent]

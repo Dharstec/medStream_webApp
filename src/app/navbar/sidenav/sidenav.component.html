@@ -42,7 +42,34 @@
           <mat-icon class="search-icon">search</mat-icon>
         </div>
       </div>
-      <mat-icon (click)="profile()" style="cursor: pointer;">person</mat-icon>
+      <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
+        <mat-icon  style="cursor: pointer;">person</mat-icon>
+        <mat-menu #menu="matMenu">
+          <div class="matMenu">
+                <div class="user-info disFlex">
+                  <mat-icon>email</mat-icon><span>{{userdata.email}}</span>
+                </div>
+                <div class="disFlex" (click)="logout()">
+                  <mat-icon>logout</mat-icon><span>Logout</span>
+                </div>
+          </div>
+      </mat-menu>  
+      </div>
+      <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
+        <mat-icon  style="cursor: pointer;">person</mat-icon>
+        <mat-menu #menu="matMenu">
+          <div class="matMenu">
+                <div class="user-info disFlex" routerLink="/auth/login">
+                  <mat-icon>person</mat-icon><span>SignIn</span>
+                </div>
+                <div class="disFlex">
+                  <mat-icon>person_add</mat-icon><span>SignUp</span>
+                </div>
+          </div>
+      </mat-menu>  
+      </div>
+
+  
     <!-- </div> -->
    
   </nav>

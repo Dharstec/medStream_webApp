@@ -3,6 +3,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { UtilService } from 'src/app/services/util.service';
 import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
 
 @Component({
@@ -16,7 +18,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   submitted = false;
   starCount = new Array(500); // Number of stars
 
-  constructor(private fb: FormBuilder, private router: Router, private api: ApiService,private snackbar: MatSnackBar) { }
+  constructor(private fb: FormBuilder, 
+    private authService: AuthService,
+    private router: Router, private api: ApiService,private snackbar: MatSnackBar,private util:UtilService) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -40,8 +44,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.api.apiPostCall(payload, 'userLogin').subscribe(data => {
         if(data.data.accessToken){
           localStorage.setItem('token', data.data.accessToken)
-          localStorage.setItem('region', data.data.region)
+          localStorage.setItem('userEmail', data.data.email)
+          localStorage.setItem('userRegion', data.data.region)
           this.router.navigate(['/user/landing'])  
+          this.authService.setLoggedInStatus(true)
+          this.util.setObservable('loggedIn',true)
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: 'LoggedIn Successfully',
           });
@@ -49,6 +56,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: 'Failed to LoggedIn',
           }); 
+          this.authService.setLoggedInStatus(false)
+          this.util.setObservable('loggedIn',false)
         }
       },error=>{
         console.log(error)

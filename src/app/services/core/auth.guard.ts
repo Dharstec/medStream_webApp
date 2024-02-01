@@ -16,15 +16,15 @@ export class AuthGuard implements CanActivate {
 
 
     if (this.authService.isLoggedIn()) {
-      console.log("---already logged in--")
+      // console.log("---already logged in--")
       return true
     } else {
       if (localStorage.getItem('token')) {
-        console.log("---loged--")
+        // console.log("---loged--")
         this.authService.setLoggedInStatus(true);
         return true;
       } else {
-        console.log("---login page--")
+        // console.log("---login page--")
         this.router.navigate(['/auth/login']);
         return false
       }
