@@ -5,12 +5,20 @@ import { AuthComponent } from './auth.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material.module';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { OtpComponent } from './otp/otp.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 const routes: Routes = [
   {
   path: '',
   component: AuthComponent,
   children: [
     { path: 'login', component: LoginComponent },
+    { path: 'forgetpassword', component: ForgetPasswordComponent },
+    { path: 'otp', component: OtpComponent },
+    { path: 'resetPassword', component: ResetPasswordComponent },
+    { path: 'signUp', component: SignUpComponent },
   ]
 }
 ];
@@ -18,7 +26,11 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    ForgetPasswordComponent,
+    OtpComponent,
+    ResetPasswordComponent,
+    SignUpComponent,
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule

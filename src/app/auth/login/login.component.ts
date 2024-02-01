@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         email: this.form.controls['email'].value,
         password: this.form.controls['password'].value
       }
-      this.api.apiPostCall(payload, 'login').subscribe(data => {
+      this.api.apiPostCall(payload, 'userLogin').subscribe(data => {
         if(data.data.accessToken){
           localStorage.setItem('token', data.data.accessToken)
           localStorage.setItem('region', data.data.region)

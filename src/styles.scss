@@ -21,10 +21,10 @@ body { margin: 0;font-family:sans-serif !important;   background-color: #141414;
 
 
 
-html,
-body {
-  height: 100%;
-}
+// html,
+// body {
+//   height: 100%;
+// }
 
 * {
   margin: 0;
@@ -117,9 +117,9 @@ border: none !important;
 .mat-mdc-button .mdc-button__label, .mat-mdc-unelevated-button .mdc-button__label, .mat-mdc-raised-button .mdc-button__label, .mat-mdc-outlined-button .mdc-button__label{
   font-size:12px
 }
-.mat-mdc-form-field-subscript-wrapper {
-  /* margin-bottom: 10px !important; */
-}
+// .mat-mdc-form-field-subscript-wrapper {
+//   margin-bottom: 10px !important;
+// }
 /* .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple {
   border-bottom-color: none !important;
 }
