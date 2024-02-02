@@ -20,18 +20,31 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ExpertsComponent } from './components/experts/experts.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DISQUS_SHORTNAME } from 'ngx-disqus';
+import { environment } from '../environments/environment';
+import { AngularFireModule } from "@angular/fire/compat";
 
+import { AngularFireAuthModule } from "@angular/fire/compat/auth";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { ChatComponent } from './chat/chat.component';
+import { RelativeTimePipe } from './chat/relative-time.pipe'; 
 
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
-    HeadersComponent,ExpertsComponent,
-    
+    HeadersComponent,ExpertsComponent, ChatComponent,
+    RelativeTimePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
-   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule
+   SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule,
+   AngularFireModule.initializeApp(environment.firebaseConfig),
+   AngularFireAuthModule,
+   AngularFireStorageModule,
+   AngularFirestoreModule,
+   AngularFireDatabaseModule
   ],
   providers: [DatePipe,AuthGuard,
     {
@@ -49,6 +62,7 @@ import { DISQUS_SHORTNAME } from 'ngx-disqus';
     useValue: 'medstream'
   }
   // schemas: [fa-icon],
-],  bootstrap: [AppComponent]
+],  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
