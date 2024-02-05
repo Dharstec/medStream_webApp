@@ -1,0 +1,42 @@
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <ng-conatiner *ngIf="caseOfTheWeekList.length">
+    <ng-container *ngFor="let list of caseOfTheWeekList;let i =index">
+      <ng-container *ngIf="currentIndex==i">
+        <div class="col-12 carousel-inner" role="listbox" (click)="enrouteCase(list)">
+          <img class="col-7 mb-2" src="{{ list.thumbnail}}" alt="slide" >
+          <div class="col-5 ml-3">
+            <h5 class="red_text">CASE OF THE WEEK - {{'Week of'}} {{ list.createdAt | date:'longDate' }}</h5>
+            <mat-divider class="mb-2"></mat-divider>
+            <label>{{list.title}}</label>
+            <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ list.createdAt | date:'longDate' }}</p>
+            <div class="mt-5" style="display: flex;">
+                <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
+                <div class="ml-2"  style="display: block;">
+                  <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ list.institution ? list.institution.name : 'null' }}</p>
+                  <p style="color: #FFFFFF80;;font-weight: 600;">{{list.institution ? list.institution.city: 'null' }}, {{list.institution ? list.institution.country: 'null' }} </p>
+                </div>
+              </div>
+            <div class="desc_container">
+            <label>Description</label>
+            <mat-divider class="mb-2"></mat-divider>
+            <p class="des_text">{{list.description}}</p>
+            </div> 
+          </div>
+       
+        </div>
+      </ng-container>
+    
+    </ng-container>
+    <div class="flex_align">
+      <ng-container *ngFor="let list of caseOfTheWeekList;let i =index">
+        <!-- <div> -->
+          <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''" (click)='currentIndex=i'></button>
+        <!-- </div> -->
+      </ng-container> 
+    </div>
+  </ng-conatiner>
+  <div *ngIf="caseOfTheWeekList.length==0">
+    <label class="flex_align">No case of the week available.</label>
+  </div>
+          
+</div>

@@ -3,7 +3,7 @@
       <div class="sticky_sideNav">
         <div class="clear_filter" (click)="clearFilter()">Clear All Filter</div>
         <div>
-          <mat-expansion-panel>
+          <mat-expansion-panel [expanded]="categoryExpand">
             <mat-expansion-panel-header>
               <mat-panel-title style="color: #FFFFFF80;
               ;font-weight: 500;">

@@ -1,5 +1,5 @@
 <!-- <p>home page works!</p> -->
-<div class="container">
+<!-- <div class="container">
   <div class="innerContainer">
     <div class="box">
       <div class="imgDiv">
@@ -8,7 +8,6 @@
       <div class="content">
         <div class="textBox">
           <h1 class="hd1">Transforming interventional <br> cardiology</h1>
-          <!-- <h1 class="hd1">cardiology</h1> -->
           <h1 class="hd2">with 24/7/365 live procedures from top global sites and experts</h1>
         </div>
         <div class="getStarted">
@@ -16,5 +15,146 @@
         </div>
       </div>
     </div>
+  </div>
+</div> -->
+
+<div class="home_container">
+  <div class="get_started">
+    <div class="">
+      <img class="col-12 cur_pointer" routerLink="/user/landing" src="../../assets/home_img.svg" alt="">
+    </div>
+  </div>
+
+  <div class="widget_accordion">
+    <div class="widget_header">
+      <h5 class="mr-auto">UPCOMING VIDEOS</h5>
+      <div class="red_text" routerLink='/user/schedule'>View Schedule</div>
+    </div>
+    <div *ngIf="scheduleVideo.length==0">
+      <label class="flex_align">No upcoming videos</label>
+    </div>
+    <div *ngIf="scheduleVideo.length!=0">
+      <div class="col-12 schedule_flex" role="listbox">
+        <iframe class="map col-7" style="border:0;height: 70vh;" [src]="mapURL" frameborder="0"
+          allowfullscreen></iframe>
+        <!-- <img class="col-7 mb-2" src="{{ topVideosList[0].thumbnail}}" alt="slide" > -->
+        <div class="col-5 ml-3">
+          <img class="mb-2 col-12" src="{{ scheduleVideo[0].thumbnail}}" alt="slide">
+          <p>{{scheduleVideo[0].title}}</p>
+          <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ scheduleVideo[0].createdAt | date:'longDate'
+            }}</p>
+          <div class="" style="display: flex;">
+            <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
+            <div class="ml-2" style="display: block;">
+              <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo[0].institution && scheduleVideo[0].institution.name }}
+              </p>
+              <p style="color: #FFFFFF80;;font-weight: 600;">{{scheduleVideo[0].institution ? scheduleVideo[0].institution.city:'null'}},
+                {{scheduleVideo[0].institution ? scheduleVideo[0].institution.country:'null'}} </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="videos_accordion">
+    <div class="col-md-8 top_video_widget">
+      <div class="widget_header">
+        <h5 class="">TOP VIDEOS</h5>
+      </div>
+      <div *ngIf="topVideosList.length==0">
+        <label class="flex_align">No data available.</label>
+      </div>
+      <ng-container *ngIf="topVideosList.length">
+        <div class="grid_list">
+          <ng-container *ngFor="let case of topVideosList;let i=index">
+            <div [ngClass]="i%2==0 ? 'grid_style' : 'grid_border_none'">
+              <div>
+                <div class="flex_align mr-2 cur_pointer" (click)="enrouteCase(case)">
+                  <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
+                  <div class="ml-3">
+                    <p class="case_title">{{ case.title }}</p>
+                    <p class="week_style">{{'Week of'}} {{ case.createdAt | date:'longDate' }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+     
+    </div>
+    <div class="col-md-4">
+      <div class="top_video_widget mb-3">
+        <div class="widget_header">
+          <h5 class="mr-auto">LATEST VIDEOS</h5>
+          <div class="red_text" routerLink='/user/all-cases'>See all</div>
+        </div>
+
+        <!-- Simple carousel -->
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <ng-container *ngIf="latestVideos.length">
+            <ng-container *ngFor="let list of latestVideos;let i =index">
+              <ng-container *ngIf="currentIndex==i">
+                <div class="carousel-inner cur_pointer" role="listbox" (click)="enrouteCase(list)">
+                  <img class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
+                  <label>{{list.title}}</label>
+                </div>
+              </ng-container>
+  
+            </ng-container>
+            <div class="flex_align">
+              <ng-container *ngFor="let list of latestVideos;let i =index">
+                <!-- <div> -->
+                <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
+                  (click)='currentIndex=i'></button>
+                <!-- </div> -->
+              </ng-container>
+            </div>
+          </ng-container>
+          <div *ngIf="latestVideos.length==0">
+            <label class="flex_align">No data available.</label>
+          </div>
+        </div>
+
+      </div>
+      <div class="top_video_widget">
+        <div class="widget_header">
+          <h5 class="mr-auto">CATEGORIES</h5>
+          <div class="red_text" routerLink='/user/all-cases'>See all</div>
+        </div>
+        <ng-container *ngIf="categoryList.length">
+          <ng-container *ngFor="let list of categoryList">
+            <h5 class="cur_pointer" [routerLink]="['/user/all-cases', list.category]" routerLinkActive="active">
+              {{list.category}}</h5>
+            <mat-divider class="mb-2"></mat-divider>
+          </ng-container>
+        </ng-container>
+        <div *ngIf="categoryList.length==0">
+          <label class="flex_align">No data available.</label>
+        </div>
+        
+      </div>
+
+    </div>
+
+  </div>
+  <div class="ads">
+    <div class="imgDiv">
+      <img src="../../assets/Home_page_ads.svg" alt="">
+    </div>
+  </div>
+  <div class="widget_accordion">
+    <app-home-carousel [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
+  </div>
+  <div class="widget_accordion">
+    <div class="media_list">
+      <h6 class="mr-auto">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
+      <fa-icon [icon]="facebook" class="icon"></fa-icon>
+      <fa-icon [icon]="instagram" class="icon"></fa-icon>
+      <fa-icon [icon]="twitterX" class="icon"></fa-icon>
+      <fa-icon [icon]="linkedIn" class="icon"></fa-icon>
+    </div>
+
   </div>
 </div>

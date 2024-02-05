@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import * as _ from "lodash";
 import * as moment from 'moment/moment.js';
@@ -13,6 +13,7 @@ import { UtilService } from 'src/app/services/util.service';
   styleUrls: ['./all-cases.component.scss']
 })
 export class AllCasesComponent {
+  categoryExpand: boolean=false;
   allCases: any;
   categoryList: any;
   startDate:any=''
@@ -23,20 +24,21 @@ export class AllCasesComponent {
   filteredData: any=[];
   institutionsFilterList: any=[];
   operatorFilterList: any=[];
-  constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,
+  constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,private route: ActivatedRoute,
     private util: UtilService) {
       window.scrollTo(0, 0);
      }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.util.getObservable().subscribe((res) => {
       if(res.globalSearch && res.globalSearch){
         let searchValue= res.globalSearch.toLowerCase()
         this.allCases = searchValue!='null' ? this.filteredData.filter(e=>e.title.trim().toLowerCase().includes(searchValue)) : this.filteredData   
       }
     })
-    this.getAllfilter();
+    await this.getAllfilter();
     this.getLiveCasesList();
+
   }
   getLiveCasesList(): void {
     this.api.apiGetCall('allcase').subscribe((data) => {
@@ -48,7 +50,7 @@ export class AllCasesComponent {
   }
 
   changeCategoryFilter(list,event,type){
-    let check = event.target.checked
+    let check = event ? event.target.checked : true
     switch(type){
       case 'category':{
         let checkedCategory =[]
@@ -134,8 +136,8 @@ export class AllCasesComponent {
     })
   }
 
-  getAllfilter(): void {
-    this.api.apiGetCall('filters').subscribe((data) => {
+  getAllfilter() {
+   return this.api.apiGetCall('filters').subscribe((data) => {
       this.categoryList = data.data.category_list
       this.institutionsFilterList = data.data.institution_list
       this.operatorFilterList = data.data.operator_list
@@ -154,6 +156,21 @@ export class AllCasesComponent {
         })
         // this.subCategoryList=  this.subCategoryList.concat(e.subCategory)
       })
+      this.route.paramMap.subscribe( (params:any) =>{
+        let type = params.get('category');
+        if(type){
+          this.categoryList.map(e=>{
+            if(e.category==type){
+              e['active']=true
+              this.changeCategoryFilter(e,false,'category')
+            }
+          })
+          this.categoryExpand=true
+        }
+    
+      }
+      
+    )
 
     })
   }
