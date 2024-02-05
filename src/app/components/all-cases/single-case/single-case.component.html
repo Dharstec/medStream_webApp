@@ -21,10 +21,13 @@
             <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution.name }}</p>
             <p style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.institution.city}}, {{current_case_dtls.institution.country}} </p>
           </div>
-          <!-- <button class="share_btn">
-            <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
-            <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
-          </button> -->
+          <button class="share_btn" (click)="share()">
+            <div class="d-flex">
+              <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
+              <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
+            </div>
+        
+          </button> 
             <!-- <button class="share_btn" (click)="onShareButtonClick()">
                 <mat-icon class="ml-2" style="color: #fff">share</mat-icon>
                 <span class="mt-1 mr-2 ml-1" style="color: #fff;">SHARE</span>
