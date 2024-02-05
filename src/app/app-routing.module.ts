@@ -6,6 +6,7 @@ import { ExpertsComponent } from './components/experts/experts.component';
 import { HomeComponent } from './home/home.component';
 import { SingleCaseComponent } from './components/all-cases/single-case/single-case.component';
 import { InstitutionComponent } from './components/institution/institution.component';
+import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'user/landing', pathMatch: 'full' },
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path: 'user/all-cases/single-case/:id',component: SingleCaseComponent},
   // { path: 'user/landing' , component:HomeComponent },
   { path: 'user/operators', component:ExpertsComponent },
-  { path: 'user/institution', component:InstitutionComponent }
+  { path: 'user/institution', component:InstitutionComponent },
+  { path: 'chat', component:ChatComponent }
+
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
   // { path: '', redirectTo: 'auth/login', pathMatch: 'full' }, // Default route
 
