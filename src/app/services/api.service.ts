@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment.prod';
 import { AppResponse } from './appResponse.modal';
 import { throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 const API_URL = environment.apiUrl;
 
@@ -14,7 +15,7 @@ const API_URL = environment.apiUrl;
 export class ApiService {
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private db: AngularFireDatabase) { }
   apiPutCall(postParam: any, endPoint: string): Observable<AppResponse> {
     let finalURL = API_URL + endPoint;
     return this.http.put<AppResponse>(finalURL, postParam).pipe(catchError(this.handleError));
@@ -48,7 +49,13 @@ export class ApiService {
     let finalURL = API_URL + endPoint;
     return this.http.get<AppResponse>(finalURL + '/' + id).pipe(catchError(this.handleError));
   }
+  getMessages(pageid:any) {
+    return this.db.list(`/messages/${pageid}`).valueChanges();
+  }
 
+  sendMessage(pageid:any,message:any) {
+    this.db.list(`/messages/${pageid}`).push(message);
+  }
 
 
   private handleError(error: HttpErrorResponse) {
