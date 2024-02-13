@@ -27,14 +27,11 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
-import { ChatComponent } from './chat/chat.component';
-import { RelativeTimePipe } from './chat/relative-time.pipe'; 
 
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
-    HeadersComponent,ExpertsComponent, ChatComponent,
-    RelativeTimePipe
+    HeadersComponent,ExpertsComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +56,7 @@ import { RelativeTimePipe } from './chat/relative-time.pipe';
   },
   {
     provide: DISQUS_SHORTNAME,
-    useValue: 'medstream'
+    useValue: 'medstream360'
   }
   // schemas: [fa-icon],
 ],  bootstrap: [AppComponent],
