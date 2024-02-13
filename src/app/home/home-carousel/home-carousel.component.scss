@@ -1,0 +1,46 @@
+.flex_align{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel_btn{
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+  .carousel_active{
+    background-color: #FF4E45 !important;
+  }
+  .carousel-inner{
+    cursor: pointer;
+    display: flex;
+  }
+
+  .red_text{
+    cursor: pointer;
+    color: #FF4E45 !important;
+  }
+
+  .desc_container{
+    background: #2E2E2E;padding: 12px;color: #fff;
+    border-radius: 12px;
+  }
+
+  .des_text{
+    line-height: 28px;
+    // color: azure;
+    // font-size: 18px;
+  }
+
+  .case_title{
+    font-size: 14px;
+    color: white;
+    font-weight: 600;
+    margin: 5px 0px 5px 0px;
+  }
+  .week_style{
+    color: #FFFFFF80;
+    font-weight: 600;
+    font-size: 14px;
+  }

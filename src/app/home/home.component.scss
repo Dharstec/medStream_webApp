@@ -42,8 +42,117 @@
 // }
 
 // ---------------
+.home_container{
+  color: #fff !important;
+  padding: 18px 48px;
+  .get_started{
+    margin-bottom: 40px;
+    // height: 85vh;
+  }
+  .ads{
+    margin-bottom: 40px;
+  }
+  .widget_accordion{
+    border: 1px solid #606060;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    padding: 24px;
+    .widget_header{
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #606060;
+      margin-bottom: 8px;
+    }
+    .media_list{
+      display: flex;
+      align-items: center;
+      .icon{
+        color: #FF4E45;
+        font-size: 40px;
+        margin-right: 18px;
+      }
+    }
+  }
+  .videos_accordion{
+    display: flex;
+    .top_video_widget{
+      background-color: #2E2E2E;
+      border-radius: 30px;
+      margin-right: 20px;
+      margin-bottom: 40px;
+      padding: 24px;
+      .widget_header{
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #606060;
+        margin-bottom: 8px;
+      }
+      .grid_style{
+        border-right: 1px solid #606060 !important;
+        margin-right: 12px;
+      }
+      .grid_border_none{
+        border: none !important;
+        margin-left: 12px;
+      }
+    }
+
+  }
+}
+.flex_align{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.carousel_btn{
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+.carousel_active{
+  background-color: #FF4E45 !important;
+}
+.grid_list{
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+}
+
+.case_title{
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  margin: 5px 0px 5px 0px;
+}
+.week_style{
+  color: #FFFFFF80;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.map {
+  // filter: grayscale(100%);    
+  // background-color:#FFFFFF80;     
+}
+
+.red_text{
+  cursor: pointer;
+  color: #FF4E45 !important;
+}
+.cur_pointer{
+  cursor: pointer !important;
+}
+
+.schedule_flex{
+  display: flex;
+}
+
+
+
 .container {
   // background-color: white;
+  color: #fff;
   height: 100vh;
   width: 100%;
   overflow: hidden;
@@ -143,4 +252,11 @@
   background: none;
   border: none;
   text-align: center;
+}
+
+
+@media (max-width: 675px) {
+ .videos_accordion{
+  display: block !important;
+ }
 }

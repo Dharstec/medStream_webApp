@@ -54,6 +54,18 @@ export class SingleCaseComponent {
     })
   }
 
+  share(){
+    console.log("sharing",navigator.share)
+    if(navigator.share){
+      navigator.share({
+        "title":'Youtube Link',
+        "url":this.current_case_dtls.youtubeUrl
+      }).then(()=>{
+        console.log("thanks for sharing")
+      }).catch(console.error)
+    }
+  }
+
 
 
   routeToSingleCase(caseId) {

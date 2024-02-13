@@ -39,6 +39,11 @@ export class ApiService {
     return this.http.get<AppResponse>(finalURL).pipe(catchError(this.handleError));
   }
 
+  apiGetWorldTimeZone(): Observable<AppResponse> {
+    let finalURL = 'http://worldtimeapi.org/api/timezone';
+    return this.http.get<AppResponse>(finalURL).pipe(catchError(this.handleError));
+  }
+
   apiGetDetailsCall(id: any, endPoint: string): Observable<AppResponse> {
     let finalURL = API_URL + endPoint;
     return this.http.get<AppResponse>(finalURL + '/' + id).pipe(catchError(this.handleError));

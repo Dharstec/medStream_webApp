@@ -13,6 +13,11 @@ const routes: Routes = [
     component: AllCasesComponent,
     children: []
   },
+  {
+    path: ':category',
+    component: AllCasesComponent,
+    children: []
+  },
   // {
   //   path: 'single-case/:id',
   //   component: SingleCaseComponent,

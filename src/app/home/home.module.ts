@@ -4,6 +4,8 @@ import { HomeComponent } from './home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
 const routes: Routes = [
   {
     path: '',
@@ -15,9 +17,10 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     HomeComponent,
+    HomeCarouselComponent,
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule
+    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FontAwesomeModule
   ]
 })
 export class HomeModule { }
