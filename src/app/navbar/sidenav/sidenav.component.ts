@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { navMenuBar } from '../navdata';
 import { AuthService } from 'src/app/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router'; // Import NavigationEnd
 import { Observable } from 'rxjs/internal/Observable';
 import { UtilService } from 'src/app/services/util.service';
 interface SideNavToggle {
@@ -19,42 +19,51 @@ export class SidenavComponent implements OnInit {
   collapsed = false;
   navData = navMenuBar;
 
-@HostListener('window:resize',['$event'])
-onResize(event:any){
-  this.screenWidth=window.innerWidth;
-  if(this.screenWidth <= 768){
-    this.collapsed = false;
-    this.onToogleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
-   }
-}
-searchFilter: any;
-userdata:any
-loggedIn:any=false
-constructor(private authService: AuthService,
-  private util:UtilService,
-   private router: Router) {
- }
+  @HostListener('window:resize',['$event'])
+  onResize(event:any){
+    this.screenWidth=window.innerWidth;
+    if(this.screenWidth <= 768){
+      this.collapsed = false;
+      this.onToogleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
+    }
+  }
+  searchFilter: any;
+  userdata:any
+  loggedIn:any=false
+  constructor(
+    private authService: AuthService,
+    private util:UtilService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
-  this.screenWidth=window.innerWidth;
-  console.log("autheservice",this.authService.isLoggedIn())
-  this.util.getObservable().subscribe((res) => {
-    if(res.globalSearch || res.loggedIn){
-      this.searchFilter = res.globalSearch=='null'? '':this.searchFilter
-      this.loggedIn= this.authService.isLoggedIn() ? true : res.loggedIn
-      if(this.loggedIn){
-        this.userdata={
-          "email":localStorage.getItem("userEmail"),
-          "region":localStorage.getItem("userRegion")
+    this.screenWidth=window.innerWidth;
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        // Reset search filter when navigation ends
+        this.searchFilter = '';
+      }
+    });
+
+    this.util.getObservable().subscribe((res) => {
+      if(res.globalSearch || res.loggedIn){
+        this.searchFilter = res.globalSearch=='null'? '':this.searchFilter
+        this.loggedIn= this.authService.isLoggedIn() ? true : res.loggedIn
+        if(this.loggedIn){
+          this.userdata={
+            "email":localStorage.getItem("userEmail"),
+            "region":localStorage.getItem("userRegion")
+          }
         }
       }
-    }
-  })
-}
+    })
+  }
+  
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;
     this.onToogleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
   }
+
   closeSidenav(): void {
     this.collapsed = false;
     this.onToogleSideNav.emit({ collapsed: this.collapsed, screenWidth: this.screenWidth })
@@ -76,3 +85,4 @@ constructor(private authService: AuthService,
     this.router.navigate(['/auth/login'])
   }
 }
+
