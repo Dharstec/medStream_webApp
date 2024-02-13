@@ -6,6 +6,7 @@ import { ApiService } from '../services/api.service';
 import { faInstagram, faLinkedin, faTwitter, faFacebook, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable, timer } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   latestVideos:any=[]
   caseOfTheWeekList:any=[]
   scheduleVideo:any=[]
-  mapURL:string
+  mapURL:any
 
 
   index=0
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   subscription: Subscription;
   everyFiveSeconds: Observable<number> = timer(0, 5000);
-  constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router) { }
+  constructor(private api: ApiService, public dialog: MatDialog,private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.getHomePageAPI();
@@ -48,11 +49,15 @@ export class HomeComponent implements OnInit {
   getHomePageAPI(): void {
     this.api.apiGetCall('homePage').subscribe((data) => {
       let response = data.data;
-
-      this.scheduleVideo=response.scheduleVideo
-      if(this.scheduleVideo.length){
-        this.mapURL='https://www.google.com/maps/embed/v1/place?key=AIzaSyC2-pW-Ed4xsWyy2UEzplNetgTR5XGYLWI&q=Medanta+The+Medicit,Delhi&zoom=15'
+      if(response.scheduleVideo.length){ 
+        // let mapUrl ='https://www.google.com/maps/embed/v1/place?key=AIzaSyCeHK9IJTPAf66X3Hxvzbr0CLg2xZ-0W_Y&q=Medanta+The+Medicit,Delhi&zoom=15'
+        let address=response.scheduleVideo[0].institution.name.replace(/\s/g, '+');
+        let city =response.scheduleVideo[0].institution.city
+        let mapUrl =`https://www.google.com/maps/embed/v1/place?key=AIzaSyCeHK9IJTPAf66X3Hxvzbr0CLg2xZ-0W_Y&q=${address}+${city}&zoom=15`
+        this.mapURL = this._sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
       }
+      this.scheduleVideo=response.scheduleVideo
+     
       this.topVideosList=response.topVideos
       this.latestVideos=response.latestVideos
       this.caseOfTheWeekList=response.caseOfTheWeek

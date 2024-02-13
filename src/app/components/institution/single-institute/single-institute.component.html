@@ -1,13 +1,65 @@
 <!-- <p style="color: aliceblue; padding: 20px;">single-institute works!</p> -->
 
 
-<div class="mainCont">
+<!-- <div class="mainCont">
     <div class="container">
         <div class="innerbox1">
-
+    works inpro
         </div>
         <div class="innerbox2">
 
         </div>
     </div>
+</div> -->
+<div class="home_container">
+    <div class="widget_accordion">
+        <div class="widget_header">
+          <h5 class="mr-auto">Institution Details</h5>
+        </div>
+        <div *ngIf="allInstitutionList.length==0 &&showMap">
+          <label class="flex_align">No institution found</label>
+        </div>
+        <div class="spinner-container" *ngIf="!showMap">
+            <mat-spinner [diameter]="50"></mat-spinner>
+          </div>
+        <div *ngIf="allInstitutionList.length!=0">
+          <div class="col-12 dis_flex" role="listbox">
+            <!-- <iframe class="map col-7" style="border:0;height: 70vh;" [src]="mapURL" frameborder="0"
+              allowfullscreen></iframe> -->
+              <ng-conatiner *ngIf="showMap">
+                <google-map height="500px"
+                width="750px"
+                [center]="center"
+                [zoom]="zoom"
+                (mapClick)="moveMap($event)"
+                (mapMousemove)="move($event)">
+                    <ng-container *ngIf="markerPositions.length">
+                        <map-marker #marker="mapMarker" *ngFor="let markerPosition of markerPositions;let index =i"
+                        [position]="markerPosition.position"
+                        [options]="markerOptions"  (mapClick)="openInfoWindow(marker,markerPosition,i)">
+                        <map-info-window>{{markerInfo}}</map-info-window>
+                        </map-marker>
+                    </ng-container>
+                </google-map>
+              </ng-conatiner>
+            <div class="col-5 ml-3"> 
+              <img class="mb-2 col-6" src="{{ allInstitutionList.image}}" alt="slide">
+              <div class="widget_header mt-3">
+                <h5 class="red_text">{{allInstitutionList.name}}</h5>
+                <p style="color: #FFFFFF80;;font-weight: 600;">{{allInstitutionList.city}}, {{ allInstitutionList.country}}</p>
+              </div>
+             
+              <div class="dis_flex">
+                <div class="ml-2" style="display: block;">
+                  <p style="color: white;margin: 5px 0px 5px 0px;">{{allInstitutionList.description}}
+                  </p>
+                </div>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+      </div>
+    
 </div>
+
