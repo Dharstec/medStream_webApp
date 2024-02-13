@@ -2,13 +2,13 @@ export const environment = {
   production: true,
   apiUrl:'https://api.medstream360.com/api/',
   firebaseConfig: {
-    apiKey: "AIzaSyA6tCFK7LFtO2ZAmFA76tT42JWcFJt-DxM",
-    authDomain: "medstreamchat.firebaseapp.com",
-    databaseURL: "https://medstreamchat-default-rtdb.firebaseio.com",
-    projectId: "medstreamchat",
-    storageBucket: "medstreamchat.appspot.com",
-    messagingSenderId: "301479866701",
-    appId: "1:301479866701:web:779f6241918df0b8ae4704",
-    measurementId: "G-E258PTB70X"
+    apiKey: "AIzaSyC47LlFhN-8u2YkTRdtHOfpAWx28qWmC-I",
+    authDomain: "realtimelivechat-428ce.firebaseapp.com",
+    databaseURL: "https://realtimelivechat-428ce-default-rtdb.firebaseio.com",
+    projectId: "realtimelivechat-428ce",
+    storageBucket: "realtimelivechat-428ce.appspot.com",
+    messagingSenderId: "292537476847",
+    appId: "1:292537476847:web:10df4322b5d374baebdd1a",
+    measurementId: "G-T7DL5S02GN"
   }
 };

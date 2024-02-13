@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ChatService } from '../services/chat.service';
+import { Component, Input } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 
 @Component({
@@ -9,11 +9,12 @@ import { ChatService } from '../services/chat.service';
 })
 
 export class ChatComponent {
+  @Input() pageId: string;
   message = '';
   messages: any[] = []
   isMinimized: boolean = false;
   userName = localStorage.getItem('userEmail')?.split('@')[0] || 'Unknown User'
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ApiService) { }
 
   toggleChat() {
     this.isMinimized = !this.isMinimized;
@@ -25,12 +26,13 @@ export class ChatComponent {
       text: this.message,
       createdAt: new Date().toString()
     }
-    this.chatService.sendMessage(body);
+    this.chatService.sendMessage(this.pageId, body);
     this.message = '';
   }
 
+
   ngOnInit() {
-    this.chatService.getMessages().subscribe(messages => {
+    this.chatService.getMessages(this.pageId).subscribe(messages => {
       this.messages = messages;
     });
   }
