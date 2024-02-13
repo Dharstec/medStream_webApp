@@ -3,9 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './services/core/auth.guard';
 import { ExpertsComponent } from './components/experts/experts.component';
-import { HomeComponent } from './home/home.component';
 import { SingleCaseComponent } from './components/all-cases/single-case/single-case.component';
-import { InstitutionComponent } from './components/institution/institution.component';
 import { ChatComponent } from './chat/chat.component';
 
 const routes: Routes = [
@@ -18,7 +16,7 @@ const routes: Routes = [
   {path: 'user/all-cases/single-case/:id',component: SingleCaseComponent},
   // { path: 'user/landing' , component:HomeComponent },
   { path: 'user/operators', component:ExpertsComponent },
-  { path: 'user/institution', component:InstitutionComponent },
+  { path: 'user/institution', loadChildren: () => (import('./components/institution/institution.module')).then((m) => m.InstitutionModule)},
   { path: 'chat', component:ChatComponent }
 
   // { path: '', redirectTo: 'home', pathMatch: 'full' },

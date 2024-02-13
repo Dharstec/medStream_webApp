@@ -53,7 +53,7 @@ export class SingleCaseComponent {
       this.recommendList = data.data;
     })
   }
-
+  
   share(){
     console.log("sharing",navigator.share)
     if(navigator.share){

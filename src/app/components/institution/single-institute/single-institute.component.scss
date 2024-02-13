@@ -3,3 +3,46 @@
     height: 100%;
     width: 100%;
 }
+
+.home_container{
+    color: #fff !important;
+    padding: 18px 48px;
+}
+
+.widget_accordion{
+    border: 1px solid #606060;
+    border-radius: 30px;
+    margin-bottom: 40px;
+    padding: 24px;
+    .widget_header{
+    //   display: flex;
+    //   align-items: center;
+      border-bottom: 1px solid #606060;
+      margin-bottom: 8px;
+    }
+    .media_list{
+      display: flex;
+      align-items: center;
+      .icon{
+        color: #FF4E45;
+        font-size: 40px;
+        margin-right: 18px;
+      }
+    }
+}
+
+.dis_flex{
+    display: flex;
+  }
+
+  .red_text{
+    color: #FF4E45 !important;
+  }
+
+//   .spinner-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     height: 100%;
+//     /* optional, set the height of the container as needed */
+//   }
