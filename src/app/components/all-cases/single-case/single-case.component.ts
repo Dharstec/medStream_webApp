@@ -53,7 +53,7 @@ export class SingleCaseComponent {
       this.recommendList = data.data;
     })
   }
-  
+
   share(){
     console.log("sharing",navigator.share)
     if(navigator.share){
@@ -69,10 +69,13 @@ export class SingleCaseComponent {
 
 
   routeToSingleCase(caseId) {
-    // this.router.navigate(['/user/all-cases/single-case',caseId])
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate(['/user/all-cases/single-case', caseId]));
-    // this.ngOnInit()
+    this.router.navigate(['/user/all-cases/single-case',caseId])
+    this.current_case_id =caseId
+    this.getCaseDetails()
+    window.scrollTo(0, 0);
+    // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+    //   this.router.navigate(['/user/all-cases/single-case', caseId]));
+    // // this.ngOnInit()
   }
 
   onShareButtonClick() {
