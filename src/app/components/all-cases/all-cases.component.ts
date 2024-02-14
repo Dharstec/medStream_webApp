@@ -15,6 +15,7 @@ import { UtilService } from 'src/app/services/util.service';
 export class AllCasesComponent {
   categoryExpand: boolean=false;
   allCases: any;
+  caseOfTheWeek: any;
   categoryList: any;
   startDate:any=''
   endDate:any=''
@@ -27,6 +28,10 @@ export class AllCasesComponent {
   constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,private route: ActivatedRoute,
     private util: UtilService) {
       window.scrollTo(0, 0);
+      this.caseOfTheWeek=[
+        {name:"Yes",active:false},
+        {name:"No",active:false},
+      ]
      }
 
   async ngOnInit(): Promise<void> {
@@ -52,6 +57,14 @@ export class AllCasesComponent {
   changeCategoryFilter(list,event,type){
     let check = event ? event.target.checked : true
     switch(type){
+      case 'caseOfTheWeek':{
+        this.caseOfTheWeek.map(e=>{
+          if(e.name==list.name){
+            e['active']=check
+          }
+        })
+        break;
+      }
       case 'category':{
         let checkedCategory =[]
         this.categoryList.map(e=>{
@@ -94,6 +107,8 @@ export class AllCasesComponent {
     let allSubCategory=[]
     let allInstitution=[]
     let allOperator=[]
+    let allCaseOfTheCase=[]
+    let checkedCaseOftheWeek =[]
     let checkedCategory=[]
     let checkedSubCategory=[]
     let checkedInstitution=[]
@@ -113,6 +128,10 @@ export class AllCasesComponent {
       allOperator.push(e._id)
       if(e.active) checkedOperator.push(e._id)
     })
+    this.caseOfTheWeek.map(e=>{
+      allCaseOfTheCase.push(e.name)
+      if(e.active) checkedCaseOftheWeek.push(e.name)
+    })
     // console.log("checkedCategory",checkedCategory)
     // console.log("checkedSubCategory",checkedSubCategory)
     // console.log("checkedInstitution",checkedInstitution)
@@ -128,6 +147,7 @@ export class AllCasesComponent {
       },
       "institutions": checkedInstitution.length == 0 ? allInstitution : checkedInstitution,
       "operators": checkedOperator.length == 0 ? allOperator : checkedOperator,
+      "caseOfTheWeek": checkedCaseOftheWeek.length == 0 ? allCaseOfTheCase : checkedCaseOftheWeek,
     }
     this.api.apiPostCall(body,'filterCase').subscribe((data) => {
       this.allCases=data.data
@@ -144,7 +164,8 @@ export class AllCasesComponent {
       this.categoryList.map(e=>e['active']=false)
       this.institutionsFilterList.map(e=>e['active']=false)
       this.operatorFilterList.map(e=>e['active']=false)
-      console.log("categoryList",this.categoryList)
+      // console.log("categoryList",this.categoryList)
+      // console.log("-------",this.caseOfTheWeek)
     
       this.categoryList.map((e:any)=>{
         e.subCategory.map(x=>{

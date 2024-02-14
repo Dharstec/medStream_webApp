@@ -49,14 +49,16 @@ export class HomeComponent implements OnInit {
   getHomePageAPI(): void {
     this.api.apiGetCall('homePage').subscribe((data) => {
       let response = data.data;
-      if(response.scheduleVideo.length){ 
+      this.scheduleVideo=response.scheduleVideo
+      console.log("this.scheduleVideo",this.scheduleVideo)
+      if(this.scheduleVideo.length!=0){ 
         // let mapUrl ='https://www.google.com/maps/embed/v1/place?key=AIzaSyCeHK9IJTPAf66X3Hxvzbr0CLg2xZ-0W_Y&q=Medanta+The+Medicit,Delhi&zoom=15'
-        let address=response.scheduleVideo[0].institution.name.replace(/\s/g, '+');
-        let city =response.scheduleVideo[0].institution.city
+        let address=this.scheduleVideo.institution.name.replace(/\s/g, '+');
+        let city =this.scheduleVideo.institution.city
         let mapUrl =`https://www.google.com/maps/embed/v1/place?key=AIzaSyCeHK9IJTPAf66X3Hxvzbr0CLg2xZ-0W_Y&q=${address}+${city}&zoom=15`
         this.mapURL = this._sanitizer.bypassSecurityTrustResourceUrl(mapUrl);
       }
-      this.scheduleVideo=response.scheduleVideo
+    
      
       this.topVideosList=response.topVideos
       this.latestVideos=response.latestVideos
