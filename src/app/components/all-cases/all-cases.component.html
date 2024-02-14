@@ -3,6 +3,20 @@
       <div class="sticky_sideNav">
         <div class="clear_filter" (click)="clearFilter()">Clear All Filter</div>
         <div>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="color: #FFFFFF80;
+              ;font-weight: 500;">
+                {{'Case Of The Week' | uppercase}}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <hr/>
+            <ng-container *ngFor="let list of caseOfTheWeek">
+              <mat-checkbox class="filter_list mt-3" [checked]="list.active" (click)="changeCategoryFilter(list,$event,'caseOfTheWeek')">{{list.name}}</mat-checkbox>
+              <!-- <p class="filter_list">{{list.category}}</p> -->
+            </ng-container>
+            
+          </mat-expansion-panel>
           <mat-expansion-panel [expanded]="categoryExpand">
             <mat-expansion-panel-header>
               <mat-panel-title style="color: #FFFFFF80;

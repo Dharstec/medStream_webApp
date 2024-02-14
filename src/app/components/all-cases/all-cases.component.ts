@@ -15,6 +15,7 @@ import { UtilService } from 'src/app/services/util.service';
 export class AllCasesComponent {
   categoryExpand: boolean = false;
   allCases: any;
+  caseOfTheWeek: any;
   categoryList: any;
   startDate: any = ''
   endDate: any = ''
@@ -26,8 +27,12 @@ export class AllCasesComponent {
   operatorFilterList: any = [];
   constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute,
     private util: UtilService) {
-    window.scrollTo(0, 0);
-  }
+      window.scrollTo(0, 0);
+      this.caseOfTheWeek=[
+        {name:"Yes",active:false},
+        {name:"No",active:false},
+      ]
+     }
 
   async ngOnInit(): Promise<void> {
     this.util.getObservable().subscribe((res) => {
@@ -51,12 +56,20 @@ export class AllCasesComponent {
 
   changeCategoryFilter(list, event, type) {
     let check = event ? event.target.checked : true
-    switch (type) {
-      case 'category': {
-        let checkedCategory = []
-        this.categoryList.map(e => {
-          if (e.category == list.category) {
-            e['active'] = check
+    switch(type){
+      case 'caseOfTheWeek':{
+        this.caseOfTheWeek.map(e=>{
+          if(e.name==list.name){
+            e['active']=check
+          }
+        })
+        break;
+      }
+      case 'category':{
+        let checkedCategory =[]
+        this.categoryList.map(e=>{
+          if(e.category==list.category){
+            e['active']=check
           }
           if (e['active']) {
             checkedCategory.push(e.category)
@@ -90,16 +103,18 @@ export class AllCasesComponent {
         break;
       }
     }
-    let allCategory = []
-    let allSubCategory = []
-    let allInstitution = []
-    let allOperator = []
-    let checkedCategory = []
-    let checkedSubCategory = []
-    let checkedInstitution = []
-    let checkedOperator = []
-
-    this.categoryList.map(e => {
+    let allCategory=[]
+    let allSubCategory=[]
+    let allInstitution=[]
+    let allOperator=[]
+    let allCaseOfTheCase=[]
+    let checkedCaseOftheWeek =[]
+    let checkedCategory=[]
+    let checkedSubCategory=[]
+    let checkedInstitution=[]
+    let checkedOperator=[]
+    
+    this.categoryList.map(e=>{
       allCategory.push(e.category)
       if (e.active) checkedCategory.push(e.category)
     })
@@ -112,6 +127,10 @@ export class AllCasesComponent {
     this.operatorFilterList.map(e => {
       allOperator.push(e._id)
       if (e.active) checkedOperator.push(e._id)
+    })
+    this.caseOfTheWeek.map(e=>{
+      allCaseOfTheCase.push(e.name)
+      if(e.active) checkedCaseOftheWeek.push(e.name)
     })
     // console.log("checkedCategory",checkedCategory)
     // console.log("checkedSubCategory",checkedSubCategory)
@@ -128,6 +147,7 @@ export class AllCasesComponent {
       },
       "institutions": checkedInstitution.length == 0 ? allInstitution : checkedInstitution,
       "operators": checkedOperator.length == 0 ? allOperator : checkedOperator,
+      "caseOfTheWeek": checkedCaseOftheWeek.length == 0 ? allCaseOfTheCase : checkedCaseOftheWeek,
     }
     this.api.apiPostCall(body, 'filterCase').subscribe((data) => {
       this.allCases = data.data
@@ -141,13 +161,14 @@ export class AllCasesComponent {
       this.categoryList = data.data.category_list
       this.institutionsFilterList = data.data.institution_list
       this.operatorFilterList = data.data.operator_list
-      this.categoryList.map(e => e['active'] = false)
-      this.institutionsFilterList.map(e => e['active'] = false)
-      this.operatorFilterList.map(e => e['active'] = false)
-      console.log("categoryList", this.categoryList)
-
-      this.categoryList.map((e: any) => {
-        e.subCategory.map(x => {
+      this.categoryList.map(e=>e['active']=false)
+      this.institutionsFilterList.map(e=>e['active']=false)
+      this.operatorFilterList.map(e=>e['active']=false)
+      // console.log("categoryList",this.categoryList)
+      // console.log("-------",this.caseOfTheWeek)
+    
+      this.categoryList.map((e:any)=>{
+        e.subCategory.map(x=>{
           this.allSubCategoryList.push({
             "category": e.category,
             "name": x,
