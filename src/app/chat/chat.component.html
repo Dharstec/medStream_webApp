@@ -2,30 +2,31 @@
     <div class="toggle-icon" (click)="toggleChat()">
         <i class="material-icons">{{ isMinimized ? 'expand_more' : 'expand_less' }}</i>
     </div>
-  
+
     <div class="live-chat-heading">
-        <h1>Chat</h1>
+        <i class="material-icons">message</i>LIVE CHAT
     </div>
-  <div class="messages">
-      <ng-container *ngFor="let message of messages">
-          <div [ngClass]="{'my-message': message.name === userName, 'other-message': message.name !== userName}">
-              <div class="message">
-                  <div class="message-header">
-                      <img class="avatar" [src]="message.senderIconUrl || 'https://cdn-icons-png.flaticon.com/512/3607/3607444.png'" alt="{{ message.senderName }}">
-                      <span class="name">{{ message.name }}</span>
-                      <span class="timestamp">{{ message.createdAt | relativeTime }}</span>
-                  </div>
-                  <p>{{ message.text }}</p>
-              </div>
-          </div>
-      </ng-container>
-  </div>
-  <div class="input-container">
-      <div class="input-wrapper">
-          <input type="text" [(ngModel)]="message" (keydown.enter)="sendMessage()" placeholder="Type your message...">
-          <button (click)="sendMessage()">
-              <i class="material-icons">send</i>
-          </button>
-      </div>
-  </div>
+    <div class="messages" #messagesContainer>
+        <ng-container *ngFor="let message of messages">
+            <div [ngClass]="{'my-message': message.name === userName, 'other-message': message.name !== userName}">
+                <div class="message">
+                    <div class="message-header">
+                        <img class="avatar" [src]="message.senderIconUrl || './assets/chatprofileicon.png'"
+                            alt="{{ message.senderName }}">
+                        <span class="name">{{ message.name }}</span>
+                        <span class="timestamp">{{ message.createdAt | relativeTime }}</span>
+                    </div>
+                    <p>{{ message.text }}</p>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+    <div class="input-container">
+        <div class="input-wrapper">
+            <input type="text" [(ngModel)]="message" (keydown.enter)="sendMessage()" placeholder="Type your message...">
+            <button (click)="sendMessage()">
+                <i class="material-icons">send</i>
+            </button>
+        </div>
+    </div>
 </div>
