@@ -16,7 +16,7 @@
               {{ form.get('email').errors?.pattern ? 'Email is Invalid' : 'Email is required'}}
             </mat-error>
           </div>
-          <div style="background-color: #111111;" class="section-b col-md-12 timezone">
+          <div class="section-b col-md-12 timezone">
             <mat-label>Time Zone</mat-label>
             <mat-select style="background-color: #111111;" formControlName="timeZone">
               <mat-option style="background-color: #111111; color: #fff;" *ngFor="let timeZone of timeZones" [value]="timeZone.value">

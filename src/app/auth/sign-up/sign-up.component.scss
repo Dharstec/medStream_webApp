@@ -62,16 +62,21 @@ mat-label .required {
         text-align: center; /* Center the error message */
     }
     mat-select{
-        padding: 10px;
-    }
-    mat-option{
         padding: 20px;
         border: #000 !important;
         border-radius: 10px;
         background: #111111 !important;
-        width: 80% !important;
+        width: 100% !important;
         color: white !important;
     }
+    // mat-option{
+    //     padding: 20px;
+    //     border: #000 !important;
+    //     border-radius: 10px;
+    //     background: #111111 !important;
+    //     width: 80% !important;
+    //     color: white !important;
+    // }
 }
 
 mat-label {

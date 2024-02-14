@@ -37,8 +37,7 @@ left: 35px;
 }
 
 li a:hover {
-
-  color: #fc0707;
+  color: #FF4E45;
   transition: 0.3s ease;
 }
 
@@ -181,10 +180,11 @@ mat-icon {
 .search-container {
   position: relative;
   margin-left: auto;
+  margin-bottom: 10px;
 
   .normal-search {
     .search {
-      border: 1px solid;
+      border: 3px solid;
       min-width: 250px !important;
       height: 2.375rem;
       padding-left: 2.5rem;
@@ -195,11 +195,13 @@ mat-icon {
       box-shadow: none;
       border-radius: 1.875rem;
       outline: 0;
+      font-weight: 700;
     }
 
     .search-icon {
       position: absolute;
       font-size: 25px;
+      font-weight: 700;
       right: 0.813rem;
       top: 5px;
       color: rgb(126, 121, 121);
@@ -223,6 +225,6 @@ li.vertical-bar {
 }
 
 .active {
-  color: red !important;
+  color: #FF4E45 !important;
   font-weight: 500;
 }
