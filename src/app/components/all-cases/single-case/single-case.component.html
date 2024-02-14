@@ -68,6 +68,11 @@
   </div>
 
   <div class="small-column">
+    <!-- Chat section -->
+    <div *ngIf="showChat"> 
+      <app-chat [pageId]="pageId"/>
+    </div>
+
     <img width="" src="../../assets/add_medicine.svg" alt="Video Thumbnail">
 
 
@@ -83,11 +88,6 @@
       </div>
     </div>
 
-    <!-- Chat section -->
-    <!-- <app-chat [pageId]="pageId"/> -->
-    <div *ngIf="showChat"> 
-      <app-chat [pageId]="pageId"/>
-    </div>
 
   </div>
 </div>
