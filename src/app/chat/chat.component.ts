@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -10,6 +10,8 @@ import { ApiService } from 'src/app/services/api.service';
 
 export class ChatComponent {
   @Input() pageId: string;
+  @ViewChild('messagesContainer') private messagesContainer: ElementRef;
+
   message = '';
   messages: any[] = []
   isMinimized: boolean = false;
@@ -20,7 +22,6 @@ export class ChatComponent {
     this.isMinimized = !this.isMinimized;
   }
   sendMessage() {
-    console.log(this.userName)
     let body = {
       name: this.userName,
       text: this.message,
@@ -28,12 +29,23 @@ export class ChatComponent {
     }
     this.chatService.sendMessage(this.pageId, body);
     this.message = '';
+    setTimeout(() => this.scrollToBottom(), 0); 
   }
-
+ 
+  private scrollToBottom(): void {
+    try {
+      const container = this.messagesContainer.nativeElement;
+      const isScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight * 2;
+      if (isScrolledToBottom) {
+        container.scrollTop = container.scrollHeight;
+      }
+    } catch (err) { }
+  }
 
   ngOnInit() {
     this.chatService.getMessages(this.pageId).subscribe(messages => {
       this.messages = messages;
+      setTimeout(() => this.scrollToBottom(), 0); 
     });
   }
 }
