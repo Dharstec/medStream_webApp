@@ -84,5 +84,8 @@ export class SidenavComponent implements OnInit {
     }
     this.router.navigate(['/auth/login'])
   }
+  isAllCasesRoute(): boolean {
+    return this.router.url.startsWith('/user/all-cases');
+  }
 }
 

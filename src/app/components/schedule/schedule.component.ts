@@ -131,7 +131,8 @@ export class ScheduleComponent {
   userTimeZone: any;
   regionTimeZone: any='Asia/Kolkata';
   regionTimeZoneList: any;
-  loggedIn:boolean=false
+  loggedIn:boolean=false;
+  isScheduleCase: boolean;
 
   constructor(private authService: AuthService,private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
     window.scrollTo(0, 0);
@@ -160,6 +161,7 @@ export class ScheduleComponent {
     this.api.apiGetCall(`schedulecase?timeZone=${this.userTimeZone}`).subscribe((data) => {
       this.allScheduleList = data.data;
       this.events=[]
+      this.isScheduleCase = true;
       this.allScheduleList.map(e=>{
         this.events.push({
           id:e._id,
@@ -218,7 +220,7 @@ export class ScheduleComponent {
     this.modalData = { event, action };
     console.log('clicked event',this.modalData)
     if(action=='Clicked'){
-      this.router.navigate(['/user/all-cases/single-case',event.id])
+      this.router.navigate(['/user/all-cases/single-case',event.id],{ queryParams: { showChat: 'true' } })
     }
   }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './single-case.component.html',
   styleUrls: ['./single-case.component.scss']
 })
-export class SingleCaseComponent {
+export class SingleCaseComponent implements OnInit {
   current_case_id: any
   recommendList: any;
   current_case_dtls: any;
@@ -19,16 +19,30 @@ export class SingleCaseComponent {
   instName: any;
   isShareClicked: boolean = false;
   pageId: String;
+  isLiveCase: boolean;
+  showChat: boolean = true;
+  showCommment: boolean = true;
+  // hideCommentBox: boolean;
+  // isScheduleCase: boolean;
+
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
   }
 
   ngOnInit(): void {
     this.current_case_id = this.route.snapshot.paramMap.get('id')
+    this.route.queryParams.subscribe(params => {
+      // Check if the query parameter indicates that the chat box should be hidden
+      // this.hideChat = params['hideChat'] === 'true';
+      // this.isLiveCase = params['isLive'] === 'true';
+      // if (this.isScheduleCase) {
+      //   this.hideCommentBox = true;
+      // }
+      this.showCommment = params['showCommment'] === 'true';
+      this.showChat = params ['showChat'] === 'true';
+  });
     console.log("--", this.current_case_id)
-    
     this.getCaseDetails()
-
   }
 
 
@@ -65,6 +79,10 @@ export class SingleCaseComponent {
       }).catch(console.error)
     }
   }
+  
+  // isLiveCase(currentCase): boolean {
+  //   return currentCase && currentCase.type === 'live';
+  // }
 
 
 

@@ -35,13 +35,19 @@
       </div>
     </ul>
     <!-- <div> -->
-      <div class="search-container mr-2">
+      <!-- <div class="search-container mr-2" >
         <div class="normal-search">
-  
           <input type="text" class="search" (keyup)="globalSearch($event)"  [(ngModel)]="searchFilter" name="" id="" placeholder="Search..">
           <mat-icon class="search-icon">search</mat-icon>
         </div>
+      </div> -->
+      <div class="search-container mr-2" *ngIf="isAllCasesRoute()">
+        <div class="normal-search">
+          <input type="text" class="search" (keyup)="globalSearch($event)" [(ngModel)]="searchFilter" name="" id="" placeholder="Search..">
+          <mat-icon class="search-icon">search</mat-icon>
+        </div>
       </div>
+      
       <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
         <mat-icon  style="cursor: pointer;">person</mat-icon>
         <mat-menu #menu="matMenu">
