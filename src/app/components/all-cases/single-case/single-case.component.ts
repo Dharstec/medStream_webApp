@@ -19,12 +19,11 @@ export class SingleCaseComponent implements OnInit {
   instName: any;
   isShareClicked: boolean = false;
   pageId: String;
-  showChat: boolean = true;
   isLiveCase: boolean;
-  hideChat: boolean;
-  showCommentBox: boolean;
-  hideCommentBox: boolean;
-  isScheduleCase: boolean;
+  showChat: boolean = true;
+  showCommment: boolean = true;
+  // hideCommentBox: boolean;
+  // isScheduleCase: boolean;
 
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
@@ -34,11 +33,13 @@ export class SingleCaseComponent implements OnInit {
     this.current_case_id = this.route.snapshot.paramMap.get('id')
     this.route.queryParams.subscribe(params => {
       // Check if the query parameter indicates that the chat box should be hidden
-      this.hideChat = params['hideChat'] === 'true';
-      this.isLiveCase = params['isLive'] === 'true';
-      if (this.isScheduleCase) {
-        this.hideCommentBox = true;
-      }
+      // this.hideChat = params['hideChat'] === 'true';
+      // this.isLiveCase = params['isLive'] === 'true';
+      // if (this.isScheduleCase) {
+      //   this.hideCommentBox = true;
+      // }
+      this.showCommment = params['showCommment'] === 'true';
+      this.showChat = params ['showChat'] === 'true';
   });
     console.log("--", this.current_case_id)
     this.getCaseDetails()

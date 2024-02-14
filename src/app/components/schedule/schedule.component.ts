@@ -220,7 +220,7 @@ export class ScheduleComponent {
     this.modalData = { event, action };
     console.log('clicked event',this.modalData)
     if(action=='Clicked'){
-      this.router.navigate(['/user/all-cases/single-case',event.id,{ queryParams: { isLive: 'true' } }])
+      this.router.navigate(['/user/all-cases/single-case',event.id],{ queryParams: { showChat: 'true' } })
     }
   }
 

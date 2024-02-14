@@ -189,7 +189,7 @@ export class AllCasesComponent {
   routeToSingleCase(caseId) {
     // this.router.navigate(['/user/all-cases/single-case',caseId])
     // Navigate to the single case page with an additional parameter to indicate if it's a live case or not
-    this.router.navigate(['/user/all-cases/single-case' ,caseId ],{ queryParams: { hideChat: 'true' } });
+    this.router.navigate(['/user/all-cases/single-case' ,caseId ],{ queryParams: { showCommment: 'true' } });
 
   }
 }

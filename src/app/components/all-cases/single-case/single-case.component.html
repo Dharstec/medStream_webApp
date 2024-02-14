@@ -56,12 +56,11 @@
           
         </mat-expansion-panel> -->
 
-    <!-- llllllllllllllllll -->
+        <!-- Comment section -->
     <!-- <disqus [identifier]="pageId" ></disqus> -->
-    <div *ngIf="!isScheduleCase && !hideCommentBox">
-      <disqus [identifier]="pageId"></disqus>
+    <div *ngIf="showCommment">
+      <disqus [identifier]="pageId" ></disqus>
     </div>
-    <!-- <disqus [identifier]="pageId" *ngIf="showCommentBox"></disqus> -->
 
     <!-- <div id="hyvor-talk-comments"></div> -->
     <!-- <hyvor-talk-comments website-id="10253" page-id="" id="comments-container"></hyvor-talk-comments> -->
@@ -83,9 +82,11 @@
 
       </div>
     </div>
+
+    <!-- Chat section -->
     <!-- <app-chat [pageId]="pageId"/> -->
-    <div *ngIf="!hideChat">
-      <app-chat [pageId]="pageId"></app-chat>
+    <div *ngIf="showChat"> 
+      <app-chat [pageId]="pageId"/>
     </div>
 
   </div>
