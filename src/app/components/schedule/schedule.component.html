@@ -1,7 +1,20 @@
 <div class="schedule-container">
-  <mat-form-field class="timezoneField" *ngIf="!loggedIn">
+  <mat-form-field class="timezoneField">
     <mat-select  placeholder="TimeZone"  [(ngModel)]="regionTimeZone" (selectionChange)="getScheduleCasesList(regionTimeZone)" >
-      <mat-option *ngFor="let row of regionTimeZoneList;let i =index" [value]="row">{{row}}</mat-option>
+      <mat-option>
+        <ngx-mat-select-search  placeholderLabel="Search..." 
+        noEntriesFoundLabel="No region found" aria-hidden="true" (keyup)="onKey($event.target)">
+        <!-- <button *ngIf="false"
+        mat-icon-button
+        aria-label="Clear"
+        (click)="search('')"
+        class="mat-select-search-clear">
+        <mat-icon ngxMatSelectSearchClear>close</mat-icon>
+        </button> -->
+      </ngx-mat-select-search>
+      </mat-option>
+      <mat-option *ngFor="let row of filteredRegion;let i =index"
+       [value]="row">{{row}}</mat-option>
     </mat-select>
   </mat-form-field>
     <div class="mt-4 row text-center w-100 mb-3">

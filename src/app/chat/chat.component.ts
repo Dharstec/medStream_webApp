@@ -1,5 +1,6 @@
 import { Component, Input, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -16,7 +17,10 @@ export class ChatComponent {
   messages: any[] = []
   isMinimized: boolean = false;
   userName = localStorage.getItem('userEmail')?.split('@')[0] || 'Unknown User'
-  constructor(private chatService: ApiService) { }
+  isLoggedInEmail = localStorage.getItem('userEmail');
+
+  constructor(private chatService: ApiService,private authService: AuthService) {
+   }
 
   toggleChat() {
     this.isMinimized = !this.isMinimized;

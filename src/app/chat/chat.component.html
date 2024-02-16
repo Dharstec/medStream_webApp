@@ -1,4 +1,4 @@
-<div class="chat-container" >
+<div class="chat-container">
     <div class="live-chat-heading">
         <i class="material-icons">message</i>LIVE CHAT
     </div>
@@ -17,7 +17,7 @@
             </div>
         </ng-container>
     </div>
-    <div class="input-container">
+    <div *ngIf="isLoggedInEmail; else notLoggedIn" class="input-container">
         <div class="input-wrapper">
             <input type="text" [(ngModel)]="message" (keydown.enter)="sendMessage()" placeholder="Type your message...">
             <button (click)="sendMessage()">
@@ -25,4 +25,8 @@
             </button>
         </div>
     </div>
+    <ng-template #notLoggedIn>
+        <p class="NotLogin">Login Need to Must </p>
+    </ng-template>
+
 </div>
