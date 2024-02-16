@@ -29,6 +29,8 @@ import { ApiService } from 'src/app/services/api.service';
 import * as moment from 'moment';
 import { AuthService } from 'src/app/services/auth.service';
 import { timeZoneList } from 'src/app/staticData/timeZoneList';
+import { FormControl } from '@angular/forms';
+import { validateBasis } from '@angular/flex-layout';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -65,23 +67,7 @@ export class ScheduleComponent {
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    // {
-    //   label: `<i class="fas fa-fw fa-pencil-alt"></i>`,
-    //   a11yLabel: 'Edit',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.handleEvent('Edited', event);
-    //   },
-    // },
-    // {
-    //   label: `<i class="fas fa-fw fa-trash-alt"></i>`,
-    //   a11yLabel: 'Delete',
-    //   onClick: ({ event }: { event: CalendarEvent }): void => {
-    //     this.events = this.events.filter((iEvent) => iEvent !== event);
-    //     this.handleEvent('Deleted', event);
-    //   },
-    // },
-  ];
+  actions: CalendarEventAction[] = [];
 
   refresh = new Subject<void>();
 
@@ -130,9 +116,12 @@ export class ScheduleComponent {
   allScheduleList: any;
   userTimeZone: any;
   regionTimeZone: any='Asia/Kolkata';
-  regionTimeZoneList: any;
+  regionTimeZoneList=timeZoneList.countryTimeZoneList;
   loggedIn:boolean=false;
   isScheduleCase: boolean;
+  filteredRegion: string[];
+  regionSearch= new FormControl();
+
 
   constructor(private authService: AuthService,private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
     window.scrollTo(0, 0);
@@ -140,21 +129,34 @@ export class ScheduleComponent {
   }
 
   ngOnInit(): void {
+    this.filteredRegion =this.regionTimeZoneList
     if(!this.authService.isLoggedIn()){
-      this.regionTimeZoneList = timeZoneList.countryTimeZoneList
     this.loggedIn=false
     this.getScheduleCasesList(this.regionTimeZone)
     }else{
       this.loggedIn=true
       this.getScheduleCasesList()
+      this.regionTimeZone= localStorage.getItem('userRegion')
     }
   }
 
-  getWorldTimezoneList(): void {
-    // this.api.apiGetWorldTimeZone().subscribe((data:any) => {
-    //   this.regionTimeZoneList = data
-    // })
+  onKey(eventTarget: any) {
+    this.filteredRegion = this.search(eventTarget.value);
   }
+
+  search(value: string) {
+    // console.log("sea",value)
+    this.regionSearch.setValue(value)
+    if(value!=''){
+      let filter = value.toLowerCase();
+      return this.regionTimeZoneList.filter((option) =>
+        option.toLowerCase().startsWith(filter)
+      );
+    }else return this.regionTimeZoneList
+   
+  }
+
+
 
   getScheduleCasesList(timeZone?:any): void {
     this.userTimeZone = timeZone ? timeZone : localStorage.getItem('userRegion')

@@ -215,9 +215,30 @@ border: none !important;
  background-color: #2E2E2E !important;
 }
 
+// mat calendar
 .cdk-overlay-pane{
   color: #fff;
   background-color:#2E2E2E  ;
+}
+
+.mat-calendar-body-cell-content {
+  color: #fff;
+}
+.mat-calendar-content{
+  background-color:#2E2E2E !important ;
+}
+
+.mat-mdc-option[aria-disabled=true].contains-mat-select-search {
+  color:#000;
+  background-color: #fff;
+}
+
+.mat-calendar{
+  background-color:#2E2E2E !important ;
+}
+
+.mat-select-search-clear{
+  display: none !important;
 }
 
 .mat-grid-tile-content {
