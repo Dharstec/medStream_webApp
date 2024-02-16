@@ -37,7 +37,7 @@
             <mat-card style="color: #FFFFFF;" *ngFor="let ops of operators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)">
                 <img mat-card-image [src]="ops.avatar" class="image">
              <div class="contBox">
-                <mat-card-title>{{ops.name}}, </mat-card-title><i>{{ops.designation}}</i>
+                <mat-card-title>{{ops.name}} </mat-card-title><i>{{ops.designation}}</i>
                 <mat-card-subtitle>
                     <!-- {{ops.institution.name}} -->
                     {{ops.institution.name}}

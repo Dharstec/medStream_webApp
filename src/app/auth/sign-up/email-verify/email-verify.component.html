@@ -1,0 +1,30 @@
+<!-- <p>email-verify works!</p> -->
+<div class="background">
+    <div class="glassy-form-container">
+        <div class="glassy-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="header" style="text-align: center;"><img src="assets\med.png"
+                        style="width: 14rem;height: 5rem;"></div>
+                <h2 class="header" style="text-align: center;color: #fff;font-weight: 600;">Enter Email To Reset
+                    Password</h2>
+                <div class="section-b col-md-12">
+                    <mat-label>Email Id</mat-label>
+                    <input class="input" type="email" name="email" matInput formControlName="email" maxlength="50"
+                        required>
+                    <mat-error style="color: antiquewhite !important;"
+                        *ngIf="form.get('email').invalid && (form.get('email').dirty || submitted)">
+                        {{ form.get('email').errors?.pattern ? 'Email is Invalid' : 'Email is required'}}
+                    </mat-error>
+                </div>
+                <div class="disflex">
+                    <button class="disBut" mat-flat-button color="danger" routerLink="/auth/login"
+                    type="submit">{{'Back' |
+                    uppercase}}</button>
+                    <button class="disBut ml-3" mat-flat-button color="primary" type="submit">{{'Verify' |
+                        uppercase}}</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

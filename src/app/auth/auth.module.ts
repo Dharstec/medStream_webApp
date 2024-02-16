@@ -9,6 +9,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
 import { OtpComponent } from './otp/otp.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { EmailVerifyComponent } from './sign-up/email-verify/email-verify.component';
 const routes: Routes = [
   {
   path: '',
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: 'forgetpassword', component: ForgetPasswordComponent },
     { path: 'otp', component: OtpComponent },
     { path: 'resetPassword', component: ResetPasswordComponent },
-    { path: 'signUp', component: SignUpComponent },
+    // { path: 'signUp', component: SignUpComponent },
+    { path: 'signUp', component: EmailVerifyComponent },
   ]
 }
 ];
@@ -31,6 +33,7 @@ const routes: Routes = [
     OtpComponent,
     ResetPasswordComponent,
     SignUpComponent,
+    EmailVerifyComponent,
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule
