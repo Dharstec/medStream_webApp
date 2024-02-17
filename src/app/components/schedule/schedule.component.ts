@@ -120,7 +120,6 @@ export class ScheduleComponent {
   loggedIn:boolean=false;
   isScheduleCase: boolean;
   filteredRegion: string[];
-  regionSearch= new FormControl();
 
 
   constructor(private authService: AuthService,private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
@@ -145,8 +144,6 @@ export class ScheduleComponent {
   }
 
   search(value: string) {
-    // console.log("sea",value)
-    this.regionSearch.setValue(value)
     if(value!=''){
       let filter = value.toLowerCase();
       return this.regionTimeZoneList.filter((option) =>

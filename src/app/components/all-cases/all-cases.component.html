@@ -103,8 +103,9 @@
         <div *ngFor="let video of allCases" class="video-card" (click)="routeToSingleCase(video._id)">
           <img [src]="video.thumbnail" alt="Video Thumbnail">
           <p class="case_title">{{ video.title }}</p>
-          <p style="color: #FFFFFF80;
-          ;font-weight: 600;">{{'Week of'}} {{ video.createdAt | date:'longDate' }}</p>
+            <p style="color: #FFFFFF80;
+            ;font-weight: 600;">{{video.weekNo}}{{video.weekNo==1?'st':video.weekNo==2?'nd':video.weekNo==3?'rd':'th'}}
+              {{'Week of'}} {{ video.month | titlecase }},{{ video.year}}</p>
         </div>
       </div>
     </div>

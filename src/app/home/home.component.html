@@ -38,9 +38,9 @@
         <iframe class="map col-7" style="border:0;height: 70vh;" [src]="mapURL" frameborder="0"
           allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img class="mb-2 col-12" src="{{ scheduleVideo.thumbnail}}" alt="slide">
+          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo)" src="{{ scheduleVideo.thumbnail}}" alt="slide">
           <p>{{scheduleVideo.title}}</p>
-          <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ scheduleVideo.createdAt | date:'longDate'
+          <p style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
             }}</p>
           <div class="" style="display: flex;">
             <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
@@ -73,7 +73,9 @@
                   <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
                   <div class="ml-3">
                     <p class="case_title">{{ case.title }}</p>
-                    <p class="week_style">{{'Week of'}} {{ case.createdAt | date:'longDate' }}</p>
+                    <p class="week_style">{{case.weekNo}}{{case.weekNo==1?'st':case.weekNo==2?'nd':case.weekNo==3?'rd':'th'}}
+                       {{'Week of'}} {{ case.month | titlecase }},{{ case.year}}</p>
+                    <!-- <p class="week_style">{{case.weekNo}}{{'Week of'}} {{ case.createdAt | date:'longDate' }}</p> -->
                   </div>
                 </div>
               </div>
