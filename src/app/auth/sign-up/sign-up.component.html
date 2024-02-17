@@ -46,7 +46,10 @@
             </mat-error>
           </div>
           <div class="disflex">
-            <button [disabled]="form.invalid" class="disBut" mat-flat-button color="primary" type="submit">Sign Up</button>
+            <button class="disBut" mat-flat-button color="danger" routerLink="/auth/login"
+            type="submit">{{'Back' |
+            uppercase}}</button>
+            <button [disabled]="form.invalid" class="disBut ml-3" mat-flat-button color="primary" type="submit">Sign Up</button>
           </div>
         </form>
       </div>
