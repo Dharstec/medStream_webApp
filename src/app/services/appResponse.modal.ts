@@ -12,5 +12,6 @@ export class AppResponse {
     message: any;
   status: boolean;
   Image: any;
+  isOtpVerified: any;
   }
   

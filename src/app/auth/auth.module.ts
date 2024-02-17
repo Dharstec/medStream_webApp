@@ -10,6 +10,7 @@ import { OtpComponent } from './otp/otp.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EmailVerifyComponent } from './sign-up/email-verify/email-verify.component';
+import { SignUpOtpComponent } from './sign-up/sign-up-otp/sign-up-otp.component';
 const routes: Routes = [
   {
   path: '',
@@ -19,8 +20,9 @@ const routes: Routes = [
     { path: 'forgetpassword', component: ForgetPasswordComponent },
     { path: 'otp', component: OtpComponent },
     { path: 'resetPassword', component: ResetPasswordComponent },
-    // { path: 'signUp', component: SignUpComponent },
+    { path: 'signUpPage', component: SignUpComponent },
     { path: 'signUp', component: EmailVerifyComponent },
+    { path: 'signUpOtp', component:SignUpOtpComponent },
   ]
 }
 ];
@@ -34,6 +36,7 @@ const routes: Routes = [
     ResetPasswordComponent,
     SignUpComponent,
     EmailVerifyComponent,
+    SignUpOtpComponent,
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule

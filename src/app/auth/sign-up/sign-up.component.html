@@ -9,12 +9,16 @@
             <mat-label>Name</mat-label>
             <input class="input" type="text" name="name" matInput formControlName="name" required>
           </div>
-          <div class="section-b col-md-12">
+          <!-- <div class="section-b col-md-12">
             <mat-label>Email</mat-label>
-            <input class="input" type="email" name="email" matInput formControlName="email" required>
+            <input class="input" type="email" name="email" matInput formControlName="email" >
             <mat-error *ngIf="form.get('email').invalid && (form.get('email').dirty || submitted)">
               {{ form.get('email').errors?.pattern ? 'Email is Invalid' : 'Email is required'}}
             </mat-error>
+          </div> -->
+          <div class="section-b col-md-12">
+            <mat-label>Email</mat-label>
+            <input class="input" type="email" name="email" matInput formControlName="email">
           </div>
           <div class="section-b col-md-12 timezone">
             <mat-label>Time Zone</mat-label>

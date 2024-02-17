@@ -115,7 +115,7 @@ export class ScheduleComponent {
   activeDayIsOpen: boolean = true;
   allScheduleList: any;
   userTimeZone: any;
-  regionTimeZone: any='Asia/Kolkata';
+  regionTimeZone: any='America/New_York';
   regionTimeZoneList=timeZoneList.countryTimeZoneList;
   loggedIn:boolean=false;
   isScheduleCase: boolean;
