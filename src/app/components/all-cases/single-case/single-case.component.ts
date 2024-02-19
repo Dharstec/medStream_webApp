@@ -18,7 +18,6 @@ export class SingleCaseComponent implements OnInit {
   videoURL: any
   instName: any;
   isShareClicked: boolean = false;
-  pageId: String;
   isLiveCase: boolean;
   showChat: boolean = true;
   showCommment: boolean = true;
@@ -52,7 +51,6 @@ export class SingleCaseComponent implements OnInit {
       let splitData = this.current_case_dtls.youtubeUrl.split('?')
       console.log("splitData", splitData)
       let videoID = splitData[0].split('be/')[1]
-      this.pageId = videoID
       let embdURL = `https://www.youtube.com/embed/${videoID}`
       this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(embdURL);
       // console.log("videoURL",this.videoURL)
