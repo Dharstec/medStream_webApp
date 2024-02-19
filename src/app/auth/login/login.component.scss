@@ -15,8 +15,8 @@ mat-label .required {
     background: rgb(118 108 108 / 20%);
     top: 50px;
     position: relative;
-    // width: 30%;
-    // height: 65vh;
+    width: 30%;
+    height: 70vh;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -60,6 +60,12 @@ mat-label .required {
         margin-top: 10px;
         margin-bottom: 10px;
         color: white !important;
+    }
+    mat-error {
+        max-width: 100%; /* Set the max-width for error messages */
+        display: block; /* Ensure error message is displayed as a block element */
+        color: antiquewhite !important;
+        text-align: center; /* Center the error message */
     }
 }
 

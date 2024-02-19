@@ -14,6 +14,12 @@
                   {{'Email is required'}}</mat-error>
                   <mat-error *ngIf="submitted && form.get('email')?.errors?.pattern">
                     {{'Email is Invalid'}}</mat-error> -->
+                    <mat-error *ngIf="submitted && form.get('email')?.errors?.required">
+                        Email is required
+                    </mat-error>
+                    <mat-error *ngIf="submitted && form.get('email')?.errors?.email">
+                        Email is invalid
+                    </mat-error>
                 </div>
                 <div class="section-b col-md-12">
                     <mat-label>Password</mat-label>
@@ -21,6 +27,12 @@
                         maxlength="50" required>
                     <!-- <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
                   {{'Password is required'}}</mat-error> -->
+                  <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
+                    Password is required
+                </mat-error>
+                <mat-error *ngIf="submitted && form.get('password')?.errors?.pattern">
+                    Password must be at least 8 characters long, contain at least one uppercase letter, one digit, and one special character.
+                </mat-error>
 
                 </div>
                 <div class="disflex">

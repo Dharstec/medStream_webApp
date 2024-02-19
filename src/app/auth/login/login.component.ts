@@ -24,13 +24,21 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
-      password: ['', Validators.required]
+      email: ['', 
+      // Validators.compose([Validators.required, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])
+      [Validators.required,Validators.email]
+      ],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
+      ]]
     })
    
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.form.invalid) {
       console.log(this.form)
       return;
@@ -59,10 +67,16 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.authService.setLoggedInStatus(false)
           this.util.setObservable('loggedIn',false)
         }
-      },error=>{
-        console.log(error)
+      },
+      // error=>{
+      //   console.log(error)
+      //   this.snackbar.openFromComponent(SnackbarComponent, {
+      //     data: error,
+      //   });
+      error => {
+        console.log(error);
         this.snackbar.openFromComponent(SnackbarComponent, {
-          data: error,
+        data: error.message, // Assuming your error object has a message property
         });
       })
     }
