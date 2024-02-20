@@ -46,15 +46,19 @@ export class SignUpComponent implements OnInit {
     }, {
       validators: this.passwordMatchValidator
     });
-    this.searchControl.valueChanges.subscribe(value => {
-      this.filteredTimeZones = this.filterTimeZones(value);
-    });
+    // this.searchControl.valueChanges.subscribe(value => {
+    //   this.filteredTimeZones = this.filterTimeZones(value);
+    // });
   }
 
-  filterTimeZones(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.timeZones.filter(timeZone => timeZone.toLowerCase().includes(filterValue));
-  }
+  // filterTimeZones(value: string): string[] {
+  //   const filterValue = value.toLowerCase();
+  //   return this.timeZones.filter(timeZone => timeZone.label.toLowerCase().includes(filterValue));
+  // }
+
+  // displayTimeZone(timeZone: any): string {
+  //   return timeZone ? timeZone.label : '';
+  // }
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
