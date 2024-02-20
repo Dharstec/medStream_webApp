@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable, timer } from 'rxjs';
 import { UtilService } from 'src/app/services/util.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home-carousel',
@@ -17,7 +18,8 @@ export class HomeCarouselComponent {
   subscription: Subscription;
   everyFiveSeconds: Observable<number> = timer(0, 5000);
   constructor( private router: Router,
-    private util: UtilService) {
+    private util: UtilService,
+    private authService: AuthService) {
       window.scrollTo(0, 0);
      }
   ngOnInit(): void {
@@ -31,7 +33,11 @@ export class HomeCarouselComponent {
   }
 
   enrouteCase(list){
-    this.router.navigate(['/user/all-cases/single-case',list._id])
+    if(!this.authService.isLoggedIn()){
+      this.router.navigate(['/auth/login'])
+      }else{
+        this.router.navigate(['/user/all-cases/single-case',list._id],{ queryParams: { showComment: 'true' } })
+      }
   }
 
 }

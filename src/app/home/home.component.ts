@@ -7,6 +7,7 @@ import { faInstagram, faLinkedin, faTwitter, faFacebook, faXTwitter } from '@for
 import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable, timer } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -33,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   subscription: Subscription;
   everyFiveSeconds: Observable<number> = timer(0, 5000);
-  constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
+  constructor(private api: ApiService,private authService: AuthService, public dialog: MatDialog,private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.getHomePageAPI();
@@ -68,22 +69,18 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  // enrouteCase(list){
-  //   this.router.navigate(['/user/all-cases/single-case',list._id])
-  // }
-  enrouteCase(list) {
-    this.router.navigate(['/user/all-cases/single-case', list._id], { queryParams: { showCommment: 'true' } });
+  enrouteCase(list,type?:any){
+    if(type=='scheduleCase'){
+      this.router.navigate(['/user/all-cases/single-case',list._id],{ queryParams: { showChat: 'true' } })
+    }else{
+      if(!this.authService.isLoggedIn()){
+        this.router.navigate(['/auth/login'])
+        }else{
+          this.router.navigate(['/user/all-cases/single-case',list._id],{ queryParams: { showComment: 'true' } })
+        }
+    }
+  
   }
-  //   enrouteCase(list, isLatestVideo: boolean){
-  //     let queryParams = {};
-  //     if(isLatestVideo) {
-  //         queryParams = { showChat: 'true' };
-  //     } else {
-  //         queryParams = { showComment: 'true' }; 
-  //     }
-  //     this.router.navigate(['/user/all-cases/single-case', list._id], { queryParams: queryParams });
-  // }
-
 
 
 
