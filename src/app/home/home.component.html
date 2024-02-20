@@ -109,6 +109,9 @@
                 <!-- <div> -->
                 <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
                   (click)='currentIndex=i'></button>
+                  <!-- <div *ngFor="let video of latestVideos">
+                    <button (click)="enrouteCase(video, true)">View Details</button>
+                  </div>                 -->
                 <!-- </div> -->
               </ng-container>
             </div>
