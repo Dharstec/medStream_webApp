@@ -20,7 +20,7 @@ export class SingleCaseComponent implements OnInit {
   isShareClicked: boolean = false;
   isLiveCase: boolean;
   showChat: boolean = true;
-  showCommment: boolean = true;
+  showComment: boolean = true;
   // hideCommentBox: boolean;
   // isScheduleCase: boolean;
 
@@ -37,7 +37,7 @@ export class SingleCaseComponent implements OnInit {
       // if (this.isScheduleCase) {
       //   this.hideCommentBox = true;
       // }
-      this.showCommment = params['showCommment'] === 'true';
+      this.showComment = params['showComment'] === 'true';
       this.showChat = params ['showChat'] === 'true';
   });
     console.log("--", this.current_case_id)
@@ -85,13 +85,18 @@ export class SingleCaseComponent implements OnInit {
 
 
   routeToSingleCase(caseId) {
-    this.router.navigate(['/user/all-cases/single-case',caseId])
+    this.router.navigate(['/user/all-cases/single-case',caseId],{ queryParams: { showComment: 'true' } })
     this.current_case_id =caseId
     this.getCaseDetails()
     window.scrollTo(0, 0);
     // this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
     //   this.router.navigate(['/user/all-cases/single-case', caseId]));
     // // this.ngOnInit()
+  }
+
+  routeToInstitute(data){
+    let cont= data.institution.continent.toLowerCase()
+    this.router.navigate(['/user/institution',cont])
   }
 
   onShareButtonClick() {

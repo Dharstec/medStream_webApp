@@ -21,7 +21,7 @@
     <div class="ml-3 mt-5" style="display: flex;">
       <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
       <div class="ml-2" style="display: block;">
-        <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls.institution.name }}</p>
+        <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;" (click)="routeToInstitute(current_case_dtls)">{{ current_case_dtls.institution.name }}</p>
         <p style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.institution.city}},
           {{current_case_dtls.institution.country}} </p>
       </div>
@@ -46,7 +46,7 @@
         </div> -->
     </div>
 
-    <!-- <mat-expansion-panel style="background: #2E2E2E;padding: 12px;color: #fff;" expanded>
+    <mat-expansion-panel style="background: #2E2E2E;padding: 12px;color: #fff;" expanded>
           <mat-expansion-panel-header>
             <mat-panel-title style="font-weight: 500;">
               Description
@@ -56,11 +56,11 @@
           <hr/>
           <p class="des_text">{{current_case_dtls.description}}</p>
           
-        </mat-expansion-panel> -->
+        </mat-expansion-panel>
 
         <!-- Comment section -->
     <!-- <disqus [identifier]="pageId" ></disqus> -->
-    <div *ngIf="showCommment">
+    <div *ngIf="showComment">
       <disqus [identifier]="pageId" ></disqus>
     </div>
 

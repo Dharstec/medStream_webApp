@@ -25,6 +25,7 @@ export class AllCasesComponent {
   filteredData: any = [];
   institutionsFilterList: any = [];
   operatorFilterList: any = [];
+  allOperatorFilterList: any = [];
   constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute,
     private util: UtilService) {
       window.scrollTo(0, 0);
@@ -87,11 +88,16 @@ export class AllCasesComponent {
         break;
       }
       case 'institute': {
+        let checkedInstitute =[]
         this.institutionsFilterList.map(e => {
           if (e._id == list._id) {
             e['active'] = check
           }
+          if (e['active']) {
+            checkedInstitute.push(e._id)
+          }
         })
+        this.operatorFilterList = this.allOperatorFilterList.filter(e => checkedInstitute.includes(e.institution))
         break;
       }
       case 'operator': {
@@ -124,8 +130,9 @@ export class AllCasesComponent {
       allInstitution.push(e._id)
       if (e.active) checkedInstitution.push(e._id)
     })
+    this.allOperatorFilterList.map(e => allOperator.push(e._id))
     this.operatorFilterList.map(e => {
-      allOperator.push(e._id)
+      // allOperator.push(e._id)
       if (e.active) checkedOperator.push(e._id)
     })
     this.caseOfTheWeek.map(e=>{
@@ -160,10 +167,10 @@ export class AllCasesComponent {
     return this.api.apiGetCall('filters').subscribe((data) => {
       this.categoryList = data.data.category_list
       this.institutionsFilterList = data.data.institution_list
-      this.operatorFilterList = data.data.operator_list
+      this.allOperatorFilterList = data.data.operator_list
       this.categoryList.map(e=>e['active']=false)
       this.institutionsFilterList.map(e=>e['active']=false)
-      this.operatorFilterList.map(e=>e['active']=false)
+      this.allOperatorFilterList.map(e=>e['active']=false)
       // console.log("categoryList",this.categoryList)
       // console.log("-------",this.caseOfTheWeek)
     
@@ -198,10 +205,11 @@ export class AllCasesComponent {
 
   clearFilter() {
     this.subCategoryList = []
+    this.operatorFilterList=[]
     this.categoryList.map(e => e['active'] = false)
     this.allSubCategoryList.map(e => e['active'] = false)
     this.institutionsFilterList.map(e => e['active'] = false)
-    this.operatorFilterList.map(e => e['active'] = false)
+    // this.operatorFilterList.map(e => e['active'] = false)
     this.startDate = ''
     this.endDate = ''
     this.getLiveCasesList();
@@ -210,7 +218,7 @@ export class AllCasesComponent {
   routeToSingleCase(caseId) {
     // this.router.navigate(['/user/all-cases/single-case',caseId])
     // Navigate to the single case page with an additional parameter to indicate if it's a live case or not
-    this.router.navigate(['/user/all-cases/single-case' ,caseId ],{ queryParams: { showCommment: 'true' } });
+    this.router.navigate(['/user/all-cases/single-case' ,caseId ],{ queryParams: { showComment: 'true' } });
 
   }
 }

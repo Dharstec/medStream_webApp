@@ -21,7 +21,7 @@
 <div class="home_container">
   <div class="get_started">
     <div class="">
-      <img class="col-12 cur_pointer" routerLink="/user/landing" src="../../assets/Hero Page2.svg" alt="">
+      <img class="col-12 cur_pointer" routerLink='/user/schedule' src="../../assets/home_img1.svg" alt="">
     </div>
   </div>
 
@@ -38,7 +38,7 @@
         <iframe class="map col-7" style="border:0;height: 70vh;" [src]="mapURL" frameborder="0"
           allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo)" src="{{ scheduleVideo.thumbnail}}" alt="slide">
+          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" src="{{ scheduleVideo.thumbnail}}" alt="slide">
           <p>{{scheduleVideo.title}}</p>
           <p style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
             }}</p>
@@ -69,7 +69,7 @@
           <ng-container *ngFor="let case of topVideosList;let i=index">
             <div [ngClass]="i%2==0 ? 'grid_style' : 'grid_border_none'">
               <div>
-                <div class="flex_align mr-2 cur_pointer" (click)="enrouteCase(case)">
+                <div class="flex_align mr-2 cur_pointer" (click)="enrouteCase(case,'case')">
                   <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
                   <div class="ml-3">
                     <p class="case_title">{{ case.title }}</p>
@@ -97,7 +97,7 @@
           <ng-container *ngIf="latestVideos.length">
             <ng-container *ngFor="let list of latestVideos;let i =index">
               <ng-container *ngIf="currentIndex==i">
-                <div class="carousel-inner cur_pointer" role="listbox" (click)="enrouteCase(list)">
+                <div class="carousel-inner cur_pointer" role="listbox" (click)="enrouteCase(list,'case')">
                   <img class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
                   <label>{{list.title}}</label>
                 </div>
