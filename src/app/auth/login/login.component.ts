@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitted = false;
   starCount = new Array(500); // Number of stars
+  hidePassword: boolean = true;
 
   constructor(private fb: FormBuilder, 
     private authService: AuthService,
@@ -36,6 +37,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     })
    
   }
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+}
 
   onSubmit() {
     this.submitted = true;
@@ -59,10 +63,12 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.util.setObservable('loggedIn',true)
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: 'LoggedIn Successfully',
+            duration: 2000
           });
         }else{
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: 'Failed to LoggedIn',
+            duration: 2000
           }); 
           this.authService.setLoggedInStatus(false)
           this.util.setObservable('loggedIn',false)
@@ -76,7 +82,8 @@ export class LoginComponent implements OnInit, OnDestroy {
       error => {
         console.log(error);
         this.snackbar.openFromComponent(SnackbarComponent, {
-        data: error.message, // Assuming your error object has a message property
+        data: error.message,
+        duration: 2000 // Assuming your error object has a message property
         });
       })
     }

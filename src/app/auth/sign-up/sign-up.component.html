@@ -28,16 +28,39 @@
               </mat-option>
             </mat-select>
           </div>
+          <!-- <div class="section-b col-md-12 timezone">
+            <mat-label>Time Zone</mat-label>
+            <mat-form-field>
+              <mat-select placeholder="Select Time Zone" formControlName="timeZone">
+                <mat-option *ngFor="let timeZone of filteredTimeZones" [value]="timeZone">{{ timeZone }}</mat-option>
+              </mat-select>
+              <ngx-mat-select-search [formControl]="searchControl"></ngx-mat-select-search>
+            </mat-form-field>
+          </div> -->
           <div class="section-b col-md-12">
             <mat-label>Password</mat-label>
-            <input class="input" type="password" name="password" matInput formControlName="password" required>
+            <!-- <input class="input" type="password" name="password" matInput formControlName="password" required> -->
+            <div class="password-input-container">
+              <input class="input" type="{{ hidePassword ? 'password' : 'text' }}" name="password" matInput formControlName="password"
+                  maxlength="50" required>
+              <button mat-icon-button type="button" (click)="togglePasswordVisibility()" class="password-toggle-button">
+                  <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+          </div>
             <mat-error *ngIf="form.get('password').invalid && (form.get('password').dirty || submitted)">
               Password must be at least 8 characters long and contain at least one uppercase letter, one numeric value, and one special character.
             </mat-error>
           </div>
           <div class="section-b col-md-12">
             <mat-label>Confirm Password</mat-label>
-            <input class="input" type="password" name="confirmPassword" matInput formControlName="confirmPassword" required>
+            <!-- <input class="input" type="password" name="confirmPassword" matInput formControlName="confirmPassword" required> -->
+            <div class="password-input-container">
+              <input class="input" type="{{ hideConfirmPassword ? 'password' : 'text' }}" name="confirmPassword" matInput formControlName="confirmPassword"
+                  maxlength="50" required>
+              <button mat-icon-button type="button" (click)="toggleConfirmPasswordVisibility()" class="password-toggle-button">
+                  <mat-icon>{{ hideConfirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+              </button>
+          </div>
             <mat-error *ngIf="form.get('confirmPassword').hasError('required') && (form.get('confirmPassword').dirty || submitted)">
               Please confirm your password.
             </mat-error>

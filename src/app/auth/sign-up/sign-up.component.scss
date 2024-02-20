@@ -137,6 +137,31 @@ mat-label {
         opacity: 0;
     }
 }
+.password-input-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input {
+    padding-right: 40px; /* Adjust padding to accommodate the button */
+}
+
+.password-toggle-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: red; /* Set the color of the button to red */
+    background-color: transparent; /* Remove background color */
+    border: none; /* Remove border */
+    cursor: pointer;
+}
+
+.password-toggle-button:focus {
+    outline: none; /* Remove focus outline */
+}
+
 
 @media screen and (max-width:426px)  {
     .glassy-form-container {

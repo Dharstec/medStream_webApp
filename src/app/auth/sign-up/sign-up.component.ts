@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import * as moment from 'moment-timezone';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sign-up',
@@ -14,6 +15,10 @@ export class SignUpComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   timeZones = [];
+  filteredTimeZones: string[];
+  searchControl: FormControl = new FormControl('');
+  hidePassword: boolean = true;
+hideConfirmPassword: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -40,7 +45,23 @@ export class SignUpComponent implements OnInit {
     }, {
       validators: this.passwordMatchValidator
     });
+    this.searchControl.valueChanges.subscribe(value => {
+      this.filteredTimeZones = this.filterTimeZones(value);
+    });
   }
+
+  filterTimeZones(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.timeZones.filter(timeZone => timeZone.toLowerCase().includes(filterValue));
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
+}
+
+toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
+}
 
   onSubmit() {
     this.submitted = true;

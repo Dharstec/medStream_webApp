@@ -17,3 +17,12 @@
     }
   }
  */
+
+ .custom-button {
+  background-color: #FF4E45; /* Change button background color to red */
+  color: white; /* Change button text color to white */
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+}

@@ -15,10 +15,9 @@
         </div>
       </div>
     </div>
-  </div>
-</div> -->
+  </div> -->
 
-<div class="home_container">
+  <div class="home_container">
   <div class="get_started">
     <div class="">
       <img class="col-12 cur_pointer" routerLink="/user/landing" src="../../assets/Hero Page2.svg" alt="">
@@ -38,16 +37,19 @@
         <iframe class="map col-7" style="border:0;height: 70vh;" [src]="mapURL" frameborder="0"
           allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo)" src="{{ scheduleVideo.thumbnail}}" alt="slide">
+          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo)" src="{{ scheduleVideo.thumbnail}}"
+            alt="slide">
           <p>{{scheduleVideo.title}}</p>
           <p style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
             }}</p>
           <div class="" style="display: flex;">
             <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
             <div class="ml-2" style="display: block;">
-              <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo.institution ? scheduleVideo.institution.name:'N/A' }}
+              <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo.institution ?
+                scheduleVideo.institution.name:'N/A' }}
               </p>
-              <p style="color: #FFFFFF80;;font-weight: 600;">{{scheduleVideo.institution ? scheduleVideo.institution.city:'N/A'}},
+              <p style="color: #FFFFFF80;;font-weight: 600;">{{scheduleVideo.institution ?
+                scheduleVideo.institution.city:'N/A'}},
                 {{scheduleVideo.institution ? scheduleVideo.institution.country:'N/A'}} </p>
             </div>
           </div>
@@ -73,8 +75,9 @@
                   <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
                   <div class="ml-3">
                     <p class="case_title">{{ case.title }}</p>
-                    <p class="week_style">{{case.weekNo}}{{case.weekNo==1?'st':case.weekNo==2?'nd':case.weekNo==3?'rd':'th'}}
-                       {{'Week of'}} {{ case.month | titlecase }},{{ case.year}}</p>
+                    <p class="week_style">
+                      {{case.weekNo}}{{case.weekNo==1?'st':case.weekNo==2?'nd':case.weekNo==3?'rd':'th'}}
+                      {{'Week of'}} {{ case.month | titlecase }},{{ case.year}}</p>
                     <!-- <p class="week_style">{{case.weekNo}}{{'Week of'}} {{ case.createdAt | date:'longDate' }}</p> -->
                   </div>
                 </div>
@@ -83,7 +86,7 @@
           </ng-container>
         </div>
       </ng-container>
-     
+
     </div>
     <div class="col-md-4">
       <div class="top_video_widget mb-3">
@@ -102,14 +105,14 @@
                   <label>{{list.title}}</label>
                 </div>
               </ng-container>
-  
+
             </ng-container>
             <div class="flex_align">
               <ng-container *ngFor="let list of latestVideos;let i =index">
                 <!-- <div> -->
                 <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
                   (click)='currentIndex=i'></button>
-                  <!-- <div *ngFor="let video of latestVideos">
+                <!-- <div *ngFor="let video of latestVideos">
                     <button (click)="enrouteCase(video, true)">View Details</button>
                   </div>                 -->
                 <!-- </div> -->
@@ -137,7 +140,7 @@
         <div *ngIf="categoryList.length==0">
           <label class="flex_align">No data available.</label>
         </div>
-        
+
       </div>
 
     </div>
@@ -154,10 +157,13 @@
   <div class="widget_accordion">
     <div class="media_list">
       <h6 class="mr-auto">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
-      <a href="https://www.facebook.com/profile.php?id=100087182070692" target="_blank"><fa-icon [icon]="facebook" class="icon"></fa-icon></a>
-      <a href="https://www.instagram.com/medstream360/" target="_blank"><fa-icon [icon]="instagram" class="icon"></fa-icon></a>
+      <a href="https://www.facebook.com/profile.php?id=100087182070692" target="_blank"><fa-icon [icon]="facebook"
+          class="icon"></fa-icon></a>
+      <a href="https://www.instagram.com/medstream360/" target="_blank"><fa-icon [icon]="instagram"
+          class="icon"></fa-icon></a>
       <a href="https://twitter.com/MedStream360" target="_blank"><fa-icon [icon]="twitterX" class="icon"></fa-icon></a>
-      <a href="https://www.linkedin.com/in/medstream360/" target="_blank"><fa-icon [icon]="linkedIn" class="icon"></fa-icon></a>
+      <a href="https://www.linkedin.com/in/medstream360/" target="_blank"><fa-icon [icon]="linkedIn"
+          class="icon"></fa-icon></a>
     </div>
 
   </div>

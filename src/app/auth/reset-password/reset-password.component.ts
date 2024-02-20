@@ -12,6 +12,8 @@ import { ApiService } from 'src/app/services/api.service';
 export class ResetPasswordComponent implements OnInit {
   form: FormGroup;
   submitted = false;
+  hideNewPassword: boolean = true;
+hideConfirmPassword: boolean = true;
 
   constructor(
     private fb: FormBuilder, 
@@ -37,6 +39,14 @@ export class ResetPasswordComponent implements OnInit {
     const confirmPassword = control.get('confirmPassword');
     return password && confirmPassword && password.value !== confirmPassword.value ? { 'passwordsNotMatch': true } : null;
   }
+
+  toggleNewPasswordVisibility() {
+    this.hideNewPassword = !this.hideNewPassword;
+}
+
+toggleConfirmPasswordVisibility() {
+    this.hideConfirmPassword = !this.hideConfirmPassword;
+}
 
   onSubmit() {
     this.submitted = true;

@@ -5,7 +5,8 @@
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div class="header" style="text-align: center;"><img src="assets\med.png"
                         style="width: 14rem;height: 5rem;"></div>
-                <h2 class="header" style="text-align: center;color: #fff;font-weight: 600; margin-top: 20px;">SIGN IN TO YOUR ACCOUNT</h2>
+                <h2 class="header" style="text-align: center;color: #fff;font-weight: 600; margin-top: 20px;">SIGN IN TO
+                    YOUR ACCOUNT</h2>
                 <div class="section-b col-md-12">
                     <mat-label>Email Id</mat-label>
                     <input class="input" type="email" name="email" matInput formControlName="email" maxlength="50"
@@ -23,16 +24,23 @@
                 </div>
                 <div class="section-b col-md-12">
                     <mat-label>Password</mat-label>
-                    <input class="input" type="password" name="password" matInput formControlName="password"
-                        maxlength="50" required>
-                    <!-- <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
-                  {{'Password is required'}}</mat-error> -->
-                  <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
-                    Password is required
-                </mat-error>
-                <mat-error *ngIf="submitted && form.get('password')?.errors?.pattern">
-                    Password must be at least 8 characters long, contain at least one uppercase letter, one digit, and one special character.
-                </mat-error>
+                    <!-- <input class="input" type="password" name="password" matInput formControlName="password"
+                        maxlength="50" required> -->
+                    <div class="password-input-container">
+                        <input class="input" type="{{ hidePassword ? 'password' : 'text' }}" name="password" matInput
+                            formControlName="password" maxlength="50" required>
+                        <button mat-icon-button type="button" (click)="togglePasswordVisibility()"
+                            class="password-toggle-button">
+                            <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        </button>
+                    </div>
+                    <mat-error *ngIf="submitted && form.get('password')?.errors?.required">
+                        Password is required
+                    </mat-error>
+                    <mat-error *ngIf="submitted && form.get('password')?.errors?.pattern">
+                        Password must be at least 8 characters long, contain at least one uppercase letter, one digit,
+                        and one special character.
+                    </mat-error>
 
                 </div>
                 <div class="disflex">
@@ -40,7 +48,8 @@
                         uppercase}}</button>
                 </div>
                 <a class="header forgot_text mb-3" routerLink="/auth/forgetpassword">Forget password?</a>
-                <p class="header sign_up_text">New here? <a style="text-decoration: underline; color:#FF4E45;" routerLink="/auth/signUp">Click here</a> to Sign Up! </p>
+                <p class="header sign_up_text">New here? <a style="text-decoration: underline; color:#FF4E45;"
+                        routerLink="/auth/signUp">Click here</a> to Sign Up! </p>
             </form>
         </div>
     </div>

@@ -13,7 +13,7 @@ export class SnackbarComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.dismiss()
-    }, 5000);
+    }, 2000);
   }
 
   dismiss(): void {
