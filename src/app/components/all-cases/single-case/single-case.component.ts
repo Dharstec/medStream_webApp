@@ -55,12 +55,12 @@ export class SingleCaseComponent implements OnInit {
       this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(embdURL);
       // console.log("videoURL",this.videoURL)
       // this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.current_case_dtls.youtubeUrl);
-      this.getRecommendCase(this.current_case_dtls.category);
+      this.getRecommendCase(this.current_case_dtls.category,this.current_case_dtls.subCategory);
       console.log(this.current_case_dtls.institution)
     })
   }
-  getRecommendCase(category): void {
-    let url = `recommendcase?category=${category}`
+  getRecommendCase(category,subCategory): void {
+    let url = `recommendcase?category=${category}?subCategory=${subCategory}`
     this.api.apiGetCall(url).subscribe((data) => {
       this.recommendList = data.data;
     })
