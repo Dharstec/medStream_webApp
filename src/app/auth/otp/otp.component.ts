@@ -3,20 +3,21 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-otp',
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss']
 })
-export class OtpComponent implements OnInit,OnDestroy{
+export class OtpComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   resendEnabled = true;
   resendButtonText = 'Resend OTP';
   countdownTimer: any;
   countdownSeconds = 60;
-  submitted =false;
+  submitted = false;
 
   constructor(
     private fb: FormBuilder,
@@ -72,13 +73,19 @@ export class OtpComponent implements OnInit,OnDestroy{
     // Call API to resend OTP
     this.api.apiPostCall({ email, flag }, 'sendOTP').subscribe(
       () => {
-        this.snackbar.open('OTP sent successfully.', 'Close', { duration: 3000 });
+        // this.snackbar.open('OTP sent successfully.', 'Close', { duration: 3000 });
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'OTP sent successfully.',
+        })
         this.countdownSeconds = 60; // Reset countdown timer
         this.startCountdown(); // Restart countdown
       },
       error => {
         console.error(error);
-        this.snackbar.open('Failed to resend OTP. Please try again later.', 'Close', { duration: 3000 });
+        // this.snackbar.open('Failed to resend OTP. Please try again later.', 'Close', { duration: 3000 });
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Failed to resend OTP. Please try again later.',
+        })
         this.resendEnabled = true; // Re-enable resend button on error
       }
     );
@@ -114,19 +121,28 @@ export class OtpComponent implements OnInit,OnDestroy{
       this.api.apiPostCall(payload, 'verifyUserOtp').subscribe(data => {
         if (data && data.message && data.message.includes('success')) {
           this.router.navigate(['/auth/resetPassword']);
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000
+          // });
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message,
+          })
         } else {
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000
+          // });
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message,
+          })
         }
       }, error => {
         console.error(error);
-        this.snackbar.open('Error verifying OTP. Please try again later.', 'Close', {
-          duration: 3000
-        });
+        // this.snackbar.open('Error verifying OTP. Please try again later.', 'Close', {
+        //   duration: 3000
+        // }
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Error verifying OTP. Please try again later.',
+        })
       });
     }
   }

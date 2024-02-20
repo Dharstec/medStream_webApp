@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)
       ]]
     })
-   
   }
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
@@ -58,6 +57,8 @@ export class LoginComponent implements OnInit, OnDestroy {
           localStorage.setItem('token', data.data.accessToken)
           localStorage.setItem('userEmail', data.data.email)
           localStorage.setItem('userRegion', data.data.region)
+          localStorage.setItem('name',data.data.name)
+          console.log(data.data.name)
           this.router.navigate(['/user/landing'])  
           this.authService.setLoggedInStatus(true)
           this.util.setObservable('loggedIn',true)
@@ -83,7 +84,6 @@ export class LoginComponent implements OnInit, OnDestroy {
         console.log(error);
         this.snackbar.openFromComponent(SnackbarComponent, {
         data: error.message,
-        duration: 2000 // Assuming your error object has a message property
         });
       })
     }

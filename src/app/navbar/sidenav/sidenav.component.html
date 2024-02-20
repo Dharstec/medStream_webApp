@@ -2,7 +2,7 @@
   <nav class="navbar col-12" style="position: fixed;
   width: 100%;
   z-index: 1000;">
-    <div class="logo"><img src="assets/medstream.svg" style="width: 12rem;"/></div>
+    <div class="logo"><img src="assets/medstream.svg" style="width: 12rem;" /></div>
 
     <ul class="nav-links">
 
@@ -13,70 +13,79 @@
         <!-- <li class="services">
           <a href="javascript:void(0)" routerLink='/user/all-cases'>Home</a>
         </li> -->
-        <li><a class="sidenav-link-text" routerLink='/user/landing'  routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:true}">Home</a></li>
-          <li class="vertical-bar"><a href="javascript:void(0)" routerLink='/user/schedule' routerLinkActive="active" 
+        <li><a class="sidenav-link-text" routerLink='/user/landing' routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">Home</a></li>
+        <li class="vertical-bar"><a href="javascript:void(0)" routerLink='/user/schedule' routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}">Schedule</a></li>
-        <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases'  routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:true}">All Cases</a></li>
+        <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases' routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">All Cases</a></li>
 
         <!-- <li class="vertical-bar"><a href="javascript:void(0)">Schedule</a></li> -->
 
-       
+
 
         <!-- <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li> -->
         <!-- <li><a class="sidenav-link-text vertical-bar" routerLink='/user/experts'  routerLinkActive="active"
           [routerLinkActiveOptions]="{exact:true}">Experts</a></li> -->
-          <li><a class="sidenav-link-text vertical-bar" routerLink='user/operators'  routerLinkActive="active"
+        <li><a class="sidenav-link-text vertical-bar" routerLink='user/operators' routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}">Operators</a></li>
-            <li><a class="sidenav-link-text vertical-bar" routerLink='user/institution'  routerLinkActive="active"
-              [routerLinkActiveOptions]="{exact:true}">Institutions</a></li>
+        <li><a class="sidenav-link-text vertical-bar" routerLink='user/institution' routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact:true}">Institutions</a></li>
         <!-- <li class="vertical-bar"><a href="javascript:void(0)">Institutions</a></li>  -->
       </div>
     </ul>
     <!-- <div> -->
-      <!-- <div class="search-container mr-2" >
+    <!-- <div class="search-container mr-2" >
         <div class="normal-search">
           <input type="text" class="search" (keyup)="globalSearch($event)"  [(ngModel)]="searchFilter" name="" id="" placeholder="Search..">
           <mat-icon class="search-icon">search</mat-icon>
         </div>
       </div> -->
-      <div class="search-container mr-2" *ngIf="isAllCasesRoute()">
-        <div class="normal-search">
-          <input type="text" class="search" (keyup)="globalSearch($event)" [(ngModel)]="searchFilter" name="" id="" placeholder="Search..">
-          <mat-icon class="search-icon">search</mat-icon>
-        </div>
+    <div class="search-container mr-2" *ngIf="isAllCasesRoute()">
+      <div class="normal-search">
+        <input type="text" class="search" (keyup)="globalSearch($event)" [(ngModel)]="searchFilter" name="" id=""
+          placeholder="Search..">
+        <mat-icon class="search-icon">search</mat-icon>
       </div>
-      
-      <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
-        <mat-icon  style="cursor: pointer;">person</mat-icon>
-        <mat-menu #menu="matMenu">
-          <div class="matMenu">
-                <div class="user-info disFlex">
-                  <mat-icon>email</mat-icon><span>{{userdata.email}}</span>
-                </div>
-                <div class="disFlex" (click)="logout()">
-                  <mat-icon>logout</mat-icon><span>Logout</span>
-                </div>
-          </div>
-      </mat-menu>  
-      </div>
-      <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
-        <mat-icon  style="cursor: pointer;">person</mat-icon>
-        <mat-menu #menu="matMenu">
-          <div class="matMenu">
-                <div class="user-info disFlex" routerLink="/auth/login">
-                  <mat-icon>person</mat-icon><span>SignIn</span>
-                </div>
-                <div class="disFlex" routerLink="/auth/signUp">
-                  <mat-icon>person_add</mat-icon><span>SignUp</span>
-                </div>
-          </div>
-      </mat-menu>  
-      </div>
+    </div>
 
-  
+    <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
+      <mat-icon style="cursor: pointer;">person</mat-icon>
+      <mat-menu #menu="matMenu">
+        <div class="matMenu">
+          <div class="user-info disFlex">
+            <mat-icon>person</mat-icon><span>{{ userdata.name }}</span>
+          </div>
+          <div class="user-info disFlex">
+            <mat-icon>schedule</mat-icon><span>{{ userdata.region }}</span>
+          </div>
+
+          <div class="user-info disFlex">
+            <mat-icon>email</mat-icon><span>{{userdata.email}}</span>
+          </div>
+
+          <div class="disFlex" (click)="logout()">
+            <mat-icon>logout</mat-icon><span>Logout</span>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+    <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
+      <mat-icon style="cursor: pointer;">person</mat-icon>
+      <mat-menu #menu="matMenu">
+        <div class="matMenu">
+          <div class="user-info disFlex" routerLink="/auth/login">
+            <mat-icon>person</mat-icon><span>SignIn</span>
+          </div>
+          <div class="disFlex" routerLink="/auth/signUp">
+            <mat-icon>person_add</mat-icon><span>SignUp</span>
+          </div>
+        </div>
+      </mat-menu>
+    </div>
+
+
     <!-- </div> -->
-   
+
   </nav>
 </div>

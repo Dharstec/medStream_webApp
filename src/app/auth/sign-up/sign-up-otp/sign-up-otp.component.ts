@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-sign-up-otp',
@@ -16,8 +17,8 @@ export class SignUpOtpComponent {
   resendButtonText = 'Resend OTP';
   countdownTimer: any;
   countdownSeconds = 60;
-  submitted =false;
-  
+  submitted = false;
+
 
   constructor(
     private fb: FormBuilder,
@@ -106,19 +107,29 @@ export class SignUpOtpComponent {
       this.api.apiGetCall(`verifyEmailOtp?email=${signupEmail}&otp=${otp}`).subscribe(data => {
         if (data && data.message && data.message.includes('success')) {
           this.router.navigate(['/auth/signUpPage']);
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000
+          // });
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message,
+          })
+
         } else {
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000
+          // });
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message,
+          })
         }
       }, error => {
         console.error(error);
-        this.snackbar.open('Error verifying OTP. Please try again later.', 'Close', {
-          duration: 3000
-        });
+        // this.snackbar.open('Error verifying OTP. Please try again later.', 'Close', {
+        //   duration: 3000
+        // });
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Error verifying OTP. Please try again later.',
+        })
       });
     }
   }

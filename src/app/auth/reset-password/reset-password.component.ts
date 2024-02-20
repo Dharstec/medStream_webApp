@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,7 @@ hideConfirmPassword: boolean = true;
     private router: Router, 
     private route: ActivatedRoute, 
     private api: ApiService, 
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
   ) { }
 
   ngOnInit(): void {
@@ -64,19 +65,31 @@ toggleConfirmPasswordVisibility() {
       this.api.apiPostCall(payload, 'resetPassword').subscribe(data => {
         if(data && data.message && data.message.includes('Password Changed Successfully')) {
           this.router.navigate(['/auth/login']);
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000 
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000 
+          // }
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message
+          }
+          );
         } else {
-          this.snackbar.open(data.message, 'Close', {
-            duration: 3000 
-          });
+          // this.snackbar.open(data.message, 'Close', {
+          //   duration: 3000 
+          // }
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: data.message
+          }
+          );
         }
       }, error => {
         console.error(error);
-        this.snackbar.open('Error resetting password. Please try again later.', 'Close', {
-          duration: 3000
-        });
+        // this.snackbar.open('Error resetting password. Please try again later.', 'Close', {
+        //   duration: 3000
+        // }
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Error resetting password. Please try again later.',
+          }
+        );
       });
     }
   }

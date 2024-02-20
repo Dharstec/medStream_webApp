@@ -14,10 +14,10 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
   form: FormGroup;
   submitted = false;
 
-  constructor(private fb: FormBuilder, 
-              private router: Router, 
-              private api: ApiService,
-              private snackbar: MatSnackBar) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private api: ApiService,
+    private snackbar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -42,20 +42,31 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
           console.log(data);
           if (data && data.message && data.message.includes('Email id not found')) {
             // If the response indicates that the email ID was not found, show an error message
-            this.snackbar.open(data.message, 'Close', {
-              duration: 3000 // 3 seconds
-            })
-          } 
+            // this.snackbar.open(data.message, 'Close', {
+            //   duration: 3000
+            // }
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: data.message
+            }
+            )
+          }
           else {
             this.router.navigate(['/auth/otp']);
-            this.snackbar.open('Enter your OTP.', 'close',{duration:3000})
+            // this.snackbar.open('Enter your OTP.', 'close',{duration:3000})
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: 'Enter your OTP.'
+            })
           }
         },
         (error) => {
           console.error(error);
-          this.snackbar.open('Error sending OTP. Please try again later.', 'Close', {
-            duration: 3000
-          });
+          // this.snackbar.open('Error sending OTP. Please try again later.', 'Close', {
+          //   duration: 3000
+          // }
+          this.snackbar.openFromComponent(SnackbarComponent, {
+            data: 'Error sending OTP. Please try again later.'
+          }
+          );
         }
       );
     }

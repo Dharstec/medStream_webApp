@@ -52,7 +52,8 @@ export class SidenavComponent implements OnInit {
         if(this.loggedIn){
           this.userdata={
             "email":localStorage.getItem("userEmail"),
-            "region":localStorage.getItem("userRegion")
+            "region":localStorage.getItem("userRegion"),
+            "name":localStorage.getItem("name")
           }
         }
       }

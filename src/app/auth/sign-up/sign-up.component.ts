@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import * as moment from 'moment-timezone';
 import { FormControl } from '@angular/forms';
+import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,7 +19,7 @@ export class SignUpComponent implements OnInit {
   filteredTimeZones: string[];
   searchControl: FormControl = new FormControl('');
   hidePassword: boolean = true;
-hideConfirmPassword: boolean = true;
+  hideConfirmPassword: boolean = true;
 
   constructor(
     private fb: FormBuilder,
@@ -57,11 +58,11 @@ hideConfirmPassword: boolean = true;
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;
-}
+  }
 
-toggleConfirmPasswordVisibility() {
+  toggleConfirmPasswordVisibility() {
     this.hideConfirmPassword = !this.hideConfirmPassword;
-}
+  }
 
   onSubmit() {
     this.submitted = true;
@@ -81,11 +82,17 @@ toggleConfirmPasswordVisibility() {
       (data) => {
         console.log(data);
         this.router.navigate(['/login']);
-        this.snackbar.open('Signup successful. Please login.', 'Close', { duration: 3000 });
+        // this.snackbar.open('Signup successful. Please login.', 'Close', { duration: 3000 });
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Signup successful. Please login.',
+        })
       },
       (error) => {
         console.error(error);
-        this.snackbar.open('Error signing up. Please try again later.', 'Close', { duration: 3000 });
+        // this.snackbar.open('Error signing up. Please try again later.', 'Close', { duration: 3000 });
+        this.snackbar.openFromComponent(SnackbarComponent, {
+          data: 'Error signing up. Please try again later.',
+        })
       }
     );
   }
