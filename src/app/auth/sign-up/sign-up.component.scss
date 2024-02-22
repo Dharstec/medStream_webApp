@@ -164,19 +164,24 @@ mat-label {
 
 
 @media screen and (max-width:426px)  {
+    .background{
+        height: 120vh;
+    }
     .glassy-form-container {
         width: 80%;
-        height: 100vh;
+        height: 110vh;
+        padding: 0;
     }
     .section-b {   
         .input {
             padding: 10px;
             border-radius: 5px;
-            width: 95%;
+            width: 100%;
             line-height: 15px;
         }
         mat-select{
-            width: 95% !important;
+            width: 100% !important;
+            padding: 10px;
         }
     }
     .glassy-form {
@@ -192,12 +197,18 @@ mat-label {
     mat-label {
         font-size: 16px;
     }
+    .password-toggle-button {
+        right: 5px;
+    }
 }
 
 @media screen and (min-width:427px) and (max-width:769px)  {
+    .background{
+        height: 130vh;
+    }
     .glassy-form-container {
         width: 60%;
-        height: 110vh;
+        height: 120vh;
     }
     .section-b {   
         .input {
@@ -222,5 +233,44 @@ mat-label {
     }
     mat-label {
         font-size: 16px;
+    }
+    .password-toggle-button {
+        right: 10px;
+    }
+}
+@media screen and (min-width:770px) and (max-width:1024px) {
+    .background{
+        height: 110vh;
+    }
+    .glassy-form-container {
+        width: 40%;
+        height: 100vh;
+        top: 0;
+    }
+    .section-b {   
+        .input {
+            padding: 15px;
+            border-radius: 5px;
+            width: 100%;
+            line-height: 15px;
+        }
+        mat-select{
+            padding: 15px;
+        }
+    }
+    .glassy-form {
+        padding: 20px;
+        form {
+            h2 {
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+        }
+    }
+    mat-label {
+        font-size: 18px;
+    }
+    .password-toggle-button {
+        right: 10px;
     }
 }

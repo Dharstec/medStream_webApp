@@ -6,18 +6,24 @@ import { ApiService } from 'src/app/services/api.service';
 import * as moment from 'moment-timezone';
 import { FormControl } from '@angular/forms';
 import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.component';
+import { Pipe, PipeTransform } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.scss']
 })
+
+
 export class SignUpComponent implements OnInit {
   form: FormGroup;
   submitted = false;
   timeZones = [];
-  filteredTimeZones: string[];
-  searchControl: FormControl = new FormControl('');
+  filteredTimeZones: any[] = [];
+  selectedTimeZone: string = 'America/New_York';
+  // searchControl: FormControl = new FormControl('');
   hidePassword: boolean = true;
   hideConfirmPassword: boolean = true;
 
@@ -26,7 +32,9 @@ export class SignUpComponent implements OnInit {
     private router: Router,
     private api: ApiService,
     private snackbar: MatSnackBar
-  ) { }
+  ) { 
+    this.filteredTimeZones = this.timeZones;
+   }
 
   ngOnInit(): void {
     this.timeZones = moment.tz.names().map(timeZone => ({
@@ -46,19 +54,17 @@ export class SignUpComponent implements OnInit {
     }, {
       validators: this.passwordMatchValidator
     });
-    // this.searchControl.valueChanges.subscribe(value => {
-    //   this.filteredTimeZones = this.filterTimeZones(value);
-    // });
   }
+  filterTimeZones(searchValue: string) {
+    if (!searchValue) {
+      this.filteredTimeZones = this.timeZones;
+      return;
+    }
 
-  // filterTimeZones(value: string): string[] {
-  //   const filterValue = value.toLowerCase();
-  //   return this.timeZones.filter(timeZone => timeZone.label.toLowerCase().includes(filterValue));
-  // }
-
-  // displayTimeZone(timeZone: any): string {
-  //   return timeZone ? timeZone.label : '';
-  // }
+    this.filteredTimeZones = this.timeZones.filter(timeZone =>
+      timeZone.label.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }
 
   togglePasswordVisibility() {
     this.hidePassword = !this.hidePassword;

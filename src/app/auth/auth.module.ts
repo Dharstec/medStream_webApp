@@ -11,6 +11,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EmailVerifyComponent } from './sign-up/email-verify/email-verify.component';
 import { SignUpOtpComponent } from './sign-up/sign-up-otp/sign-up-otp.component';
+
+
 const routes: Routes = [
   {
   path: '',
@@ -37,6 +39,7 @@ const routes: Routes = [
     SignUpComponent,
     EmailVerifyComponent,
     SignUpOtpComponent,
+    
   ],
   imports: [
     CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule
