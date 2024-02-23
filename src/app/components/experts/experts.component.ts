@@ -7,6 +7,7 @@ import { faInstagram, faLinkedin, faTwitter, faFacebook, faXTwitter } from '@for
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { MatCardModule } from '@angular/material/card';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-experts',
@@ -20,15 +21,19 @@ export class ExpertsComponent {
   linkedIn = faLinkedin;
 
   // experts: any;
-  institute: any;
+  // institute: any;
   // experts: any[];
-  // institutes: any[] = [];
+  instituteList: any= [];
+  institutes = new FormControl();
+  
   operators: any;
+  filterdOperators: any;
   id: any;
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // this.operators= this.route.snapshot.paramMap.get('id')
+    this.getInstituteList()
     this.getOperatorsList()
     // console.log("--",this.operators)
   }
@@ -65,16 +70,32 @@ export class ExpertsComponent {
   //     this.operators = data.data;
   //   })
   // }
+  getInstituteList() {
+    this.api.apiGetCall('institute').subscribe((data) => {
+      this.instituteList = data.data;
+    })
+  }
   getOperatorsList() {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
-      console.log(this.operators)
-      console.log(this.operators.social_media_link.insta)
+      this.filterdOperators = data.data;
+      // console.log(this.operators)
+      // console.log(this.operators.social_media_link.insta)
       // this.getInstitute()
     })
   }
-  // getInstitute() {
-  //   const institute = this.operators.institution
-  //   console.log(institute)
-  // }
+
+  applyTypeFilter() {
+    console.log("12333",this.institutes?.value)
+    if (this.institutes?.value) {
+      this.filterdOperators= this.operators.filter(item => {
+        if (this.institutes?.value?.length && !this.institutes?.value?.includes(item.institution._id)) {
+          return false;
+        }
+        return true;
+      });
+    } else {
+      this.filterdOperators = this.operators
+    }
+  }
 }

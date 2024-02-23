@@ -1,7 +1,45 @@
 <!-- <div class="mainContainer" style="    display: flex;justify-content: center;width: 100%;height: 100%;">
     <div class="container">
         <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
-            <mat-card style="color: #FFFFFF;" *ngFor="let ops of operators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)">
+            <mat-card style="color: #FFFFFF;" *ngFor="let exps of experts;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)">
+                <img mat-card-image [src]="exps.image" class="image">
+             <div class="contBox">
+                <mat-card-title>{{exps.name}}</mat-card-title>
+                <mat-card-subtitle>
+                    {{exps.designation}}
+                </mat-card-subtitle>
+                <mat-card-subtitle>
+                    {{exps.institution}}
+                </mat-card-subtitle>
+                <mat-card-subtitle *ngIf="institutes[i]">{{institutes[i].name}}</mat-card-subtitle>
+                <mat-card-content class="text-wrap-example">
+                    {{exps.introduction}}
+                </mat-card-content>
+             </div>
+             <div class="icons">
+                <fa-icon [icon]="fb" class="icon"></fa-icon>
+                <fa-icon [icon]="x" class="icon"></fa-icon>
+                <fa-icon [icon]="insta" class="icon"></fa-icon>
+                <fa-icon [icon]="li" class="icon"></fa-icon>
+             </div>
+            </mat-card>
+          </div>
+    </div>
+</div> -->
+
+
+<div class="mainContainer" style="    display: flex;justify-content: center;width: 100%;height: 100%;">
+    <div class="container">
+        <div class="">
+            <div class="section-b col-4 mb-5 filter_drp">
+                <mat-select placeholder="Choose Institute" [formControl]="institutes" multiple (selectionChange)="applyTypeFilter()">
+                    <mat-option *ngFor="let row of instituteList" [value]="row._id">{{row.name}}</mat-option>
+                  </mat-select>
+            </div>
+            <div class="col-6"></div>
+        </div>
+        <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
+            <mat-card style="color: #FFFFFF;" *ngFor="let ops of filterdOperators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)">
                 <img mat-card-image [src]="ops.avatar" class="image">
              <div class="contBox">
                 <mat-card-title>{{ops.name}} </mat-card-title><i>{{ops.designation}}</i>

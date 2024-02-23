@@ -12,7 +12,7 @@ import { SidenavComponent } from './navbar/sidenav/sidenav.component';
 import { SplashScreenModule } from './splash-screen/splash-screen.module';
 import { DatePipe } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './services/core/auth.guard';
 import { ErrorInterceptor } from './services/core/error-interceptor';
 import { JwtInterceptor } from './services/core/jwt-interceptor';
@@ -38,6 +38,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
    SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule,
+   ReactiveFormsModule,
    AngularFireModule.initializeApp(environment.firebaseConfig),
    AngularFireAuthModule,
    AngularFireStorageModule,

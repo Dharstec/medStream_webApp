@@ -25,6 +25,7 @@
   .desc_container{
     background: #2E2E2E;padding: 12px;color: #fff;
     border-radius: 12px;
+    margin: 0 12px;
   }
 
   .des_text{
@@ -43,4 +44,25 @@
     color: #FFFFFF80;
     font-weight: 600;
     font-size: 14px;
+  }
+
+  @media (max-width: 650px)  {
+    .case_title{
+      font-size: 12px !important;
+    }
+    .carousel-inner{
+      display: block !important;
+      .responsive{
+        width:100%;
+      }
+      .responsive_txt{
+        width: 100%;
+        
+      }
+      .ml-3{
+        margin-left: 0px !important;
+      }
+    }
+   
+   
   }

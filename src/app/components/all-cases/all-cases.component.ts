@@ -39,7 +39,10 @@ export class AllCasesComponent {
     this.util.getObservable().subscribe((res) => {
       if (res.globalSearch && res.globalSearch) {
         let searchValue = res.globalSearch.toLowerCase()
-        this.allCases = searchValue != 'null' ? this.filteredData.filter(e => e.title.trim().toLowerCase().includes(searchValue)) : this.filteredData
+        this.allCases = searchValue != 'null' ? this.filteredData.filter(e => e.title.trim().toLowerCase().includes(searchValue)
+         || e.institution.name.trim().toLowerCase().includes(searchValue))
+        //  || e.operator_id.some(x=>x.name.trim().toLowerCase().includes(searchValue)))
+        : this.filteredData
       }
     })
     await this.getAllfilter();

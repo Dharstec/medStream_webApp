@@ -60,7 +60,7 @@ export class SingleCaseComponent implements OnInit {
     })
   }
   getRecommendCase(category,subCategory): void {
-    let url = `recommendcase?category=${category}?subCategory=${subCategory}`
+    let url = `recommendcase?category=${category}&subCategory=${subCategory}`
     this.api.apiGetCall(url).subscribe((data) => {
       this.recommendList = data.data;
     })

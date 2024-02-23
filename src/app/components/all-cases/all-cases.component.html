@@ -107,7 +107,7 @@
             ;font-weight: 600;">{{video.weekNo}}{{video.weekNo==1?'st':video.weekNo==2?'nd':video.weekNo==3?'rd':'th'}}
               {{'Week of'}} {{ video.month | titlecase }},{{ video.year}}</p>
         </div>
-        <div class="red_txt" *ngIf="allCases.length==0">
+        <div class="red_txt" *ngIf=" allCases && allCases.length==0">
           No data found.
         </div>
       </div>
