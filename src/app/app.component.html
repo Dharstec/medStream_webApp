@@ -2,6 +2,7 @@
 <ng-container *ngIf="!hide">
     <app-sidenav *ngIf="show"></app-sidenav>
     <!-- <app-headers *ngIf="show" [screenWidth]="screenWidth"></app-headers> -->
-    <app-body [screenWidth]="screenWidth"></app-body>
-    <app-footer></app-footer>
+    <app-body [screenWidth]="screenWidth">
+    </app-body>
+    <app-footer *ngIf="!hideFooter"></app-footer> 
 </ng-container>

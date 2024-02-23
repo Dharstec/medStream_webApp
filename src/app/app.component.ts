@@ -1,7 +1,8 @@
 import { Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 import { SplashScreenService } from './splash-screen/splash-screen.service';
-import { NavigationStart, Router } from '@angular/router';
+import { NavigationStart, Router,NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 interface SideNavToggle {
   screenWidth: number,
   collapsed: boolean
@@ -17,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
   isSideNavCollapsed = false;
   hide = true;
   show: boolean;
+  hideFooter:boolean= false;
   isToken: boolean;
   constructor(private splashScreenService: SplashScreenService, private router: Router) {
     router.events.forEach((event) => {
@@ -35,6 +37,20 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
   ngOnInit(): void {
+
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe((event: NavigationEnd) => {
+      // Check if the current route is within the auth module
+      if (event.url.includes('/auth')) {
+        // Hide footer if the route is within the auth module
+        this.hideFooter = true;
+      } else {
+        // Show footer for non-auth routes
+        this.hideFooter = false;
+      }
+    });
     setTimeout(() => {
       this.hide = false;
     }, 3000);
@@ -50,6 +66,8 @@ export class AppComponent implements OnInit, OnDestroy {
     if (token) {
 
     }
+
+    
   }
   onTogglesideNav(data: SideNavToggle): void {
     this.screenWidth = data.screenWidth;
