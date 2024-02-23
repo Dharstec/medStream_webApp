@@ -81,3 +81,18 @@ mat-card-content{
 .icon{
     cursor: pointer;
 }
+
+@media screen and (max-width:425px) {
+    .container{
+        width: 95vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .expsCard{
+        width: 100%;
+    }
+    .image{
+        width: 100%;
+    }
+}
