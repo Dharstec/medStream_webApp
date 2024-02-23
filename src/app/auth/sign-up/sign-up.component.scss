@@ -1,7 +1,7 @@
 .background {
     background-color: #0000;
     background-size: cover;
-    // height: 100vh;
+    height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,7 +21,7 @@ mat-label .required {
     margin-top: 5vh;
     background: rgb(118 108 108 / 20%);
     width: 30%;
-    height: 85vh;
+    height: 120vh;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -240,11 +240,11 @@ mat-label {
 }
 @media screen and (min-width:770px) and (max-width:1024px) {
     .background{
-        height: 110vh;
+        height: 120vh;
     }
     .glassy-form-container {
         width: 40%;
-        height: 100vh;
+        height: 120vh;
         top: 0;
     }
     .section-b {   

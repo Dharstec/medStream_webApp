@@ -1,7 +1,7 @@
 .background {
     background-color: #0000;
     background-size: cover;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,8 +15,8 @@ mat-label .required {
     background: rgb(118 108 108 / 20%);
     top: 50px;
     position: relative;
-    width: 30%;
-    height: 70vh;
+    width: 40%;
+    height: 100vh;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -148,11 +148,11 @@ mat-label {
 
 @media screen and (max-width:426px)  {
     .background{
-        height: 120vh;
+        height: 140vh;
     }
     .glassy-form-container {
         width: 90%;
-        height: 85vh;
+        height: 100vh;
         top: 0;
         padding: 5px;
     }
@@ -193,11 +193,11 @@ mat-label {
 
 @media screen and (min-width:427px) and (max-width:769px)  {
     .background{
-        height: 120vh;
+        height: 130vh;
     }
     .glassy-form-container {
         width: 70%;
-        height: 90vh;
+        height: 100vh;
         top: 0;
     }
     .section-b {   
@@ -224,14 +224,17 @@ mat-label {
     mat-label {
         font-size: 16px;
     }
+    .password-toggle-button {
+        right: 10px;
+    }
 }
 @media screen and (min-width:770px) and (max-width:1024px) {
     .background{
-        height: 100vh;
+        height: 130vh;
     }
     .glassy-form-container {
         width: 40%;
-        height: 70vh;
+        height: 90vh;
         top: 0;
     }
     .section-b {   
@@ -257,5 +260,8 @@ mat-label {
     }
     mat-label {
         font-size: 18px;
+    }
+    .password-toggle-button {
+        right: 10px;
     }
 }

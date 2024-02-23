@@ -96,7 +96,7 @@ mat-label {
 
 }
 .resend-btn{
-    background-color: #FF4E45;
+    background-color: #FF4E45 !important;
 }
 
 @for $i from 1 through 80 {
@@ -204,8 +204,8 @@ mat-label {
         height: 80vh;
     }
     .glassy-form-container {
-        width: 40%;
-        height: 50vh;
+        width: 50%;
+        height: 65vh;
         top: 0;
     }
     .section-b {   
