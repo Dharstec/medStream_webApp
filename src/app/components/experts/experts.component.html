@@ -31,7 +31,7 @@
 <div class="mainContainer" style="    display: flex;justify-content: center;width: 100%;height: 100%;">
     <div class="container">
         <div class="">
-            <div class="section-b col-4 mb-5 filter_drp">
+            <div class="section-b col-4 mb-5 filter_drp full-width">
                 <mat-select placeholder="Choose Institute" [formControl]="institutes" multiple (selectionChange)="applyTypeFilter()">
                     <mat-option *ngFor="let row of instituteList" [value]="row._id">{{row.name}}</mat-option>
                   </mat-select>

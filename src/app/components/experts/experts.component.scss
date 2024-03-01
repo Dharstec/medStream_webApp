@@ -90,15 +90,23 @@ mat-card-content{
     cursor: pointer;
 }
 
-@media screen and (max-width:425px) {
+@media screen and (max-width:426px) {
     .container{
         width: 95vw;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+    }
+    .innercontainer{
         display: flex;
         justify-content: center;
         align-items: center;
     }
+    .full-width{
+        width: 100% !important;
+    }
     .expsCard{
-        width: 100%;
+        width: 100% ;
     }
     .image{
         width: 100%;

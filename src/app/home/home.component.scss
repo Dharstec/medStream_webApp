@@ -123,6 +123,7 @@
   height: 12px;
   border-radius: 50%;
   margin-right: 8px;
+  border: none;
 }
 .carousel_active{
   background-color: #FF4E45 !important;
@@ -335,6 +336,13 @@
 }
 
 @media (max-width: 650px)  {
+  .home_container{
+    // color: #fff !important;
+    padding: 18px 20px !important;
+    .top_video_widget{
+      margin-right: 0px !important;
+    }
+  }
   .case_title{
     font-size: 12px !important;
   }

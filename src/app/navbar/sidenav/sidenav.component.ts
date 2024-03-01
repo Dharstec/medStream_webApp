@@ -30,6 +30,7 @@ export class SidenavComponent implements OnInit {
   searchFilter: any;
   userdata:any
   loggedIn:any=false
+  hamburg:boolean=false
   constructor(
     private authService: AuthService,
     private util:UtilService,

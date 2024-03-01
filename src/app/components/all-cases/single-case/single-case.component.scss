@@ -1,5 +1,6 @@
 .grid-container {
     display: grid;
+    padding: 12px;
     grid-template-columns: 6fr 2fr; 
     height: 100vh; /* Full viewport height */
     background-color: #141414;
@@ -117,5 +118,15 @@
               text-decoration: none;
           }
       }
+  }
+}
+
+@media (max-width: 768px)  {
+  .grid-container {
+    display: block;
+    // grid-template-columns: -1fr 6fr !important; /* Two columns: 1 small and 2 big */
+  }
+  .full-width{
+    width: 100% !important;
   }
 }
