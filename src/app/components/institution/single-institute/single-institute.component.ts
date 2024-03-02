@@ -110,8 +110,4 @@ export class SingleInstituteComponent {
     if (this.infoWindow != undefined) this.infoWindow.open(marker);
   }
 
-
-
-
-
 }
