@@ -9,11 +9,20 @@
             <input class="input" type="text" name="otp" matInput formControlName="otp" maxlength="6" pattern="[0-9]*" required>
             <mat-error style="color: antiquewhite !important;">{{ getOtpErrorMessage() }}</mat-error>
           </div>
-          <div class="disflex">
+          <!-- <div class="disflex">
             <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()" [disabled]="!resendEnabled">{{ resendButtonText }}</button>
-          </div>
+          </div> -->
           <div class="disflex">
-            <button class="disBut" mat-flat-button color="danger" routerLink="/auth/signUp"
+            <ng-container *ngIf="countdownSeconds > 0; else showButton">
+              <div class="resend-text" style="color: #fff;">Resend OTP in {{ countdownSeconds }} seconds</div>
+            </ng-container>
+            <ng-template #showButton>
+              <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()">{{ resendButtonText }}</button>
+            </ng-template>
+          </div>
+          
+          <div class="disflex">
+            <button class="disBut" mat-flat-button color="primary" routerLink="/auth/signUp"
             type="submit">{{'Back' |
             uppercase}}</button>
             <button [disabled]="form.invalid" class="disBut ml-3" mat-flat-button color="primary" type="submit">{{'Check OTP' | uppercase}}</button>

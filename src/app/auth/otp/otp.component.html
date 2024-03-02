@@ -10,7 +10,14 @@
           <mat-error style="color: antiquewhite !important;">{{ getOtpErrorMessage() }}</mat-error>
         </div>
         <div class="disflex">
-          <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()" [disabled]="!resendEnabled">{{ resendButtonText }}</button>
+          <!-- <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()" [disabled]="!resendEnabled">{{ resendButtonText }}</button> -->
+          <!-- <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()">Resend OTP</button> -->
+          <ng-container *ngIf="countdownSeconds > 0; else showButton">
+            <div class="resend-text" style="color: #fff;">Resend OTP in {{ countdownSeconds }} seconds</div>
+          </ng-container>
+          <ng-template #showButton>
+            <button class="resend-btn" mat-flat-button color="primary" (click)="resendOTP()">{{ resendButtonText }}</button>
+          </ng-template>
         </div>
         <div class="disflex">
           <button [disabled]="form.invalid" class="disBut" mat-flat-button color="primary" type="submit">{{'Check OTP' | uppercase}}</button>

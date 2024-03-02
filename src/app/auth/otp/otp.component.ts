@@ -10,14 +10,15 @@ import { SnackbarComponent } from 'src/app/shared-module/snackbar/snackbar.compo
   templateUrl: './otp.component.html',
   styleUrls: ['./otp.component.scss']
 })
-export class OtpComponent implements OnInit, OnDestroy {
+export class OtpComponent implements OnInit,OnDestroy {
 
   form: FormGroup;
-  resendEnabled = true;
-  resendButtonText = 'Resend OTP';
+  // resendButtonText = 'Resend OTP';
+  countdownSeconds = 0;
   countdownTimer: any;
-  countdownSeconds = 60;
-  submitted = false;
+  resendButtonText = 'Resend OTP';
+  showCounter = true; 
+
 
   constructor(
     private fb: FormBuilder,
@@ -30,42 +31,24 @@ export class OtpComponent implements OnInit, OnDestroy {
     this.form = this.fb.group({
       otp: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]]
     });
-
     this.startCountdown();
   }
-
   ngOnDestroy(): void {
     clearInterval(this.countdownTimer);
   }
-
   startCountdown(): void {
+    this.countdownSeconds = 60; // Initialize countdown to 60 seconds
     this.countdownTimer = setInterval(() => {
       if (this.countdownSeconds > 0) {
         this.countdownSeconds--;
-        this.updateResendButtonText();
       } else {
-        this.stopCountdown();
+        clearInterval(this.countdownTimer);
+        this.showCounter = false; // Hide counter
       }
     }, 1000);
   }
 
-  stopCountdown(): void {
-    clearInterval(this.countdownTimer);
-    this.resendEnabled = true;
-    this.updateResendButtonText();
-  }
-
-  updateResendButtonText(): void {
-    if (this.countdownSeconds === 0) {
-      this.resendButtonText = 'Resend OTP';
-    } else {
-      this.resendButtonText = `Resend OTP in ${this.countdownSeconds} seconds`;
-    }
-  }
-
   resendOTP(): void {
-    this.resendEnabled = false; // Disable resend button until countdown ends
-
     // Add logic to resend OTP
     const email = localStorage.getItem('forgotPasswordEmail');
     const flag = localStorage.getItem('forgotPasswordFlag');
@@ -73,20 +56,17 @@ export class OtpComponent implements OnInit, OnDestroy {
     // Call API to resend OTP
     this.api.apiPostCall({ email, flag }, 'sendOTP').subscribe(
       () => {
-        // this.snackbar.open('OTP sent successfully.', 'Close', { duration: 3000 });
         this.snackbar.openFromComponent(SnackbarComponent, {
           data: 'OTP sent successfully.',
         })
-        this.countdownSeconds = 60; // Reset countdown timer
         this.startCountdown(); // Restart countdown
+        this.showCounter = true; // Show counter again
       },
       error => {
         console.error(error);
-        // this.snackbar.open('Failed to resend OTP. Please try again later.', 'Close', { duration: 3000 });
         this.snackbar.openFromComponent(SnackbarComponent, {
           data: 'Failed to resend OTP. Please try again later.',
         })
-        this.resendEnabled = true; // Re-enable resend button on error
       }
     );
   }
@@ -102,9 +82,8 @@ export class OtpComponent implements OnInit, OnDestroy {
     }
     return '';
   }
-  onSubmit() {
-    this.submitted = true;
 
+  onSubmit() {
     if (this.form.invalid) {
       return;
     } else {
@@ -121,25 +100,16 @@ export class OtpComponent implements OnInit, OnDestroy {
       this.api.apiPostCall(payload, 'verifyUserOtp').subscribe(data => {
         if (data && data.message && data.message.includes('success')) {
           this.router.navigate(['/auth/resetPassword']);
-          // this.snackbar.open(data.message, 'Close', {
-          //   duration: 3000
-          // });
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: data.message,
           })
         } else {
-          // this.snackbar.open(data.message, 'Close', {
-          //   duration: 3000
-          // });
           this.snackbar.openFromComponent(SnackbarComponent, {
             data: data.message,
           })
         }
       }, error => {
         console.error(error);
-        // this.snackbar.open('Error verifying OTP. Please try again later.', 'Close', {
-        //   duration: 3000
-        // }
         this.snackbar.openFromComponent(SnackbarComponent, {
           data: 'Error verifying OTP. Please try again later.',
         })
