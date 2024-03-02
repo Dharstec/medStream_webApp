@@ -1,6 +1,11 @@
 <div class="grid-container">
     <div class="small-column">
-      <div class="sticky_sideNav">
+      <div class="d-flex red_txt hide_filter" style="justify-content: center;" id="filter_icon" (click)="filterHide()">
+        Filter
+        <mat-icon class="ml-2">filter_list</mat-icon>
+      </div>
+     
+      <div class="sticky_sideNav" style="display: none;" id="filter_nav">
         <div class="clear_filter" (click)="clearFilter()">Clear All Filter</div>
         <div>
           <mat-expansion-panel>
@@ -111,12 +116,12 @@
           No videos to show.
         </div>
       </div>
-      <div class="footerCont">
-        <div class="footerInner">
-            <p>© 2024, Medstream360, All Rights Reserved</p>
-            <p>Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
-        </div>
-    </div>
     </div>
   </div>
+  <div class="footerCont">
+    <div class="footerInner">
+        <p>© 2024, Medstream360, All Rights Reserved</p>
+        <p>Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+    </div>
+</div>
 

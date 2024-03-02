@@ -224,4 +224,14 @@ export class AllCasesComponent {
     this.router.navigate(['/user/all-cases/single-case' ,caseId ],{ queryParams: { showComment: 'true' } });
 
   }
+
+  filterHide(){
+    let filter = document.getElementById('filter_nav')
+    if(filter.style.display==='block'){
+      filter.style.display='none'
+    }else{
+      filter.style.display='block'
+      // filter.style.height='block'
+    }
+  }
 }
