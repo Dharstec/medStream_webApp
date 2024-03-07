@@ -2,7 +2,7 @@
   <nav class="navbar col-12" style="position: fixed;
   width: 100%;
   z-index: 1000;">
-    <div class="logo"><img src="assets/medstream.svg" style="width: 12rem;" /></div>
+    <div routerLink="" (click)="refreshPage()" class="logo cursor-pointer"><img src="assets/medstream.svg" style="width: 12rem;" /></div>
 
     <ul class="nav-links">
 
@@ -40,16 +40,16 @@
       <div class="normal-search">
         <input type="text" class="search" (keyup)="globalSearch($event)" [(ngModel)]="searchFilter" name="" id=""
           placeholder="Search..">
-        <mat-icon class="search-icon">search</mat-icon>
+        <mat-icon class="search-icon cursor-pointer">search</mat-icon>
       </div>
     </div>
 
     <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
       <mat-icon style="cursor: pointer;">person</mat-icon>
       <mat-menu #menu="matMenu">
-        <div class="matMenu">
+        <div class="matMenu" style="cursor: default;">
           <div class="user-info disFlex">
-            <mat-icon>person</mat-icon><span>{{ userdata.name }}</span>
+            <mat-icon >person</mat-icon><span>{{ userdata.name }}</span>
           </div>
           <div class="user-info disFlex">
             <mat-icon>schedule</mat-icon><span>{{ userdata.region }}</span>
@@ -59,7 +59,7 @@
             <mat-icon>email</mat-icon><span>{{userdata.email}}</span>
           </div>
 
-          <div class="disFlex" (click)="logout()">
+          <div class="disFlex cursor-pointer" (click)="logout()">
             <mat-icon>logout</mat-icon><span>Logout</span>
           </div>
         </div>

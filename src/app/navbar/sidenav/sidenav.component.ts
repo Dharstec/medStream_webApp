@@ -92,6 +92,13 @@ export class SidenavComponent implements OnInit {
   isAllCasesRoute(): boolean {
     return this.router.url === '/user/all-cases';
   }
+  refreshPage() {
+    // Navigating to the home page
+    this.router.navigate(['/user/landing']).then(() => {
+      // Refreshing the page
+      window.location.reload();
+    });
+  }
   
 }
 

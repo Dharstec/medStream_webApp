@@ -121,6 +121,10 @@
   }
 }
 
+.cur_pointer{
+  cursor: pointer;
+}
+
 @media (max-width: 768px)  {
   .grid-container {
     display: block;
