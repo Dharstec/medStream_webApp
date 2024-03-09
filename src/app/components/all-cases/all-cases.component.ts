@@ -212,6 +212,7 @@ export class AllCasesComponent {
     this.categoryList.map(e => e['active'] = false)
     this.allSubCategoryList.map(e => e['active'] = false)
     this.institutionsFilterList.map(e => e['active'] = false)
+    // this.caseOfTheWeek.map(e => e['active'] = false)
     // this.operatorFilterList.map(e => e['active'] = false)
     this.startDate = ''
     this.endDate = ''

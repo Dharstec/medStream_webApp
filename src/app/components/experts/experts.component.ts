@@ -8,6 +8,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import { MatCardModule } from '@angular/material/card';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
+import { startWith, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-experts',
@@ -25,6 +26,9 @@ export class ExpertsComponent {
   // experts: any[];
   instituteList: any= [];
   institutes = new FormControl();
+  // instituteFilterControl = new FormControl();
+  filteredInstituteList: any[];
+  instituteSearchControl = new FormControl();
   
   operators: any;
   filterdOperators: any;
@@ -70,11 +74,22 @@ export class ExpertsComponent {
   //     this.operators = data.data;
   //   })
   // }
+
+  // ---------
   getInstituteList() {
     this.api.apiGetCall('institute').subscribe((data) => {
       this.instituteList = data.data;
     })
+    this.filteredInstituteList = this.instituteList;
   }
+
+
+  filterInstitutes(value: string): void {
+    const filterValue = value.toLowerCase();
+    this.instituteList = this.instituteList.filter(institute => institute.name.toLowerCase().includes(filterValue));
+  }
+
+  // ---------
   getOperatorsList() {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
@@ -83,6 +98,12 @@ export class ExpertsComponent {
       // console.log(this.operators.social_media_link.insta)
       // this.getInstitute()
     })
+    // this.instituteFilterControl.valueChanges.pipe(
+    //   startWith(''),
+    //   map(value => this.filterInstitutes(value))
+    // ).subscribe(filteredInstitutes => {
+    //   this.filteredInstituteList = filteredInstitutes;
+    // });
   }
 
   applyTypeFilter() {
@@ -98,4 +119,14 @@ export class ExpertsComponent {
       this.filterdOperators = this.operators
     }
   }
+  // onInstituteSearch(value: string) {
+  //   if (value !== '') {
+  //     const filter = value.toLowerCase();
+  //     this.filteredInstituteList = this.instituteList.filter(institute =>
+  //       institute.name.toLowerCase().includes(filter)
+  //     );
+  //   } else {
+  //     this.filteredInstituteList = this.instituteList; // Show all institutes if search box is empty
+  //   }
+  // }
 }
