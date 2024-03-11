@@ -8,6 +8,9 @@ import { DisqusModule } from 'ngx-disqus';
 import { SingleCaseComponent } from './single-case/single-case.component';
 import { ChatComponent } from 'src/app/chat/chat.component';
 import { RelativeTimePipe } from 'src/app/chat/relative-time.pipe';
+import { CommentsComponent } from '../../comments/comments.component';
+import { CommentFormComponent } from '../../comments/comment-form/comment-form.component';
+import { CommentActionComponent } from '../../comments/comment-action/comment-action.component';
 const routes: Routes = [
   {
     path: '',
@@ -34,6 +37,9 @@ const routes: Routes = [
     SingleCaseComponent,
     ChatComponent,
     RelativeTimePipe,
+    CommentsComponent,
+    CommentFormComponent,
+    CommentActionComponent,
   ],
   imports: [
     CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,

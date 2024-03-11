@@ -18,6 +18,15 @@
     padding-right: 12px;
     // padding: 20px 0px 20px 0px;
   }
+
+  .inst_title_shr{
+    display: flex;
+    align-items: center;
+    .inst_tlt{
+      display: flex;
+      align-items: center;
+    }
+  }
   
   .recommend-cards{
     cursor: pointer !important;
@@ -128,5 +137,14 @@
   }
   .full-width{
     width: 100% !important;
+  }
+}
+
+@media (max-width: 426px)  {
+  .inst_title_shr{
+    display: block;
+  }
+  .share_btn{
+    margin-left: 0px !important;
   }
 }

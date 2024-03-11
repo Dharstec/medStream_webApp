@@ -20,7 +20,11 @@
   <div class="home_container">
   <div class="get_started">
     <div class="">
-      <img class="col-12 cur_pointer" routerLink='/user/schedule' src="../../assets/Hero Page.svg" alt="">
+      <img class="col-12 cur_pointer" routerLink='/user/schedule' 
+      src="../../assets/Hero Page.svg"
+       alt="">
+       <!-- src="../../assets/Hero Page.svg"
+        src=  "https://s3.ap-south-1.amazonaws.com/medstreamallimages/Frame 19.svg" -->
       <div class="getStartedCont">
         <button routerLink='/user/schedule' class="getStarted">GET STARTED</button>
       </div>
@@ -73,7 +77,7 @@
           <ng-container *ngFor="let case of topVideosList;let i=index">
             <div [ngClass]="i%2==0 ? 'grid_style' : 'grid_border_none'">
               <div>
-                <div class="flex_align mr-2 cur_pointer" (click)="enrouteCase(case,'case')">
+                <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;" (click)="enrouteCase(case,'case')">
                   <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
                   <div class="ml-3">
                     <p class="case_title">{{ case.title }}</p>

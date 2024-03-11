@@ -1,0 +1,46 @@
+<div class="comments">
+    <h3 class="comments-title">Comments</h3>
+    <ng-container *ngIf="userId==null">
+        Only registered users can leave comments. Please <a  routerLink="/auth/signUp" class="comment_login">log in.</a>
+    </ng-container>
+    <ng-container *ngIf="userId!=null">
+        <div class="comment-form-title">Write comment</div>
+        <app-comment-form
+          submitLabel="Post Comment"
+          (handleSubmit)="addComment($event,null,'post')"
+        >
+        </app-comment-form>
+        <!-- <div class="comment-actions">
+          <span *ngIf="getRootComments().length"
+          class="comment-action view_Comment"
+           (click)="canViewComment=!canViewComment">
+           {{canViewComment ? 'Hide all comments' :'View all comments'}}
+          </span>
+        </div>
+      
+        <span *ngIf="getRootComments().length"
+        class="comment-actions comment_1">
+        To be the first comment.
+        </span> -->
+        <ng-container *ngIf="!canViewComment">
+          <div class="comments-container">
+            <app-comment-action
+              *ngFor="let rootComment of getRootComments()"
+              [comment]="rootComment"
+              [replies]="getReplies(rootComment.id)"
+              [activeComment]="activeComment"
+              (setActiveComment)="setActiveComment($event)"
+              (updateComment)="updateComment($event)"
+              (addComment)="addComment($event)"
+              (deleteComment)="deleteComment($event)"
+              [currentCaseId]="currentCaseId"
+            >
+            <!-- (updateComment)="updateComment($event)" -->
+            </app-comment-action>
+          </div>
+        </ng-container>
+      
+    </ng-container>
+  
+   
+  </div>
