@@ -1,0 +1,77 @@
+<div class="comment">
+    <div class="comment-image-container">
+      <!-- <img src="/assets/user-icon.png" /> -->
+      <mat-icon class="icon">account_circle</mat-icon>
+    </div>
+    <div class="comment-right-part">
+      <div class="comment-content">
+        <div class="comment-author">{{ comment.username }}</div>
+        <div>{{ createdAt }}</div>
+      </div>
+      <div class="comment-text">{{ comment.body }}</div>
+      <div class="comment-actions">
+        <div
+        class="comment-action" [ngClass]="likeStyles!=null && likeStyles ? '' : 'like_thumb'"
+        (click)="updateLike(true,'like');"
+      >
+      <mat-icon>thumb_up</mat-icon>
+      <span *ngIf="this.comment['likeCount']!=0">{{this.comment['likeCount']}}</span>
+      </div>
+      <div
+        class="comment-action" [ngClass]="likeStyles!=null && !likeStyles ? '' : 'like_thumb'"
+        (click)="updateLike(false,'dislike');"
+      >
+      <mat-icon>thumb_down</mat-icon>
+      <span *ngIf="this.comment['dislikeCount']!=0">{{this.comment['dislikeCount']}}</span>
+      </div>
+        <div
+          *ngIf="canReply"
+          class="comment-action"
+          (click)="
+            setActiveComment.emit({
+              id: comment.id,
+              type: activeCommentType.replying
+            })
+          "
+        >
+          Reply
+        </div>
+        <div
+        *ngIf="replies.length > 0"
+          class="comment-action"
+          (click)="canViewReply=!canViewReply"
+        >
+          {{canViewReply ? 'Hide Reply' :'View Reply'}}
+        </div>
+        <div
+          *ngIf="canDelete"
+          class="comment-action"
+          (click)="deleteComment.emit(comment.id)"
+        >
+          Delete
+        </div>
+      </div>
+      <app-comment-form
+        *ngIf="isReplying()"
+        submitLabel="Reply"
+        [hasCancelButton]="true"
+        (handleSubmit)="addComment.emit({ text: $event, parentId: replyId })"
+        (handleCancel)="setActiveComment.emit(null)"
+      ></app-comment-form>
+      <div class="replies" *ngIf="replies.length > 0 && canViewReply">
+        <app-comment-action
+          *ngFor="let reply of replies"
+          [comment]="reply"
+          (setActiveComment)="setActiveComment.emit($event)"
+          [activeComment]="activeComment"
+          (updateComment)="updateComment.emit($event)"
+          (deleteComment)="deleteComment.emit($event)"
+          (addComment)="addComment.emit($event)"
+          [parentId]="comment.id"
+          [replies]="[]"
+          [currentCaseId]="currentCaseId"
+        ></app-comment-action>
+        <!-- (updateComment)="updateComment.emit($event)" -->
+      </div>
+    </div>
+  </div>
