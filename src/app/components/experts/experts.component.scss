@@ -28,22 +28,28 @@
     // background-color: aquamarine;
     width: 85vw;
 }
+.mr-0{
+    margin-right: 40px !important;
+}
 .innercontainer{
     width: 100%;
     display: flex !important;
     justify-content: space-around;
+    cursor: default;
 }
 .expsCard{
     max-width: 310px;
-    height: 474px;
+    // height: 474px;
+    height: 400px;
     background-color: #2E2E2E;
     margin-bottom: 40px;
     display: grid;
     grid-template-rows: 1fr 1fr 0.2fr;
 }
 .filter_drp{
+    background-color: #2E2E2E;
     color: white;
-    border: 1px solid;
+    // border: 1px solid;
     border-radius: 8px;
     padding: 6px;
     float: right;
@@ -97,10 +103,14 @@ mat-card-content{
         // justify-content: center;
         // align-items: center;
     }
+    .mr-0{
+        margin-right: 0px !important;
+    }
     .innercontainer{
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: default;
     }
     .full-width{
         width: 100% !important;

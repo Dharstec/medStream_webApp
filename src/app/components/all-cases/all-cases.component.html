@@ -110,7 +110,7 @@
           <p class="case_title">{{ video.title }}</p>
             <p style="color: #FFFFFF80;
             ;font-weight: 600;">{{video.weekNo}}{{video.weekNo==1?'st':video.weekNo==2?'nd':video.weekNo==3?'rd':'th'}}
-              {{'Week of'}} {{ video.month | titlecase }},{{ video.year}}</p>
+              {{'Week of'}} {{ video.month | titlecase }}, {{ video.year}}</p>
         </div>
         <div class="red_txt" *ngIf=" allCases && allCases.length==0">
           No videos to show.
@@ -120,8 +120,8 @@
   </div>
   <div class="footerCont">
     <div class="footerInner">
-        <p>© 2024, Medstream360, All Rights Reserved</p>
-        <p>Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+        <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
+        <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
     </div>
 </div>
 

@@ -11,7 +11,7 @@
 <div class="home_container">
     <div class="widget_accordion">
         <div class="widget_header">
-          <h5 class="mr-auto">Institution Details</h5>
+          <h5 class="mr-auto cursor-normal">Institution Details</h5>
         </div>
         <div *ngIf="allInstitutionList.length==0 &&showMap">
           <label class="flex_align">No institution found</label>
@@ -44,7 +44,7 @@
                     </ng-container>
                 </google-map>
               </ng-conatiner>
-            <div class="col-12 ml-3 institution-details"> 
+            <div class="col-12 ml-3 institution-details  cursor-normal"> 
               <img class="mb-2 col-6 instImg" src="{{ allInstitutionList.image}}" alt="slide">
               <div class="widget_header mt-3">
                 <h5 class="red_text">{{allInstitutionList.name}}</h5>
@@ -63,6 +63,12 @@
         </div>
       </div>
     
+</div>
+<div class="footerCont">
+  <div class="footerInner">
+      <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
+      <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+  </div>
 </div>
 
 <!-- <div class="footerCont">

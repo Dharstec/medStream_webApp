@@ -31,11 +31,11 @@
 
   <div class="widget_accordion">
     <div class="widget_header">
-      <h5 class="mr-auto">UPCOMING VIDEOS</h5>
+      <h5 class="mr-auto cursor-normal">UPCOMING VIDEOS</h5>
       <div class="red_text" routerLink='/user/schedule'>View Schedule</div>
     </div>
     <div *ngIf="scheduleVideo.length==0">
-      <label class="flex_align">No upcoming videos</label>
+      <label class="flex_align cursor-normal">No upcoming videos</label>
     </div>
     <div *ngIf="scheduleVideo.length!=0">
       <div class="col-12 schedule_flex" role="listbox">
@@ -43,10 +43,10 @@
           allowfullscreen></iframe>
         <div class="col-5 ml-3">
           <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" src="{{ scheduleVideo.thumbnail}}" alt="slide">
-          <p>{{scheduleVideo.title}}</p>
-          <p style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
+          <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')">{{scheduleVideo.title}}</p>
+          <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
             }}</p>
-          <div class="" style="display: flex;">
+          <div class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" style="display: flex;">
             <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
             <div class="ml-2" style="display: block;">
               <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo.institution ?
@@ -65,7 +65,7 @@
   <div class="videos_accordion">
     <div class="col-md-8 top_video_widget">
       <div class="widget_header">
-        <h5 class="">TOP VIDEOS</h5>
+        <h5 class="cursor-normal">TOP VIDEOS</h5>
       </div>
       <div *ngIf="topVideosList.length==0">
         <label class="flex_align">No data available.</label>
@@ -77,7 +77,7 @@
               <div>
                 <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;" (click)="enrouteCase(case,'case')">
                   <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
-                  <div class="ml-3">
+                  <div class="ml-3 caseDetails">
                     <p class="case_title">{{ case.title }}</p>
                     <p class="week_style">
                       {{case.weekNo}}{{case.weekNo==1?'st':case.weekNo==2?'nd':case.weekNo==3?'rd':'th'}}
@@ -95,7 +95,7 @@
     <div class="col-md-4">
       <div class="top_video_widget mb-3">
         <div class="widget_header">
-          <h5 class="mr-auto">LATEST VIDEOS</h5>
+          <h5 class="mr-auto cursor-normal">LATEST VIDEOS</h5>
           <div class="red_text" routerLink='/user/all-cases'>See all</div>
         </div>
 
@@ -106,7 +106,7 @@
               <ng-container *ngIf="currentIndex==i">
                 <div class="carousel-inner cur_pointer" role="listbox" (click)="enrouteCase(list,'case')">
                   <img class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
-                  <label class="mb-2">{{list.title}}</label>
+                  <label class="mb-2 cursor-pointer">{{list.title}}</label>
                 </div>
               </ng-container>
 
@@ -131,7 +131,7 @@
       </div>
       <div class="top_video_widget">
         <div class="widget_header">
-          <h5 class="mr-auto">CATEGORIES</h5>
+          <h5 class="mr-auto cursor-normal">CATEGORIES</h5>
           <div class="red_text" routerLink='/user/all-cases'>See all</div>
         </div>
         <ng-container *ngIf="categoryList.length">
@@ -150,17 +150,17 @@
     </div>
 
   </div>
-  <div class="ads">
+  <!-- <div class="ads">
     <div class="imgDiv">
       <img src="../../assets/Home_page_ads.svg" alt="">
     </div>
-  </div>
+  </div> -->
   <div class="widget_accordion">
     <app-home-carousel [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
   </div>
   <div class="widget_accordion">
     <div class="media_list">
-      <h6 class="mr-auto">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
+      <h6 class="mr-auto cursor-normal">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
       <a href="https://www.facebook.com/profile.php?id=100087182070692" target="_blank"><fa-icon [icon]="facebook"
           class="icon"></fa-icon></a>
       <a href="https://www.instagram.com/medstream360/" target="_blank"><fa-icon [icon]="instagram"
@@ -174,7 +174,7 @@
 </div>
 <div class="container">
   <div class="innercontainer">
-      <p>© 2024, Medstream360, All Rights Reserved</p>
-      <p>Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+      <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
+      <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
   </div>
 </div>
