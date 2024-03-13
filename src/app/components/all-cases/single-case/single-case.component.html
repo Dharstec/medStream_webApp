@@ -10,10 +10,10 @@
       <!-- <img [src]="current_case_dtls.thumbnail" style="width: 100%;" alt="Video Thumbnail"> -->
       <div class="ml-3 mt-3">
         <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ current_case_dtls ? current_case_dtls.title :'' }}</p>
-        <p *ngIf="!current_case_dtls.liveStatus" style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.weekNo}}{{current_case_dtls.weekNo==1?'st':current_case_dtls.weekNo==2?'nd':current_case_dtls.weekNo==3?'rd':'th'}}
+        <p *ngIf="current_case_dtls &&!current_case_dtls.liveStatus" style="color: #FFFFFF80;;font-weight: 600;">{{current_case_dtls.weekNo}}{{current_case_dtls.weekNo==1?'st':current_case_dtls.weekNo==2?'nd':current_case_dtls.weekNo==3?'rd':'th'}}
           {{'Week of'}} {{ current_case_dtls.month | titlecase }},{{ current_case_dtls.year}}
         </p>
-        <p *ngIf="current_case_dtls.liveStatus" style="color: #FFFFFF80;;font-weight: 600;">{{ current_case_dtls.createdAt | date:'longDate' }}</p>
+        <p *ngIf="current_case_dtls && current_case_dtls.liveStatus" style="color: #FFFFFF80;;font-weight: 600;">{{ current_case_dtls.createdAt | date:'longDate' }}</p>
       </div>
 
       <!-- </div> -->

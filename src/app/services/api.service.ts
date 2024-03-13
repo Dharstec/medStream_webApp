@@ -58,7 +58,8 @@ export class ApiService {
   */
 
   getComments(pageid:any) {
-    return this.db.list(`/comments/${pageid}`).valueChanges();
+    return this.db.database.ref(`/comments/${pageid}`).once('value')
+    // return this.db.list(`/comments/${pageid}`).valueChanges()
   }
 
   sendComments(pageid:any,message:any) {
@@ -66,6 +67,7 @@ export class ApiService {
   }
 
   deleteComment(pageid:any,commentId:any) {
+    // console.log("--------",pageid,commentId)
     this.db.database.ref(`/comments/${pageid}`)
     .on('value', (data) => {
       var obj = data.val();
@@ -80,56 +82,78 @@ export class ApiService {
     })
   }
 
-  updateComment(caseId:any,commentId:any,userId,react) {
-    this.db.database.ref(`/comments/${caseId}`)
-    .on('value', (data) => {
-      var obj = data.val();
-      console.log("obj",obj)
-      Object.keys(obj).forEach((key) => {
-        if(obj[key].id==commentId){
-          let reactObj={userId:userId,like:react}
-          console.log("reactObj",reactObj)
-          if(obj[key].hasOwnProperty("userReact")){
-            console.log("reactObj in",obj[key].userReact)
-            let existReact =Object.keys(obj[key].userReact).filter((userReactKey:any)=>obj[key].userReact[userReactKey].userId==userId)
-            console.log("existReact",existReact.length,existReact)
-            if(existReact.length > 0){
+  updateComment(caseId:any,comment:any,userId,react) {
+    let reactObj={userId:userId,like:react}
+    console.log("comment list",comment,reactObj)
+    if(comment.hasOwnProperty("userReact")){
+      let existReact = comment.userReact.filter((userReactKey:any)=>userReactKey.userId==userId)
+      if(existReact.length > 0 && existReact[0].key){
+        console.log("existReact",existReact.length,existReact)
+        let dbPath =`/comments/${caseId}/${comment.key}/userReact`
+                let commentRef = this.db.list(dbPath)
+                  return commentRef.update(existReact[0].key,reactObj)       
+      }else{
+        return this.db.list(`/comments/${caseId}/${comment.key}/userReact`).push(reactObj)
+      }
+    }else{
+      return this.db.list(`/comments/${caseId}/${comment.key}/userReact`).push(reactObj)
+    }
+    
+    // this.db.database.ref(`/comments/${caseId}`)
+    // .on('value', (data) => {
+    //   var obj = data.val();
+    //   // console.log("obj",obj)
+    //   Object.keys(obj).forEach((key) => {
+    //     if(obj[key].id==commentId){
+    //       let reactObj={userId:userId,like:react}
+    //       // console.log("reactObj",reactObj)
+    //       if(obj[key].hasOwnProperty("userReact")){
+    //         // console.log("reactObj in",obj[key].userReact)
+    //         let existReact =Object.keys(obj[key].userReact).filter((userReactKey:any)=>obj[key].userReact[userReactKey].userId==userId)
+    //         // console.log("existReact",existReact.length,existReact)
+    //         if(existReact.length > 0){
 
-            //  this.db.list(`/comments/${caseId}/${key}/userReact`).valueChanges().subscribe(e=>{
-            //     console.log("react",e)
-            //       e.child(existReact[0]).update(reactObj).then((res)=>{
-            //     console.log("Data updated",res);
-            //   }).catch((err)=>{
-            //     console.log(err);
-            //   })
-            //   });
+    //         //  this.db.list(`/comments/${caseId}/${key}/userReact`).valueChanges().subscribe(e=>{
+    //         //     console.log("react",e)
+    //         //       e.child(existReact[0]).update(reactObj).then((res)=>{
+    //         //     console.log("Data updated",res);
+    //         //   }).catch((err)=>{
+    //         //     console.log(err);
+    //         //   })
+    //         //   });
 
-            // this.db.list(`/comments/${caseId}/${key}/userReact/`+existReact[0]).set("userId",userId)
-            // this.db.list(`/comments/${caseId}/${key}/userReact/`+existReact[0]).set("like",react)
+    //         // this.db.list(`/comments/${caseId}/${key}/userReact/`+existReact[0]).set("userId",userId)
+    //         // this.db.list(`/comments/${caseId}/${key}/userReact/`+existReact[0]).set("like",react)
+
+    //         let dbPath =`/comments/${caseId}/${key}/userReact`
+    //         let commentRef = this.db.list(dbPath)
+    //         return commentRef.update(existReact[0],reactObj)
+    //         // .then((res)=>{
+    //         //   console.log("updated firebase",res)
+    //         // }).catch(err => console.log(err));
+          
+    //           // let userRef = this.db.database.ref(`/comments/${caseId}/${key}/userReact`)
+    //           // const childref = userRef.child(existReact[0]);
+    //           // return childref.set(reactObj)
 
 
-              let userRef = this.db.database.ref(`/comments/${caseId}/${key}/userReact`)
-              const childref = userRef.child(existReact[0]);
-              return childref.set(reactObj)
-
-
-              // let dbref = this.db.database.ref(`/comments/${caseId}`)
-              // console.log("dbref",dbref);
-              // console.log("userRef",userRef,existReact);
-              // userRef.child('/userReact/'+existReact[0]).set(reactObj).on('value', (data) => {
-              //   console.log("Data updated",res);
-              // })
-            }else{
-              return this.db.list(`/comments/${caseId}/${key}/userReact`).push(reactObj)
-            }
-          }else{
-            console.log("reactObj first update")
-            return this.db.list(`/comments/${caseId}/${key}/userReact`).push(reactObj)
-          }
+    //           // let dbref = this.db.database.ref(`/comments/${caseId}`)
+    //           // console.log("dbref",dbref);
+    //           // console.log("userRef",userRef,existReact);
+    //           // userRef.child('/userReact/'+existReact[0]).set(reactObj).on('value', (data) => {
+    //           //   console.log("Data updated",res);
+    //           // })
+    //         }else{
+    //           return this.db.list(`/comments/${caseId}/${key}/userReact`).push(reactObj)
+    //         }
+    //       }else{
+    //         console.log("reactObj first update")
+    //         return this.db.list(`/comments/${caseId}/${key}/userReact`).push(reactObj)
+    //       }
         
-        }
-      });
-    })
+    //     }
+    //   });
+    // })
   }
 
 

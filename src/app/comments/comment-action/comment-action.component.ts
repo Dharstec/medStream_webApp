@@ -24,7 +24,7 @@ export class CommentActionComponent {
   @Output()
   addComment = new EventEmitter<{ text: string; parentId: string | null }>();
   @Output()
-  updateComment = new EventEmitter<{ text: string; commentId: string }>();
+  updateComment = new EventEmitter<{ like: string; commentId: any }>();
 
   createdAt: string = '';
   canReply: boolean = false;
@@ -34,8 +34,7 @@ export class CommentActionComponent {
   activeCommentType = ActiveCommentTypeEnum;
   replyId: string | null = null;
 
-  likeStyle:boolean=false
-  dislikeStyle:boolean=false
+  likeStyles=null
 
   likeCount:any=0
   dislikeCount:any=0
@@ -58,7 +57,7 @@ export class CommentActionComponent {
       // this.replies.length === 0 &&
       !timePassed;
     this.replyId = this.parentId ? this.parentId : this.comment.id;
-    this.getLikeColor()
+    this.getLikeColor() 
   }
 
   isReplying(): boolean {
@@ -84,59 +83,72 @@ export class CommentActionComponent {
     );
   }
 
-  commentLike(){
+  commentLike(type?:any){
+    if(type=='like'){
+      if(this.likeStyles==null
+        ){
+        this.comment['likeCount'] +=  1
+      }
+      else{
+        if(this.likeStyles)  this.comment['likeCount'] = this.comment['likeCount'] 
+        else{
+          this.comment['likeCount'] +=  1
+          this.comment['dislikeCount'] = this.comment['dislikeCount']==0 ? 0 : this.comment['dislikeCount'] - 1
+        }
+        
+      }
+      this.likeStyles=true;
+    }else{
+      if(this.likeStyles==null){
+        this.comment['dislikeCount'] +=  1
+      }
+      else{
+        if(!this.likeStyles)  this.comment['dislikeCount'] = this.comment['dislikeCount'] 
+        else{
+          this.comment['dislikeCount'] +=  1
+          this.comment['likeCount'] = this.comment['likeCount']==0 ? 0 : this.comment['likeCount'] - 1
+        }
+        
+      }
+      this.likeStyles=false;
+    }
+    if( this.comment['likeCount']==0 &&  this.comment['dislikeCount'] ==0){
+      this.likeStyles =null
+    }
 
   }
+  updateLike(react,type){
+    this.commentLike(type);
+    this.updateComment.emit({ like: react, commentId: this.comment })
+   
+  }
+
 
   getLikeColor(){
-    let styleClass=''
+    this.likeStyles=null
     // if (!this.activeComment) {
     //   return 'like_thumb';
     // }
     // console.log("activeComment",this.activeComment)
-    console.log("comment",this.comment)
+    console.log("comment child",this.comment)
     // console.log("activeCommentType",this.activeCommentType)
     if(this.comment.hasOwnProperty("userReact")){
-      console.log("usereact in")
-        Object.keys(this.comment.userReact).forEach(key=>{ 
-          if(this.comment.userReact[key].userId==this.userId 
-                 ){
-                  if(this.comment.userReact[key].like){
-                    this.likeStyle=true
-                    this.dislikeStyle=false
-                  }else{
-                    this.dislikeStyle=true
-                    this.likeStyle=false
-                  }
-            // styleClass = ''
-          }
+      // console.log("usereact in",this.comment)
+      this.comment.userReact.map((key:any)=>{ 
+        if(key.userId==this.userId
+               ){
+                if(key.like && key.like==true){
+                  this.likeStyles=true
+                }else{
+                  this.likeStyles=false
+                }
+        }
 
-          if(this.comment.userReact[key].like){
-              this.comment['likeCount']=this.likeCount + 1
-          }else{
-            this.comment['dislikeCount']=this.dislikeCount + 1
-          }
-        })
+      })
       }else{
-        this.likeStyle=false
-        this.dislikeStyle=false
-        styleClass = 'like_thumb'
+        this.comment['likeCount']=0
+        this.comment['dislikeCount']=0
+        this.likeStyles=null
       }
-      // if(this.comment.hasOwnProperty("userReact")){
-      //   console.log("dislike inn",)
-      //   Object.keys(this.comment.userReact).forEach(key=>{ 
-      //     if(this.comment.userReact[key].userId==this.userId && !this.comment.userReact[key].like &&
-      //      this.activeComment.id === this.comment.id &&
-      //       this.activeComment.type === this.activeCommentType.dislike
-      //            ){
-      //             console.log("dislike class changes",)
-      //       styleClass = ''
-      //     }
-      //   })
-      // }else{
-      //   console.log("dislike white class",)
-      //   styleClass = 'like_thumb'
-      // }
-      // return styleClass
   }
 }

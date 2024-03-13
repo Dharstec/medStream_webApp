@@ -10,7 +10,6 @@ export class CommentFormComponent {
 
   @Input() submitLabel!: string;
   @Input() hasCancelButton: boolean = false;
-  @Input() initialText: string = '';
 
   @Output()
   handleSubmit = new EventEmitter<string>();
@@ -24,7 +23,7 @@ export class CommentFormComponent {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: [this.initialText, Validators.required],
+      title: ['', Validators.required],
     });
   }
 
