@@ -6,12 +6,12 @@
           <img class="col-7 responsive mb-2" src="{{ list.thumbnail}}" alt="slide" >
           <div class="col-5 responsive_txt ml-3">
             <h5 class="red_text cursor-pointer">CASE OF THE WEEK - {{list.weekNo}}{{list.weekNo==1?'st':list.weekNo==2?'nd':list.weekNo==3?'rd':'th'}}
-              {{'Week of'}} {{ list.month | titlecase }},{{ list.year}}</h5>
+              {{'Week of'}} {{ list.month | titlecase }}, {{ list.year}}</h5>
             <mat-divider class="mb-2"></mat-divider>
             <label class="cursor-pointer">{{list.title}}</label>
             <!-- <p style="color: #FFFFFF80;;font-weight: 600;">{{'Week of'}} {{ list.createdAt | date:'longDate' }}</p> -->
             <p class="week_style">{{list.weekNo}}{{list.weekNo==1?'st':list.weekNo==2?'nd':list.weekNo==3?'rd':'th'}}
-              {{'Week of'}} {{ list.month | titlecase }},{{ list.year}}</p>
+              {{'Week of'}} {{ list.month | titlecase }}, {{ list.year}}</p>
             <div class="mt-5" style="display: flex;">
                 <!-- <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p> -->
                 <img [src]="list.institution.image" style="border-radius: 50%;width: 50px; height: 50px;" alt="">

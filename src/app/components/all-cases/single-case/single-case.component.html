@@ -85,7 +85,7 @@
       <div *ngFor="let video of recommendList" class="recommend-card" (click)="routeToSingleCase(video._id)">
         <img [src]="video.thumbnail" style="width: 100%;" alt="Video Thumbnail">
         <div class="ml-3">
-          <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
+          <p class="video-title" style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ video.title }}</p>
           <p style="color: #FFFFFF80;
             ;font-weight: 600;">{{video.weekNo}}{{video.weekNo==1?'st':video.weekNo==2?'nd':video.weekNo==3?'rd':'th'}}
                        {{'Week of'}} {{ video.month | titlecase }},{{ video.year}}</p>
@@ -99,6 +99,7 @@
 </div>
 <div class="footerCont">
   <div class="footerInner">
+    <hr>
       <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
       <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
   </div>

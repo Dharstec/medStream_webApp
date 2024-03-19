@@ -73,6 +73,11 @@
               text-decoration: none;
           }
       }
+      hr {
+        border-color: white; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
+      }
   }
 }
 

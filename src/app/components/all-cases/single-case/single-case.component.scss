@@ -22,6 +22,7 @@
   .recommend-cards{
     cursor: pointer !important;
     width: 100%;
+    // max-height: 300px;
     // iframe{
     //   width: ;
     // }
@@ -33,6 +34,15 @@
     // display: flex;
     display: grid;
     grid-template-columns: 2fr 3fr;
+    .video-title {
+      color: white;
+      font-weight: 600;
+      margin: 5px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
   }
   .des_text{
     line-height: 28px;
@@ -117,6 +127,11 @@
               color: #FF4E45;
               text-decoration: none;
           }
+      }
+      hr {
+        border-color: #606060; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
       }
   }
 }

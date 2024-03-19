@@ -35,6 +35,11 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      hr {
+        border-color: #606060; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
+      }
       p{
           a{
               color: #FF4E45;

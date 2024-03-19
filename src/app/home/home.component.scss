@@ -284,11 +284,45 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      hr {
+        border-color: #606060; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
+      }
       p{
           a{
               color: #FF4E45;
               text-decoration: none;
           }
+      }
+  }
+}
+.footerCont{
+  // margin-top: 30px;
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // background-color: white;
+  color: white;
+  .footerInner{
+      // padding: 20px;
+      // height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p{
+          a{
+              color: #FF4E45;
+              text-decoration: none;
+          }
+      }
+      hr {
+        border-color: #606060; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
       }
   }
 }
