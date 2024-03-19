@@ -38,8 +38,8 @@
             </div>
             <div class="col-6"></div>
         </div>   
-        <div class="innercontainer cursor-normal" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
-            <mat-card style="color: #FFFFFF;" *ngFor="let ops of filterdOperators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)"  [ngClass]="{'mr-40': i === filterdOperators.length - 1}">
+        <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
+            <mat-card style="color: #FFFFFF;" *ngFor="let ops of filterdOperators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)"  [ngClass]="{'mr-0': i === filterdOperators.length - 1}">
                 <img mat-card-image [src]="ops.avatar" class="image">
              <div class="contBox">
                 <mat-card-title>{{ops.name}} </mat-card-title>

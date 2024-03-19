@@ -28,13 +28,14 @@
     // background-color: aquamarine;
     width: 85vw;
 }
-.mr-40{
+.mr-0{
     margin-right: 40px !important;
 }
 .innercontainer{
     width: 100%;
     display: flex !important;
     justify-content: space-around;
+    cursor: default;
 }
 .expsCard{
     max-width: 310px;
@@ -102,13 +103,14 @@ mat-card-content{
         // justify-content: center;
         // align-items: center;
     }
-    .mr-40{
+    .mr-0{
         margin-right: 0px !important;
     }
     .innercontainer{
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: default;
     }
     .full-width{
         width: 100% !important;
