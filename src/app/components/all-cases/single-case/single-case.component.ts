@@ -95,7 +95,9 @@ export class SingleCaseComponent implements OnInit {
   }
 
   routeToInstitute(data){
-    let cont= data.institution.continent.toLowerCase()
+    // let cont= data.institution.continent.toLowerCase()
+    let cont = data.institution.continent.toLowerCase().replace(/\s/g, '')
+    console.log(cont)
     this.router.navigate(['/user/institution',cont])
   }
 
