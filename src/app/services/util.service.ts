@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class UtilService {
 
+  currentInstitution:any
+
   private globalObservables: any = {
     globalSearch: null,
     loggedIn: false,
@@ -32,5 +34,33 @@ export class UtilService {
 
 getObservable(): Observable<any> {
   return this.globalValues;
+}
+
+setInstitution(data:any){
+  this.currentInstitution = data
+}
+getInstitution(){
+   return this.currentInstitution
+}
+
+/*
+   Random shuffle the array
+*/
+shuffle(array:any) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex > 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }
 }

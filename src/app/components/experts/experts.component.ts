@@ -79,24 +79,17 @@ export class ExpertsComponent {
   getInstituteList() {
     this.api.apiGetCall('institute').subscribe((data) => {
       this.instituteList = data.data;
+      this.filteredInstituteList = this.instituteList;
     })
-    this.filteredInstituteList = this.instituteList;
+    
   }
 
-
-  filterInstitutes(value: string): void {
-    const filterValue = value.toLowerCase();
-    this.instituteList = this.instituteList.filter(institute => institute.name.toLowerCase().includes(filterValue));
-  }
 
   // ---------
   getOperatorsList() {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
       this.filterdOperators = data.data;
-      // console.log(this.operators)
-      // console.log(this.operators.social_media_link.insta)
-      // this.getInstitute()
     })
     // this.instituteFilterControl.valueChanges.pipe(
     //   startWith(''),
@@ -106,8 +99,22 @@ export class ExpertsComponent {
     // });
   }
 
+  onKey(eventTarget: any) {
+    this.filteredInstituteList = this.search(eventTarget.value);
+  }
+  search(value: string) {
+    if(value!=''){
+      let filter = value.toLowerCase();
+      return this.instituteList.filter((option) =>
+        option.name.toLowerCase().startsWith(filter) || 
+        (this.institutes?.value!=null && this.institutes?.value.length && this.institutes?.value.includes(option._id))
+      );
+    } 
+    else return this.instituteList
+   
+  }
+
   applyTypeFilter() {
-    console.log("12333",this.institutes?.value)
     if (this.institutes?.value) {
       this.filterdOperators= this.operators.filter(item => {
         if (this.institutes?.value?.length && !this.institutes?.value?.includes(item.institution._id)) {

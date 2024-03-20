@@ -31,7 +31,7 @@ export class AllCasesComponent {
       window.scrollTo(0, 0);
       this.caseOfTheWeek=[
         {name:"Yes",active:false},
-        {name:"No",active:false},
+        // {name:"No",active:false},
       ]
      }
 
@@ -80,6 +80,11 @@ export class AllCasesComponent {
           }
         })
         this.subCategoryList = this.allSubCategoryList.filter(e => checkedCategory.includes(e.category))
+        this.subCategoryList = this.subCategoryList.sort((a,b)=>{
+          if(a.name < b.name) { return -1; }
+          if(a.name > b.name) { return 1; }
+          return 0;
+        })
         break;
       }
       case 'sub': {
@@ -116,7 +121,7 @@ export class AllCasesComponent {
     let allSubCategory=[]
     let allInstitution=[]
     let allOperator=[]
-    let allCaseOfTheCase=[]
+    let allCaseOfTheCase=['Yes','No'] 
     let checkedCaseOftheWeek =[]
     let checkedCategory=[]
     let checkedSubCategory=[]
@@ -139,10 +144,10 @@ export class AllCasesComponent {
       if (e.active) checkedOperator.push(e._id)
     })
     this.caseOfTheWeek.map(e=>{
-      allCaseOfTheCase.push(e.name)
+      // allCaseOfTheCase.push(e.name)
       if(e.active) checkedCaseOftheWeek.push(e.name)
     })
-    // console.log("checkedCategory",checkedCategory)
+    // console.log("checkedCaseOftheWeek",checkedCaseOftheWeek)
     // console.log("checkedSubCategory",checkedSubCategory)
     // console.log("checkedInstitution",checkedInstitution)
     // console.log("startDate",moment(this.startDate))
@@ -185,7 +190,6 @@ export class AllCasesComponent {
             "active": false
           })
         })
-        // this.subCategoryList=  this.subCategoryList.concat(e.subCategory)
       })
       this.route.paramMap.subscribe((params: any) => {
         let type = params.get('category');

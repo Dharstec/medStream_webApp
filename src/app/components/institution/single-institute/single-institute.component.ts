@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-single-institute',
@@ -43,7 +44,7 @@ export class SingleInstituteComponent {
   showMap: boolean=false;
   markerInfo: any;
 
-  constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let keyName = this.route.snapshot.paramMap.get('continent')
@@ -51,6 +52,7 @@ export class SingleInstituteComponent {
     this.center['lat']= this.selectedContinent.lat
     this.center['lng']= this.selectedContinent.lng
     this.zoom= this.selectedContinent.zoom
+
     this.getInstitution()
   }
 
@@ -72,7 +74,16 @@ export class SingleInstituteComponent {
         })
         console.log('--------',this.markerPositions)
         this.allInstitutionList = data.data[0];
-        this.markerInfo=data.data[0].name
+        let routedInst = this.util.getInstitution()
+        // console.log("allInstitutionList",this.allInstitutionList)
+        // console.log("routedInst",routedInst)
+        if(routedInst==null){
+          this.markerInfo=data.data[0].name
+        }else{
+          this.allInstitutionList = routedInst
+          this.markerInfo=routedInst.name
+        }
+  
         this.showMap=true
       }else{
         this.showMap=true

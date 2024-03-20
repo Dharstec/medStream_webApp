@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UtilService } from 'src/app/services/util.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class SingleCaseComponent implements OnInit {
   // hideCommentBox: boolean;
   // isScheduleCase: boolean;
 
-  constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
+  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
   }
 
@@ -62,7 +63,8 @@ export class SingleCaseComponent implements OnInit {
   getRecommendCase(category,subCategory): void {
     let url = `recommendcase?category=${category}&subCategory=${subCategory}`
     this.api.apiGetCall(url).subscribe((data) => {
-      this.recommendList = data.data;
+      let recommendListArray = data.data;
+      this.recommendList = this.util.shuffle(recommendListArray)
     })
   }
 
@@ -95,9 +97,8 @@ export class SingleCaseComponent implements OnInit {
   }
 
   routeToInstitute(data){
-    // let cont= data.institution.continent.toLowerCase()
     let cont = data.institution.continent.toLowerCase().replace(/\s/g, '')
-    console.log(cont)
+    this.util.setInstitution(data.institution)
     this.router.navigate(['/user/institution',cont])
   }
 
