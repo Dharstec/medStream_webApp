@@ -32,7 +32,8 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,SidenavComponent,  BodyComponent,
-    HeadersComponent,ExpertsComponent,FooterComponent
+    HeadersComponent,FooterComponent
+    // ExpertsComponent,
   ],
   imports: [
     BrowserModule,

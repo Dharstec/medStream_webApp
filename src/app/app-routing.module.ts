@@ -15,7 +15,8 @@ const routes: Routes = [
   { path: 'user/all-cases', loadChildren: () => (import('./components/all-cases/all-cases.module')).then((m) => m.AllCasesModule),canActivate:[AuthGuard] },
   {path: 'user/all-cases/single-case/:id',component: SingleCaseComponent},
   // { path: 'user/landing' , component:HomeComponent },
-  { path: 'user/operators', component:ExpertsComponent },
+  { path: 'user/operators', loadChildren: () => (import('./components/experts/experts.module')).then((m) => m.ExpertsComponentModule) },
+  // { path: 'user/operators', component:ExpertsComponent },
   { path: 'user/institution', loadChildren: () => (import('./components/institution/institution.module')).then((m) => m.InstitutionModule)},
   { path: 'chat', component:ChatComponent }
 

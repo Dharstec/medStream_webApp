@@ -1,0 +1,184 @@
+.mainDiv{
+    padding-top: 50px ;
+    // background-color: aquamarine;
+    width: 100vw;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.container{
+    width: 85vw;
+    padding: 0px 15px !important;
+    display: grid;
+    grid-template-columns: 1fr .05fr 2fr;
+}
+.flexBox{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    p{
+        margin-left: 40px;
+    }
+}
+.mr-0{
+    margin-right: 40px !important;
+}
+.inner-bio-details{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 0.05fr;
+}
+.innercontainer{
+    width: 100%;
+    display: flex !important;
+    justify-content: space-around;
+    cursor: default;
+}
+.box1{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+    background-color: #2E2E2E;
+    padding:15px !important;
+}
+.box2{
+    background-color: #2E2E2E;
+    padding: 15px !important;
+}
+.expsCard{
+    max-width: 310px;
+    // height: 474px;
+    height: 400px;
+    background-color: #141414;
+    // margin-bottom: 40px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 0.2fr;
+}
+.filter_drp{
+    background-color: #2E2E2E;
+    color: white;
+    // border: 1px solid;
+    border-radius: 8px;
+    padding: 6px;
+    float: right;
+    // margin-bottom: 12px;
+}
+.image{
+    width: 310px;
+    height: 270px;
+}
+mat-card-title{
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+}
+mat-card-subtitle{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+mat-card-content{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+}
+mat-card-content{
+    padding: 0px !important;
+}
+.contBox{
+    // background-color: #2E2E2E;
+    padding: 20px !important;
+}
+.iconDiv{
+    display: flex;
+    justify-content: flex-end;
+}
+.icons{
+    width: 30%;
+    padding: 20px !important;
+    font-size: 18px;
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: space-between;
+    a{
+        // background-color: #fff;
+        color: #fff !important;
+    }
+}
+.icon{
+    cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .mainDiv{
+        height: 100%;
+    }
+    .container{
+        width: 95vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .icons{
+        width: 60%;
+        padding: 20px !important;
+        font-size: 18px;
+        display: flex !important;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .mr-0{
+        margin-right: 0px !important;
+    }
+    .innercontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: default;
+    }
+    .full-width{
+        width: 100% !important;
+    }
+    .expsCard{
+        width: 100% ;
+    }
+    .image{
+        width: 100%;
+    }
+}
+
+.footerCont{
+    margin-top: 30px;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background-color: white;
+    color: white;
+    .footerInner{
+        // padding: 20px;
+        // height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        p{
+            a{
+                color: #FF4E45;
+                text-decoration: none;
+            }
+        }
+    }
+    hr {
+        border-color: white; // Set border color to white
+        border-width: 1px 0 0; // Set border width and style
+        width: 100vw; // Set width to fill the container
+      }
+  }
+

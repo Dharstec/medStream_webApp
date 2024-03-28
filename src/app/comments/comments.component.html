@@ -14,7 +14,8 @@
           <span *ngIf="getRootComments().length"
           class="comment-action view_Comment"
            (click)="canViewComment=!canViewComment">
-           {{canViewComment ? 'Hide all comments' :'View all comments'}}
+           <!-- {{canViewComment ? 'Hide all comments' :'View all comments'}} -->
+           {{canViewComment ? 'View all comments' :'Hide all comments'}}
           </span>
         </div>
       

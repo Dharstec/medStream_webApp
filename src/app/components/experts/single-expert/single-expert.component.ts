@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from 'src/app/services/api.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,11 +11,11 @@ import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-experts',
-  templateUrl: './experts.component.html',
-  styleUrls: ['./experts.component.scss']
+  selector: 'app-single-expert',
+  templateUrl: './single-expert.component.html',
+  styleUrls: ['./single-expert.component.scss']
 })
-export class ExpertsComponent {
+export class SingleExpertComponent {
   facebook = faFacebook;
   instagram = faInstagram;
   twitterX = faXTwitter;
@@ -130,15 +130,5 @@ export class ExpertsComponent {
   routeToSingleOps(opsId) {
     this.router.navigate(['/user/operators/single-operator'],opsId);
   }
-
-  // onInstituteSearch(value: string) {
-  //   if (value !== '') {
-  //     const filter = value.toLowerCase();
-  //     this.filteredInstituteList = this.instituteList.filter(institute =>
-  //       institute.name.toLowerCase().includes(filter)
-  //     );
-  //   } else {
-  //     this.filteredInstituteList = this.instituteList; // Show all institutes if search box is empty
-  //   }
-  // }
+  
 }

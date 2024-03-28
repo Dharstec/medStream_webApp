@@ -1,0 +1,104 @@
+<!-- <p style="color:  white; padding: 20px;">single-expert works!</p> -->
+<!-- <div class="mainContainer" style="    display: flex;justify-content: center;width: 100%;height: 100%;">
+    <div class="container">
+        <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px" ngClass.gt-xs="ml-10">
+            <mat-card style="color: #FFFFFF;" *ngFor="let ops of filterdOperators;  let i = index" class="expsCard" fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)" fxFlex.gt-md="0 1 calc(25%-20px)"  [ngClass]="{'mr-0': i === filterdOperators.length - 1}">
+                <img mat-card-image [src]="ops.avatar" class="image">
+             <div class="contBox">
+                <mat-card-title>{{ops.name}} </mat-card-title>
+                <mat-card-subtitle>
+                    {{ops.designation}}
+                </mat-card-subtitle>
+             </div>
+            <div class="icons">
+                <a *ngIf="ops.social_media_link?.fb" target="_blank" [href]="ops.social_media_link?.fb">
+                  <fa-icon [icon]="facebook" class="icon"></fa-icon>
+                </a>
+                <a *ngIf="ops.social_media_link?.twitter" target="_blank" [href]="ops.social_media_link?.twitter">
+                  <fa-icon [icon]="twitterX" class="icon"></fa-icon>
+                </a>
+                <a *ngIf="ops.social_media_link?.insta" target="_blank" [href]="ops.social_media_link?.insta">
+                  <fa-icon [icon]="instagram" class="icon"></fa-icon>
+                </a>
+                <a *ngIf="ops.social_media_link?.linkedIn" target="_blank" [href]="ops.social_media_link?.linkedIn">
+                  <fa-icon [icon]="linkedIn" class="icon"></fa-icon>
+                </a>
+            </div>          
+            </mat-card>
+        </div>
+    </div>
+</div>  -->
+
+
+<div class="mainDiv" style="color: #FFFFFF;">
+    <div class="container">
+        <div class="box1">
+            <div class="expsCard">
+                <div class="innercontainer" fxLayout.xs="column" fxLayout="row wrap" fxLayoutGap="40px"
+                    ngClass.gt-xs="ml-10">
+                    <mat-card fxFlex.sm="0 1 calc(50%-20px)" fxFlex.md="0 1 calc(33%-20px)"
+                        fxFlex.gt-md="0 1 calc(25%-20px)">
+                        <img mat-card-image src="../../../../assets/africa.png" class="image">
+                        <div class="contBox">
+                            <mat-card-title>
+                                <!-- {{ops.name}} -->
+                                Test Operator
+                            </mat-card-title>
+                            <mat-card-subtitle>
+                                <!-- {{ops.designation}} -->
+                                Test Designation
+                            </mat-card-subtitle>
+                        </div>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+        <div>
+
+        </div>
+        <div class="box2">
+            <div class="inner-bio-details">
+                <div>
+                    <div class="flexBox">
+                        <h6><b>INSTITUTION NAME:</b></h6>
+                        <p><mat-icon>location_on</mat-icon> Test Institution</p>
+                    </div>
+                    <div class="flexBox">
+                        <h6><b>BIO:</b></h6>
+                        <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis eligendi
+                            ratione, dolores delectus fugiat libero? Distinctio enim, pariatur natus doloremque adipisci
+                            voluptatem culpa laboriosam ipsum illo eius? Deserunt error itaque inventore, aliquid quae cum
+                            provident odio at, quasi est pariatur amet perferendis repudiandae earum, numquam perspiciatis
+                            adipisci sit rem unde ad iste alias fuga fugiat neque. Harum eligendi ut error provident aliquam
+                            distinctio, sit eos qui veniam. Maiores laboriosam incidunt ipsam labore nesciunt! Molestias</p>
+                    </div>
+                </div>
+                <div class="iconDiv">
+                    <div class="icons">
+                        <a target="_blank" [href]="">
+                            <fa-icon [icon]="facebook" class="icon"></fa-icon>
+                        </a>
+                        <a target="_blank" [href]="">
+                            <fa-icon [icon]="instagram" class="icon"></fa-icon>
+                        </a>
+                        <a target="_blank" [href]="">
+                            <fa-icon [icon]="linkedIn" class="icon"></fa-icon>
+                        </a>
+                        <a target="_blank" [href]="">
+                            <fa-icon [icon]="twitterX" class="icon"></fa-icon>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footerCont">
+        <div class="footerInner">
+            <hr>
+            <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
+            <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+        </div>
+    </div>
+</div>
+
+
