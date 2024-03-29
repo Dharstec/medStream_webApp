@@ -90,7 +90,6 @@ export class ExpertsComponent {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
       this.filterdOperators = data.data;
-      // console.log(this.operators)
     })
     // this.instituteFilterControl.valueChanges.pipe(
     //   startWith(''),

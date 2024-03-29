@@ -41,40 +41,6 @@ export class SingleExpertComponent {
     this.getOperatorsList()
     // console.log("--",this.operators)
   }
-  // getExpertsList(){
-  //   this.api.apiGetCall('experts').subscribe((data)=>{
-  //     this.experts = data.data;
-
-  //     console.log(this.experts)
-
-  //     if (this.experts && this.experts.length > 0) {
-
-  //       this.experts.forEach((expert) => {
-  //         const instituteId = expert.institution;
-
-  //         this.getSingleInstitute(instituteId);
-  //       });
-  //     }
-  //   })
-  // }
-  // getSingleInstitute(instituteId: string) {
-  //   this.api.apiGetCall(`institute/${instituteId}`).subscribe((data) => {
-  //     const instituteData = data.data;
-  //     this.institutes.push(instituteData);
-  //     console.log('Institute Details:', instituteData);
-  //   });
-  //   this.api.apiGetDetailsCall(id,'institute').subscribe((data)=>{
-  //     this.institute data.data;
-  //     console.log(this.institute)
-  //   })
-  // }
-
-  // getOperatorsList(): void {
-  //   this.api.apiGetDetailsCall(this.operators,'operator').subscribe((data) => {
-  //     this.operators = data.data;
-  //   })
-  // }
-
   // ---------
   getInstituteList() {
     this.api.apiGetCall('institute').subscribe((data) => {
@@ -83,52 +49,12 @@ export class SingleExpertComponent {
     })
     
   }
-
-
-  // ---------
   getOperatorsList() {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
       this.filterdOperators = data.data;
       // console.log(this.operators)
     })
-    // this.instituteFilterControl.valueChanges.pipe(
-    //   startWith(''),
-    //   map(value => this.filterInstitutes(value))
-    // ).subscribe(filteredInstitutes => {
-    //   this.filteredInstituteList = filteredInstitutes;
-    // });
-  }
-
-  onKey(eventTarget: any) {
-    this.filteredInstituteList = this.search(eventTarget.value);
-  }
-  search(value: string) {
-    if(value!=''){
-      let filter = value.toLowerCase();
-      return this.instituteList.filter((option) =>
-        option.name.toLowerCase().startsWith(filter) || 
-        (this.institutes?.value!=null && this.institutes?.value.length && this.institutes?.value.includes(option._id))
-      );
-    } 
-    else return this.instituteList
-   
-  }
-
-  applyTypeFilter() {
-    if (this.institutes?.value) {
-      this.filterdOperators= this.operators.filter(item => {
-        if (this.institutes?.value?.length && !this.institutes?.value?.includes(item.institution._id)) {
-          return false;
-        }
-        return true;
-      });
-    } else {
-      this.filterdOperators = this.operators
-    }
-  }
-  routeToSingleOps(opsId) {
-    this.router.navigate(['/user/operators/single-operator'],opsId);
   }
   
 }
