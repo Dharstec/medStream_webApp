@@ -15,11 +15,11 @@ const routes: Routes = [
         component: ExpertsComponent,
         children: []
       },
-    {
-      path: 'single-operator',
-      component:SingleExpertComponent ,
-      children: []
-    },
+    // {
+    //   path: 'single-operator',
+    //   component:SingleExpertComponent ,
+    //   children: []
+    // },
   ];
 
 @NgModule({

@@ -126,8 +126,9 @@ export class ExpertsComponent {
       this.filterdOperators = this.operators
     }
   }
+
   routeToSingleOps(opsId) {
-    this.router.navigate(['/user/operators/single-operator'],opsId);
+    this.router.navigate(['/user/operators/single-operator',opsId]);
   }
 
   // onInstituteSearch(value: string) {

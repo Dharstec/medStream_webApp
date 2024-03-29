@@ -21,9 +21,8 @@ export class SingleExpertComponent {
   twitterX = faXTwitter;
   linkedIn = faLinkedin;
 
-  // experts: any;
-  // institute: any;
-  // experts: any[];
+  operators_id: any
+  single_ops_details : any;
   instituteList: any= [];
   institutes = new FormControl();
   // instituteFilterControl = new FormControl();
@@ -36,10 +35,23 @@ export class SingleExpertComponent {
   constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.operators= this.route.snapshot.paramMap.get('id')
+    this.operators_id= this.route.snapshot.paramMap.get('id')
     this.getInstituteList()
     this.getOperatorsList()
     // console.log("--",this.operators)
+  }
+
+  getOpsDetails(): void {
+    this.api.apiGetDetailsCall(this.operators_id, 'operator').subscribe((data) => {
+      this.single_ops_details = data.data;
+      console.log(this.single_ops_details)
+    })
+  }
+  routeToSingleOps(opsId) {
+    this.router.navigate(['/user/all-cases/single-case',opsId])
+    this.operators_id =opsId
+    this.getOpsDetails()
+    window.scrollTo(0, 0);
   }
   // ---------
   getInstituteList() {
