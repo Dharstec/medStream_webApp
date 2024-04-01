@@ -122,7 +122,7 @@ mat-card-content{
     cursor: pointer;
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:426px) {
     .mainDiv{
         height: 100%;
     }
@@ -157,6 +157,40 @@ mat-card-content{
     }
     .image{
         width: 100%;
+    }
+}
+@media screen and (min-width:427px) and (max-width:768px){
+    .mainDiv{
+        height: 100%;
+    }
+    .container{
+        width: 95vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .icons{
+        width: 60%;
+        padding: 20px !important;
+        font-size: 18px;
+        display: flex !important;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .mr-0{
+        margin-right: 0px !important;
+    }
+    .innercontainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: default;
+    }
+    .full-width{
+        width: 100% !important;
+    }
+    .expsCard{
+        width: 100% ;
     }
 }
 
