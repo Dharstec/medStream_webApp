@@ -62,14 +62,15 @@
             </div>
             <div class="inner-bio-details">
                 <div>
-                    <h5>OPERATOR DETAILS</h5>
+                    <!-- <h5>OPERATOR DETAILS</h5> -->
+                    <p style="font-size: 18px;">OPERATOR DETAILS</p>
                     <hr style="color: #FF4E45;">
                     <div class="flexBox">
-                        <h6><b>INSTITUTION NAME:</b></h6>
-                        <p><mat-icon style="color: #FF4E45; padding-top: 8px !important; font-size: 16px;">location_on</mat-icon> {{single_ops_details.institution.name}}</p>
+                        <h6 style="font-size: 18px;"><b>INSTITUTION:</b></h6>
+                        <p class="cursor-pointer" (click)="routeToInstitute(single_ops_details)"><mat-icon style="color: #FF4E45; padding-top: 8px !important; font-size: 16px;">location_on</mat-icon> {{single_ops_details.institution.name}}</p>
                     </div>
                     <div class="flexBox1">
-                        <h6><b>BIO:</b></h6>
+                        <h6 style="font-size: 18px;"><b>BIO:</b></h6>
                         <!-- <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium perspiciatis eligendi
                             ratione, dolores delectus fugiat libero? Distinctio enim, pariatur natus doloremque adipisci
                             voluptatem culpa laboriosam ipsum illo eius? Deserunt error itaque inventore, aliquid quae cum

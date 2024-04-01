@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { faInstagram, faLinkedin, faTwitter, faFacebook, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
+import { UtilService } from 'src/app/services/util.service';
 
 @Component({
   selector: 'app-single-expert',
@@ -29,7 +30,7 @@ export class SingleExpertComponent implements OnInit {
   filterdOperators: any;
   id: any;
 
-  constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.operators_id = this.route.snapshot.paramMap.get('id');
@@ -62,5 +63,11 @@ export class SingleExpertComponent implements OnInit {
         console.error('Single operator not found');
       }
     });
+  }
+
+  routeToInstitute(data){
+    let cont = data.institution.continent.toLowerCase().replace(/\s/g, '')
+    this.util.setInstitution(data.institution)
+    this.router.navigate(['/user/institution',cont])
   }
 }
