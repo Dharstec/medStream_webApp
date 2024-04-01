@@ -4,7 +4,9 @@
 
 export const environment = {
   production: true,
+  baseURL: 'https://www.medstream360.com/',
   apiUrl: 'https://api.medstream360.com/api/',
+  // apiUrl: 'http://localhost:8080/api/',
   firebaseConfig: {
     apiKey: "AIzaSyC47LlFhN-8u2YkTRdtHOfpAWx28qWmC-I",
     authDomain: "realtimelivechat-428ce.firebaseapp.com",

@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UtilService } from 'src/app/services/util.service';
+import { environment } from 'src/environments/environment.prod';
 
 
 @Component({
@@ -41,7 +42,7 @@ export class SingleCaseComponent implements OnInit {
       this.showComment = params['showComment'] === 'true';
       this.showChat = params ['showChat'] === 'true';
   });
-    console.log("--", this.current_case_id)
+    // console.log("--", this.current_case_id)
     this.getCaseDetails()
   }
 
@@ -50,14 +51,14 @@ export class SingleCaseComponent implements OnInit {
     this.api.apiGetDetailsCall(this.current_case_id, 'singlecase').subscribe((data) => {
       this.current_case_dtls = data.data;
       let splitData = this.current_case_dtls.youtubeUrl.split('?')
-      console.log("splitData", splitData)
+      // console.log("splitData", splitData)
       let videoID = splitData[0].split('be/')[1]
       let embdURL = `https://www.youtube.com/embed/${videoID}`
       this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(embdURL);
       // console.log("videoURL",this.videoURL)
       // this.videoURL = this._sanitizer.bypassSecurityTrustResourceUrl(this.current_case_dtls.youtubeUrl);
       this.getRecommendCase(this.current_case_dtls.category,this.current_case_dtls.subCategory);
-      console.log(this.current_case_dtls.institution)
+      // console.log(this.current_case_dtls.institution)
     })
   }
   getRecommendCase(category,subCategory): void {
@@ -69,13 +70,17 @@ export class SingleCaseComponent implements OnInit {
   }
 
   share(){
-    console.log("sharing",navigator.share)
+    // console.log("sharing",navigator.share)
+    // console.log("current_case_dtls",this.current_case_dtls)
+    const baseURL= environment.baseURL
+    let showComment = this.current_case_dtls.liveStatus ? 'showChat=true' : 'showComment=true'
+    let shareURL = baseURL +`user/all-cases/single-case/${this.current_case_dtls._id}?${showComment}`
     if(navigator.share){
       navigator.share({
-        "title":'Youtube Link',
-        "url":this.current_case_dtls.youtubeUrl
-      }).then(()=>{
-        console.log("thanks for sharing")
+        "title":'Medstream360 Link',
+        "url":shareURL
+      }).then((res)=>{
+        console.log("thanks for sharing",res)
       }).catch(console.error)
     }
   }
