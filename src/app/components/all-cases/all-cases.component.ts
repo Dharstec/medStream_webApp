@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import * as _ from "lodash";
 import * as moment from 'moment/moment.js';
 import { UtilService } from 'src/app/services/util.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-all-cases',
@@ -26,7 +27,9 @@ export class AllCasesComponent {
   institutionsFilterList: any = [];
   operatorFilterList: any = [];
   allOperatorFilterList: any = [];
-  constructor(private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute,
+  constructor(private api: ApiService,
+    private spinner:NgxSpinnerService,
+     public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute,
     private util: UtilService) {
       window.scrollTo(0, 0);
       this.caseOfTheWeek=[
@@ -36,6 +39,7 @@ export class AllCasesComponent {
      }
 
   async ngOnInit(): Promise<void> {
+    this.spinner.show()
     this.util.getObservable().subscribe((res) => {
       if (res.globalSearch && res.globalSearch) {
         let searchValue = res.globalSearch.toLowerCase()
@@ -43,7 +47,9 @@ export class AllCasesComponent {
          || e.institution.name.trim().toLowerCase().includes(searchValue))
         //  || e.operator_id.some(x=>x.name.trim().toLowerCase().includes(searchValue)))
         : this.filteredData
+        this.spinner.hide()
       }
+      // this.spinner.hide()
     })
     await this.getAllfilter();
     this.getLiveCasesList();
@@ -55,10 +61,12 @@ export class AllCasesComponent {
       this.allCases = data.data;
       this.allCasesData = data.data;
       this.filteredData = this.allCasesData
+      this.spinner.hide()
     })
   }
 
   changeCategoryFilter(list, event, type) {
+    this.spinner.show()
     let check = event ? event.target.checked : true
     switch(type){
       case 'caseOfTheWeek':{
@@ -168,6 +176,7 @@ export class AllCasesComponent {
       this.allCases = data.data
       this.filteredData = this.allCases
       this.util.setObservable('globalSearch', 'null')
+      this.spinner.hide()
     })
   }
 

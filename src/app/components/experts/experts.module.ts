@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 
 const routes: Routes = [
@@ -28,7 +29,9 @@ const routes: Routes = [
         SingleExpertComponent
       ],
       imports: [
-        CommonModule,RouterModule.forChild(routes),ReactiveFormsModule, MaterialModule,FormsModule,FlexLayoutModule,FontAwesomeModule
+        NgxSpinnerModule,
+        CommonModule,RouterModule.forChild(routes),ReactiveFormsModule, MaterialModule,FormsModule,FlexLayoutModule,
+        FontAwesomeModule
       ],
   exports: [
 

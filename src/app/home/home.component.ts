@@ -8,6 +8,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { Observable, timer } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AuthService } from '../services/auth.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -34,7 +35,9 @@ export class HomeComponent implements OnInit {
 
   subscription: Subscription;
   everyFiveSeconds: Observable<number> = timer(0, 5000);
-  constructor(private api: ApiService,private authService: AuthService, public dialog: MatDialog,private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
+  constructor(private api: ApiService,
+    private spinner:NgxSpinnerService,
+    private authService: AuthService, public dialog: MatDialog,private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
     this.getHomePageAPI();
@@ -48,6 +51,7 @@ export class HomeComponent implements OnInit {
   }
 
   getHomePageAPI(): void {
+    this.spinner.show()
     this.api.apiGetCall('homePage').subscribe((data) => {
       let response = data.data;
       this.scheduleVideo = response.scheduleVideo
@@ -65,7 +69,7 @@ export class HomeComponent implements OnInit {
       this.latestVideos = response.latestVideos
       this.caseOfTheWeekList = response.caseOfTheWeek
       this.categoryList = response.categoryList
-
+      this.spinner.hide()
     })
   }
 

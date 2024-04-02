@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 const routes: Routes = [
   {
     path: '',
@@ -20,7 +21,7 @@ const routes: Routes = [
     HomeCarouselComponent,
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FontAwesomeModule
+    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FontAwesomeModule,NgxSpinnerModule
   ]
 })
 export class HomeModule { }

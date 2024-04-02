@@ -9,6 +9,8 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+@import "~node_modules/ngx-spinner/animations/ball-beat.css";
+
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -45,6 +47,10 @@ li {
 //   margin: 5px auto;
 //   padding-top: 10px;
 // }
+
+.loading-text{
+  top:56% !important
+}
 
 .mat-form-field-flex>.mat-form-field-infix {
   padding: 10px 5px 7px 5px !important;

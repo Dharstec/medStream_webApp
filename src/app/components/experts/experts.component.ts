@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { startWith, map } from 'rxjs/operators';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-experts',
@@ -33,7 +34,9 @@ export class ExpertsComponent {
   operators: any;
   filterdOperators: any;
   id: any;
-  constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, 
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
     // this.operators= this.route.snapshot.paramMap.get('id')
@@ -77,6 +80,7 @@ export class ExpertsComponent {
 
   // ---------
   getInstituteList() {
+    this.spinner.show()
     this.api.apiGetCall('institute').subscribe((data) => {
       this.instituteList = data.data;
       this.filteredInstituteList = this.instituteList;
@@ -90,6 +94,7 @@ export class ExpertsComponent {
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
       this.filterdOperators = data.data;
+      this.spinner.hide()
     })
     // this.instituteFilterControl.valueChanges.pipe(
     //   startWith(''),

@@ -11,7 +11,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { EmailVerifyComponent } from './sign-up/email-verify/email-verify.component';
 import { SignUpOtpComponent } from './sign-up/sign-up-otp/sign-up-otp.component';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {
@@ -42,7 +42,7 @@ const routes: Routes = [
     
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule
+    CommonModule, RouterModule.forChild(routes),ReactiveFormsModule,MaterialModule,NgxSpinnerModule
   ]
 })
 export class AuthModule { }

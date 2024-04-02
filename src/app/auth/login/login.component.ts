@@ -90,6 +90,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UtilService } from 'src/app/services/util.service';
@@ -109,6 +110,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(private fb: FormBuilder, 
     private authService: AuthService,
+    private spinner:NgxSpinnerService,
     private router: Router, private api: ApiService,private snackbar: MatSnackBar,private util:UtilService) { }
 
   ngOnInit(): void {
@@ -136,7 +138,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     } else {
       console.log('else',this.form)
-
+      this.spinner.show()
       const payload = {
         email: this.form.controls['email'].value,
         password: this.form.controls['password'].value
@@ -146,6 +148,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           localStorage.setItem('token', data.data.accessToken)
           localStorage.setItem('userEmail', data.data.email)
           localStorage.setItem('userRegion', data.data.region)
+          // localStorage.setItem('userId',data.data.userId)
           localStorage.setItem('name',data.data.name)
           this.router.navigate(['/user/landing'])  
           this.authService.setLoggedInStatus(true)
@@ -154,12 +157,14 @@ export class LoginComponent implements OnInit, OnDestroy {
             data: "Logged in successfully.",
           });
           console.log(data.message)
+          this.spinner.hide()
         }else{
           this.snackbar.openFromComponent(SnackbarComponent, {
             data:data.message,
           }); 
           this.authService.setLoggedInStatus(false)
           this.util.setObservable('loggedIn',false)
+          this.spinner.hide()
         }
       },
       error => {
@@ -173,6 +178,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.snackbar.openFromComponent(SnackbarComponent, {
           data: error,
         });
+        this.spinner.hide()
       })
     }
   }

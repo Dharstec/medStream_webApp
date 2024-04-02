@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { MaterialModule } from 'src/app/material.module';
-
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {
@@ -27,6 +27,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FormsModule,
     MaterialModule,
+    NgxSpinnerModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory,

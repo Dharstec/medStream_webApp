@@ -11,6 +11,7 @@ import { RelativeTimePipe } from 'src/app/chat/relative-time.pipe';
 import { CommentsComponent } from '../../comments/comments.component';
 import { CommentFormComponent } from '../../comments/comment-form/comment-form.component';
 import { CommentActionComponent } from '../../comments/comment-action/comment-action.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 const routes: Routes = [
   {
     path: '',
@@ -42,7 +43,9 @@ const routes: Routes = [
     CommentActionComponent,
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,
+    CommonModule,
+    NgxSpinnerModule,
+    RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,
     DisqusModule
   ]
 })

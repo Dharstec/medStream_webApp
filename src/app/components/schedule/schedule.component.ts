@@ -31,6 +31,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { timeZoneList } from 'src/app/staticData/timeZoneList';
 import { FormControl } from '@angular/forms';
 import { validateBasis } from '@angular/flex-layout';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -122,7 +123,9 @@ export class ScheduleComponent {
   filteredRegion: string[];
 
 
-  constructor(private authService: AuthService,private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
+  constructor(private authService: AuthService,
+    private spinner:NgxSpinnerService,
+    private api: ApiService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router,) {
     window.scrollTo(0, 0);
    
   }
@@ -156,6 +159,7 @@ export class ScheduleComponent {
 
 
   getScheduleCasesList(timeZone?:any): void {
+    this.spinner.show()
     this.userTimeZone = timeZone ? timeZone : localStorage.getItem('userRegion')
     this.api.apiGetCall(`schedulecase?timeZone=${this.userTimeZone}`).subscribe((data) => {
       this.allScheduleList = data.data;
@@ -178,7 +182,7 @@ export class ScheduleComponent {
         })
       })
      console.log("----------",this.events)
-
+     this.spinner.hide()
     })
   }
 

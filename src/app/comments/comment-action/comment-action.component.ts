@@ -130,7 +130,7 @@ export class CommentActionComponent {
     //   return 'like_thumb';
     // }
     // console.log("activeComment",this.activeComment)
-    console.log("comment child",this.comment)
+    // console.log("comment child",this.comment)
     // console.log("activeCommentType",this.activeCommentType)
     if(this.comment.hasOwnProperty("userReact")){
       // console.log("usereact in",this.comment)

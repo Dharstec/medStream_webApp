@@ -6,6 +6,7 @@ import { ApiService } from 'src/app/services/api.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UtilService } from 'src/app/services/util.service';
 import { environment } from 'src/environments/environment.prod';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -26,7 +27,9 @@ export class SingleCaseComponent implements OnInit {
   // hideCommentBox: boolean;
   // isScheduleCase: boolean;
 
-  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
+  constructor(private api: ApiService,
+    private spinner:NgxSpinnerService,
+    private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) {
     window.scrollTo(0, 0);
   }
 
@@ -48,6 +51,7 @@ export class SingleCaseComponent implements OnInit {
 
 
   getCaseDetails(): void {
+    this.spinner.show()
     this.api.apiGetDetailsCall(this.current_case_id, 'singlecase').subscribe((data) => {
       this.current_case_dtls = data.data;
       let splitData = this.current_case_dtls.youtubeUrl.split('?')
@@ -66,6 +70,7 @@ export class SingleCaseComponent implements OnInit {
     this.api.apiGetCall(url).subscribe((data) => {
       let recommendListArray = data.data;
       this.recommendList = this.util.shuffle(recommendListArray)
+      this.spinner.hide()
     })
   }
 

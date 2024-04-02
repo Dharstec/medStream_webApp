@@ -7,6 +7,7 @@ import { faInstagram, faLinkedin, faTwitter, faFacebook, faXTwitter } from '@for
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormControl } from '@angular/forms';
 import { UtilService } from 'src/app/services/util.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-single-expert',
@@ -30,28 +31,31 @@ export class SingleExpertComponent implements OnInit {
   filterdOperators: any;
   id: any;
 
-  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService,
+    private spinner:NgxSpinnerService,
+    private util: UtilService, public dialog: MatDialog, private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.operators_id = this.route.snapshot.paramMap.get('id');
     this.getOperatorsList();
   }
 
-  getOpsDetails(): void {
-    this.api.apiGetDetailsCall(this.operators_id, 'operator').subscribe((data) => {
-      this.single_ops_details = data.data;
-      console.log(this.single_ops_details);
-    });
-  }
-  routeToSingleOps(opsId): void {
-    this.operators_id = opsId;
-    this.router.navigate(['/user/all-cases/single-case', opsId]).then(() => {
-      this.getOpsDetails();
-      window.scrollTo(0, 0);
-    });
-  }
+  // getOpsDetails(): void {
+  //   this.api.apiGetDetailsCall(this.operators_id, 'operator').subscribe((data) => {
+  //     this.single_ops_details = data.data;
+  //     console.log(this.single_ops_details);
+  //   });
+  // }
+  // routeToSingleOps(opsId): void {
+  //   this.operators_id = opsId;
+  //   this.router.navigate(['/user/all-cases/single-case', opsId]).then(() => {
+  //     this.getOpsDetails();
+  //     window.scrollTo(0, 0);
+  //   });
+  // }
 
   getOperatorsList(): void {
+    this.spinner.show()
     this.api.apiGetCall('operator').subscribe((data) => {
       this.operators = data.data;
       // Filter the operators to find the single operator by ID
@@ -59,6 +63,7 @@ export class SingleExpertComponent implements OnInit {
       if (singleOperator) {
         this.single_ops_details = singleOperator;
         console.log(this.single_ops_details);
+        this.spinner.hide()
       } else {
         console.error('Single operator not found');
       }

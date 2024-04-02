@@ -22,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { DISQUS_SHORTNAME } from 'ngx-disqus';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from "@angular/fire/compat";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -40,6 +41,7 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,AuthModule, BrowserAnimationsModule,MaterialModule,
    SplashScreenModule,HttpClientModule,FormsModule,FontAwesomeModule,FlexLayoutModule,
    ReactiveFormsModule,
+   NgxSpinnerModule,
    AngularFireModule.initializeApp(environment.firebaseConfig),
    AngularFireAuthModule,
    AngularFireStorageModule,

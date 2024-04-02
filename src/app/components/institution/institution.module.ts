@@ -7,6 +7,7 @@ import { GoogleMapsModule } from '@angular/google-maps'
 
 import { InstitutionComponent } from './institution.component';
 import { SingleInstituteComponent } from './single-institute/single-institute.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const routes: Routes = [
   {
@@ -28,7 +29,9 @@ const routes: Routes = [
     SingleInstituteComponent
   ],
   imports: [
-    CommonModule,RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,GoogleMapsModule
+    CommonModule,
+    NgxSpinnerModule,
+    RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FormsModule,GoogleMapsModule
   ]
 })
 export class InstitutionModule { }

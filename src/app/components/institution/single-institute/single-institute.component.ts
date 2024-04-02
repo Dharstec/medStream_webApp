@@ -3,6 +3,7 @@ import { MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ApiService } from 'src/app/services/api.service';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -44,7 +45,9 @@ export class SingleInstituteComponent {
   showMap: boolean=false;
   markerInfo: any;
 
-  constructor(private api: ApiService,private util: UtilService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
+  constructor(private api: ApiService,
+    private spinner:NgxSpinnerService,
+    private util: UtilService, public dialog: MatDialog, private snackbar: MatSnackBar, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     let keyName = this.route.snapshot.paramMap.get('continent')
@@ -57,6 +60,7 @@ export class SingleInstituteComponent {
   }
 
   getInstitution() {
+    this.spinner.show()
     let queryName=this.selectedContinent.cntName.replace(/\s/g, '_');
     this.api.apiGetCall(`getInstituteListInUser?continent=${queryName}`).subscribe((data) => {
       this.allInstitutionList=data.data
@@ -88,7 +92,7 @@ export class SingleInstituteComponent {
       }else{
         this.showMap=true
       }
-     
+      this.spinner.hide()
     })
   }
 

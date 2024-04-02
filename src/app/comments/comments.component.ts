@@ -28,10 +28,10 @@ export class CommentsComponent {
 
   ngOnInit(): void {
     this.comments=[]
-    console.log("currentCaseId message", this.currentCaseId)
+    // console.log("currentCaseId message", this.currentCaseId)
     this.commentsService.getComments(this.currentCaseId).then(comments => {
       let response = comments.val();
-      console.log("comment message", response)
+      // console.log("comment message", response)
       Object.keys(response).forEach((key) => {
         let reactList = []
         if(response[key].hasOwnProperty('userReact')){
@@ -44,7 +44,7 @@ export class CommentsComponent {
         response[key]['likeCount'] = reactList.length ? reactList.filter((e: any) => e.like).length : 0
         response[key]['dislikeCount'] = reactList.length ? reactList.filter((e: any) => !e.like).length : 0
         this.comments.push({ key: key, ...response[key] })
-        console.log("count", response[key]['likeCount'] , response[key]['dislikeCount'] )
+        // console.log("count", response[key]['likeCount'] , response[key]['dislikeCount'] )
         // setTimeout(() => this.scrollToBottom(), 0); 
       });
     })
