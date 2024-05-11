@@ -22,7 +22,8 @@
     <div class="">
       <img class="col-12 cur_pointer" routerLink='/user/schedule' 
       src="../../assets/Hero Page.svg"
-       alt="">
+       alt="medstream landing image"
+       fetchpriority="high">
       <div class="getStartedCont">
         <button routerLink='/user/schedule' class="getStarted">GET STARTED</button>
       </div>
@@ -76,7 +77,7 @@
             <div [ngClass]="i%2==0 ? 'grid_style' : 'grid_border_none'">
               <div>
                 <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;" (click)="enrouteCase(case,'case')">
-                  <img class="col-6" [src]="case.thumbnail" alt="Video Thumbnail">
+                  <img class="col-6" height="100" width="200" aspectratio="2:1" [src]="case.thumbnail" alt="Video Thumbnail">
                   <div class="ml-3 caseDetails">
                     <p class="case_title">{{ case.title }}</p>
                     <p class="week_style">
@@ -114,7 +115,7 @@
             <div class="flex_align">
               <ng-container *ngFor="let list of latestVideos;let i =index">
                 <!-- <div> -->
-                <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
+                <button aria-label="carousel-button" class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
                   (click)='currentIndex=i'></button>
                 <!-- <div *ngFor="let video of latestVideos">
                     <button (click)="enrouteCase(video, true)">View Details</button>
@@ -156,17 +157,17 @@
     </div>
   </div> -->
   <div class="widget_accordion">
-    <app-home-carousel [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
+    <app-home-carousel role="img" [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
   </div>
   <div class="widget_accordion">
     <div class="media_list">
       <h6 class="mr-auto cursor-normal">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
-      <a href="https://www.facebook.com/profile.php?id=100087182070692" target="_blank"><fa-icon [icon]="facebook"
+      <a href="https://www.facebook.com/profile.php?id=100087182070692" aria-label="facebook link" target="_blank"><fa-icon [icon]="facebook"
           class="icon"></fa-icon></a>
-      <a href="https://www.instagram.com/medstream360/" target="_blank"><fa-icon [icon]="instagram"
+      <a href="https://www.instagram.com/medstream360/" aria-label="instagram link" target="_blank"><fa-icon [icon]="instagram"
           class="icon"></fa-icon></a>
-      <a href="https://twitter.com/MedStream360" target="_blank"><fa-icon [icon]="twitterX" class="icon"></fa-icon></a>
-      <a href="https://www.linkedin.com/in/medstream360/" target="_blank"><fa-icon [icon]="linkedIn"
+      <a href="https://twitter.com/MedStream360" aria-label="x link" target="_blank"><fa-icon [icon]="twitterX" class="icon"></fa-icon></a>
+      <a href="https://www.linkedin.com/in/medstream360/" aria-label="linkedin link" target="_blank"><fa-icon [icon]="linkedIn"
           class="icon"></fa-icon></a>
     </div>
 

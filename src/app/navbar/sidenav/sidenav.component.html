@@ -2,32 +2,34 @@
   <nav class="navbar col-12" style="position: fixed;
   width: 100%;
   z-index: 1000;">
-    <div (click)="refreshPage()" class="logo cursor-pointer"><img src="assets/medstream.svg" style="width: 12rem;" /></div>
+    <div (click)="refreshPage()" class="logo cursor-pointer"><img src="assets/medstream.svg" style="width: 12rem;"
+        alt="Medstream 360 logo" /></div>
 
     <ul class="nav-links">
 
       <input type="checkbox" id="checkbox_toggle" [(ngModel)]="hamburg" />
       <label for="checkbox_toggle" class="hamburger">&#9776;</label>
 
-      <div class="menu" id="menu-nav">
-        <!-- <li class="services">
+      <ul class="menu" id="menu-nav">
+          <!-- <li class="services">
           <a href="javascript:void(0)" routerLink='/user/all-cases'>Home</a>
         </li> -->
-        <li><a class="sidenav-link-text" routerLink='/user/landing' routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Home</a></li>
-        <li class="sidenav-link-text vertical-bar"><a href="javascript:void(0)" routerLink='/user/schedule' routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Schedule</a></li>
-        <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases' routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">All Cases</a></li>
+          <li><a class="sidenav-link-text" routerLink='/user/landing' routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Home</a></li>
+          <li class="sidenav-link-text vertical-bar"><a href="javascript:void(0)" routerLink='/user/schedule'
+              routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Schedule</a>
+          </li>
+          <li><a class="sidenav-link-text vertical-bar" routerLink='/user/all-cases' routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">All Cases</a></li>
 
-        <!-- <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li> -->
-        <!-- <li><a class="sidenav-link-text vertical-bar" routerLink='/user/experts'  routerLinkActive="active"
-          [routerLinkActiveOptions]="{exact:true}">Experts</a></li> -->
-        <li><a class="sidenav-link-text vertical-bar" routerLink='user/operators' routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Operators</a></li>
-        <li><a class="sidenav-link-text vertical-bar" routerLink='user/institution' routerLinkActive="active"
-            [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Institutions</a></li>
-      </div>
+          <!-- <li class="vertical-bar"><a href="javascript:void(0)"> Experts</a></li> -->
+          <!-- <li><a class="sidenav-link-text vertical-bar" routerLink='/user/experts'  routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}">Experts</a></li> -->
+          <li><a class="sidenav-link-text vertical-bar" routerLink='user/operators' routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Operators</a></li>
+          <li><a class="sidenav-link-text vertical-bar" routerLink='user/institution' routerLinkActive="active"
+              [routerLinkActiveOptions]="{exact:true}" (click)="hamburg=false">Institutions</a></li>
+          </ul>
     </ul>
     <!-- <div> -->
     <!-- <div class="search-container mr-2" >
@@ -45,11 +47,11 @@
     </div>
 
     <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
-      <mat-icon style="cursor: pointer;">person</mat-icon>
+      <mat-icon style="cursor: pointer;" aria-label="person-icon" role="button">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu" style="cursor: default;">
           <div class="user-info disFlex">
-            <mat-icon >person</mat-icon><span>{{ userdata.name }}</span>
+            <mat-icon>person</mat-icon><span>{{ userdata.name }}</span>
           </div>
           <div class="user-info disFlex">
             <mat-icon>schedule</mat-icon><span>{{ userdata.region }}</span>
@@ -66,7 +68,7 @@
       </mat-menu>
     </div>
     <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
-      <mat-icon style="cursor: pointer;">person</mat-icon>
+      <mat-icon style="cursor: pointer;" aria-label="person-icon" role="button">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu">
           <div class="user-info disFlex" routerLink="/auth/login">

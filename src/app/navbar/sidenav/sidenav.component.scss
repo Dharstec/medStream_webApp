@@ -114,10 +114,14 @@ input[type=checkbox] {
     text-align: center;
     padding: 16px 0;
 
+  //  ul{
+  //   display: flex;
+  //   flex-direction: column;
     li {
       display: flex;
       justify-content: center;
     }
+  //  }
   }
 
   .vertical-bar::before {
