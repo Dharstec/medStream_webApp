@@ -50,7 +50,7 @@
     </div>
 
     <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
-      <mat-icon style="cursor: pointer;"role="contentinfo">person</mat-icon>
+      <mat-icon style="cursor: pointer;" role="button" aria-label="view profile">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu" style="cursor: default;">
           <div class="user-info disFlex">
@@ -72,7 +72,7 @@
     </div>
     <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
       <!-- aria-label="person-icon" -->
-      <mat-icon style="cursor: pointer;" role="contentinfo">person</mat-icon>
+      <mat-icon style="cursor: pointer;" role="button" aria-label="view profile">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu">
           <div class="user-info disFlex" routerLink="/auth/login">
