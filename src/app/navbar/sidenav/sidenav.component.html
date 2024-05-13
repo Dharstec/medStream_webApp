@@ -7,8 +7,11 @@
 
     <ul class="nav-links">
 
-      <input type="checkbox" id="checkbox_toggle" [(ngModel)]="hamburg" />
-      <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+        <li>
+          <input type="checkbox" id="checkbox_toggle" [(ngModel)]="hamburg" />
+          <label for="checkbox_toggle" class="hamburger">&#9776;</label>
+        </li>
+        <li></li>
 
       <ul class="menu" id="menu-nav">
           <!-- <li class="services">
@@ -47,7 +50,7 @@
     </div>
 
     <div [matMenuTriggerFor]="menu" *ngIf="loggedIn">
-      <mat-icon style="cursor: pointer;" aria-label="person-icon" role="button">person</mat-icon>
+      <mat-icon style="cursor: pointer;"role="contentinfo">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu" style="cursor: default;">
           <div class="user-info disFlex">
@@ -68,7 +71,8 @@
       </mat-menu>
     </div>
     <div [matMenuTriggerFor]="menu" *ngIf="!loggedIn">
-      <mat-icon style="cursor: pointer;" aria-label="person-icon" role="button">person</mat-icon>
+      <!-- aria-label="person-icon" -->
+      <mat-icon style="cursor: pointer;" role="contentinfo">person</mat-icon>
       <mat-menu #menu="matMenu">
         <div class="matMenu">
           <div class="user-info disFlex" routerLink="/auth/login">

@@ -14,7 +14,7 @@
               {{'Week of'}} {{ list.month | titlecase }}, {{ list.year}}</p>
             <div class="mt-5" style="display: flex;">
                 <!-- <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p> -->
-                <img [src]="list.institution.image" role="img" style="border-radius: 50%;width: 50px; height: 50px;" alt="">
+                <img [src]="list.institution.image" role="navigation" style="border-radius: 50%;width: 50px; height: 50px;" alt="">
                 <div class="ml-2"  style="display: block;">
                   <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{ list.institution ? list.institution.name : 'null' }}</p>
                   <p style="color: #FFFFFF80;;font-weight: 600;">{{list.institution ? list.institution.city: 'null' }}, {{list.institution ? list.institution.country: 'null' }} </p>
@@ -34,7 +34,7 @@
     <div class="flex_align">
       <ng-container *ngFor="let list of caseOfTheWeekList;let i =index">
         <!-- <div> -->
-          <button class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''" (click)='currentIndex=i'></button>
+          <button class="carousel_btn" aria-label="carousel-button" [ngClass]="currentIndex==i ? 'carousel_active':''" (click)='currentIndex=i'></button>
         <!-- </div> -->
       </ng-container> 
     </div>

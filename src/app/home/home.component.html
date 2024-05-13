@@ -40,7 +40,7 @@
     </div>
     <div *ngIf="scheduleVideo.length!=0">
       <div class="col-12 schedule_flex" role="listbox">
-        <iframe class="map col-7" style="border:0" [src]="mapURL" frameborder="0"
+        <iframe class="map col-7" style="border:0" title="map" [src]="mapURL" frameborder="0"
           allowfullscreen></iframe>
         <div class="col-5 ml-3">
           <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" src="{{ scheduleVideo.thumbnail}}" alt="slide">
