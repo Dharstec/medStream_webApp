@@ -7,6 +7,8 @@ import { MaterialModule } from '../material.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HomeCarouselComponent } from './home-carousel/home-carousel.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +23,7 @@ const routes: Routes = [
     HomeCarouselComponent,
   ],
   imports: [
-    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FontAwesomeModule,NgxSpinnerModule
+    CommonModule, RouterModule.forChild(routes), ReactiveFormsModule, MaterialModule,FontAwesomeModule,NgxSpinnerModule,LazyLoadImageModule
   ]
 })
 export class HomeModule { }

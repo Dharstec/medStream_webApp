@@ -17,17 +17,23 @@
     </div>
   </div> -->
 
-  <div class="home_container">
+<div class="home_container">
   <div class="get_started">
     <div class="">
-      <img class="col-12 cur_pointer" routerLink='/user/schedule' 
+      <!-- <img class="col-12 cur_pointer" routerLink='/user/schedule' 
       src="../../assets/Hero Page.svg"
        alt="medstream landing image"
-       fetchpriority="high">
+       fetchpriority="high"
+       width="100%"> -->
+
+      <img class="col-12 cur_pointer" routerLink='/user/schedule' [defaultImage]="defaultImage" [lazyLoad]="image"
+        alt="medstream landing image" width="100%">
+
       <div class="getStartedCont">
         <button routerLink='/user/schedule' class="getStarted">GET STARTED</button>
       </div>
     </div>
+
   </div>
 
   <div class="widget_accordion">
@@ -40,21 +46,22 @@
     </div>
     <div *ngIf="scheduleVideo.length!=0">
       <!-- role="listbox" -->
-      <div class="col-12 schedule_flex" >
-        <iframe class="map col-7" style="border:0" title="map" [src]="mapURL" frameborder="0"
-          allowfullscreen></iframe>
+      <div class="col-12 schedule_flex">
+        <iframe class="map col-7" style="border:0" title="map" [src]="mapURL" frameborder="0" allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img class="mb-2 col-12 cur_pointer"  (click)="enrouteCase(scheduleVideo,'scheduleCase')" src="{{ scheduleVideo.thumbnail}}" alt="slide">
+          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
+            src="{{ scheduleVideo.thumbnail}}" alt="slide">
           <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')">{{scheduleVideo.title}}</p>
-          <p class="cur_pointer"  (click)="enrouteCase(scheduleVideo,'scheduleCase')" style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
+          <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
+            style="color: #FFFFFF80;;font-weight: 600;">{{ scheduleVideo.createdAt | date:'longDate'
             }}</p>
-          <div class="cur_pointer"  (click)="enrouteCase(scheduleVideo,'scheduleCase')" style="display: flex;">
-            <p  style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
+          <div class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')" style="display: flex;">
+            <p style="background-color: white;border-radius: 50%;width: 50px; height: 50px;"></p>
             <div class="ml-2" style="display: block;">
-              <p  style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo.institution ?
+              <p style="color: white;font-weight: 600;margin: 5px 0px 5px 0px;">{{scheduleVideo.institution ?
                 scheduleVideo.institution.name:'N/A' }}
               </p>
-              <p  style="color: #FFFFFF80;;font-weight: 600;">{{scheduleVideo.institution ?
+              <p style="color: #FFFFFF80;;font-weight: 600;">{{scheduleVideo.institution ?
                 scheduleVideo.institution.city:'N/A'}},
                 {{scheduleVideo.institution ? scheduleVideo.institution.country:'N/A'}} </p>
             </div>
@@ -77,8 +84,10 @@
           <ng-container *ngFor="let case of topVideosList;let i=index">
             <div [ngClass]="i%2==0 ? 'grid_style' : 'grid_border_none'">
               <div>
-                <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;" (click)="enrouteCase(case,'case')">
-                  <img class="col-6" height="100" width="200" aspectratio="2:1" [src]="case.thumbnail" alt="Video Thumbnail">
+                <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;"
+                  (click)="enrouteCase(case,'case')">
+                  <img class="col-6" height="100" width="200" aspectratio="2:1" [src]="case.thumbnail"
+                    alt="Video Thumbnail">
                   <div class="ml-3 caseDetails">
                     <p class="case_title">{{ case.title }}</p>
                     <p class="week_style">
@@ -117,8 +126,8 @@
             <div class="flex_align">
               <ng-container *ngFor="let list of latestVideos;let i =index">
                 <!-- <div> -->
-                <button aria-label="carousel-button" class="carousel_btn" [ngClass]="currentIndex==i ? 'carousel_active':''"
-                  (click)='currentIndex=i'></button>
+                <button aria-label="carousel-button" class="carousel_btn"
+                  [ngClass]="currentIndex==i ? 'carousel_active':''" (click)='currentIndex=i'></button>
                 <!-- <div *ngFor="let video of latestVideos">
                     <button (click)="enrouteCase(video, true)">View Details</button>
                   </div>                 -->
@@ -164,13 +173,14 @@
   <div class="widget_accordion">
     <div class="media_list">
       <h6 class="mr-auto cursor-normal">FOLLOW US ON ALL SOCIAL FORUMS TO STAY CONNECTED</h6>
-      <a href="https://www.facebook.com/profile.php?id=100087182070692" aria-label="facebook link" target="_blank"><fa-icon [icon]="facebook"
+      <a href="https://www.facebook.com/profile.php?id=100087182070692" aria-label="facebook link"
+        target="_blank"><fa-icon [icon]="facebook" class="icon"></fa-icon></a>
+      <a href="https://www.instagram.com/medstream360/" aria-label="instagram link" target="_blank"><fa-icon
+          [icon]="instagram" class="icon"></fa-icon></a>
+      <a href="https://twitter.com/MedStream360" aria-label="x link" target="_blank"><fa-icon [icon]="twitterX"
           class="icon"></fa-icon></a>
-      <a href="https://www.instagram.com/medstream360/" aria-label="instagram link" target="_blank"><fa-icon [icon]="instagram"
-          class="icon"></fa-icon></a>
-      <a href="https://twitter.com/MedStream360" aria-label="x link" target="_blank"><fa-icon [icon]="twitterX" class="icon"></fa-icon></a>
-      <a href="https://www.linkedin.com/in/medstream360/" aria-label="linkedin link" target="_blank"><fa-icon [icon]="linkedIn"
-          class="icon"></fa-icon></a>
+      <a href="https://www.linkedin.com/in/medstream360/" aria-label="linkedin link" target="_blank"><fa-icon
+          [icon]="linkedIn" class="icon"></fa-icon></a>
     </div>
 
   </div>
@@ -184,13 +194,13 @@
 </div> -->
 <div>
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="default" color="#FF4E45" type="ball-beat" [fullScreen]="true">
-      <p style="color: white"> Fetching data ... </p>
+    <p style="color: white"> Fetching data ... </p>
   </ngx-spinner>
 </div>
 <div class="footerCont">
   <div class="footerInner">
     <hr>
-      <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
-      <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
+    <p class="cursor-normal">© 2024, Medstream360, All Rights Reserved</p>
+    <p class="cursor-normal">Powered by <a target="_blank" href="http://dharstec.com/">Dharstec</a></p>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -17,6 +17,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  @ViewChild('imageContainer') imageContainer: ElementRef;
+
   facebook = faFacebook;
   instagram = faInstagram;
   twitterX = faXTwitter;
@@ -35,9 +37,29 @@ export class HomeComponent implements OnInit {
 
   subscription: Subscription;
   everyFiveSeconds: Observable<number> = timer(0, 5000);
+  lowResImageSrc = '../../assets/Hero Page_lowres.jpg';
+  highResImageSrc = ''
+
   constructor(private api: ApiService,
-    private spinner:NgxSpinnerService,
-    private authService: AuthService, public dialog: MatDialog,private _sanitizer: DomSanitizer, private snackbar: MatSnackBar, private router: Router) { }
+    private spinner: NgxSpinnerService,
+    private authService: AuthService,
+    public dialog: MatDialog,
+    private _sanitizer: DomSanitizer,
+    private snackbar: MatSnackBar,
+    private router: Router,) { }
+
+    ngAfterViewInit() {
+      const image = this.imageContainer.nativeElement.querySelector('img');
+      const highResImageUrl = image.getAttribute('data-src');
+  
+      // load high-resolution image
+      const img = new Image();
+      img.onload = () => {
+        this.highResImageSrc = highResImageUrl;
+        image.src = this.highResImageSrc;
+      };
+      img.src = highResImageUrl;
+    }
 
   ngOnInit(): void {
     this.getHomePageAPI();
@@ -73,19 +95,19 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  enrouteCase(list,type?:any){
-    if(type=='scheduleCase'){
-      this.router.navigate(['/user/all-cases/single-case',list._id],{ queryParams: { showChat: 'true' } })
-    }else{
-      if(!this.authService.isLoggedIn()){
+  enrouteCase(list, type?: any) {
+    if (type == 'scheduleCase') {
+      this.router.navigate(['/user/all-cases/single-case', list._id], { queryParams: { showChat: 'true' } })
+    } else {
+      if (!this.authService.isLoggedIn()) {
         this.router.navigate(['/auth/login'])
-        }else{
-          this.router.navigate(['/user/all-cases/single-case',list._id],{ queryParams: { showComment: 'true' } })
-        }
+      } else {
+        this.router.navigate(['/user/all-cases/single-case', list._id], { queryParams: { showComment: 'true' } })
+      }
     }
-  
+
   }
 
-
-
+  image = '../../assets/Hero Page.svg'
+  defaultImage = '../../assets/Hero Page_lowres.jpg'
 }
