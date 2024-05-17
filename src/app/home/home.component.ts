@@ -108,6 +108,6 @@ export class HomeComponent implements OnInit {
 
   }
 
-  image = '../../assets/Hero Page.svg'
+  image = '../../assets/Hero Page.jpg'
   defaultImage = '../../assets/Hero Page_lowres.jpg'
 }
