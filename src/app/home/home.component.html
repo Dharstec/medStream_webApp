@@ -49,7 +49,7 @@
       <div class="col-12 schedule_flex">
         <iframe class="map col-7" style="border:0" title="map" [src]="mapURL" frameborder="0" allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
+          <img aspectratio="2:1" class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
             src="{{ scheduleVideo.thumbnail}}" alt="slide">
           <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')">{{scheduleVideo.title}}</p>
           <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
@@ -117,7 +117,7 @@
               <ng-container *ngIf="currentIndex==i">
                 <!-- role="listbox" -->
                 <div class="carousel-inner cur_pointer" (click)="enrouteCase(list,'case')">
-                  <img class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
+                  <img aspectratio="2:1" class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
                   <label class="mb-2 cursor-pointer">{{list.title}}</label>
                 </div>
               </ng-container>
