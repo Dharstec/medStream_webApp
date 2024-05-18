@@ -4,7 +4,7 @@
       <ng-container *ngIf="currentIndex==i">
         <!-- role="listbox" -->
         <div class="col-12 carousel-inner" (click)="enrouteCase(list)">
-          <img aspectratio="2:1" class="col-7 responsive mb-2" src="{{ list.thumbnail}}" alt="slide" >
+          <img width="100%" height="auto" style="aspect-ratio: 2/1;" class="col-7 responsive mb-2" src="{{ list.thumbnail}}" alt="slide" >
           <div class="col-5 responsive_txt ml-3">
             <h5 class="red_text cursor-pointer" >CASE OF THE WEEK - {{list.weekNo}}{{list.weekNo==1?'st':list.weekNo==2?'nd':list.weekNo==3?'rd':'th'}}
               {{'Week of'}} {{ list.month | titlecase }}, {{ list.year}}</h5>

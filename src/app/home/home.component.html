@@ -49,7 +49,7 @@
       <div class="col-12 schedule_flex">
         <iframe class="map col-7" style="border:0" title="map" [src]="mapURL" frameborder="0" allowfullscreen></iframe>
         <div class="col-5 ml-3">
-          <img aspectratio="2:1" class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
+          <img width="100%" height="auto" style="aspect-ratio: 2/1;" class="mb-2 col-12 cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
             src="{{ scheduleVideo.thumbnail}}" alt="slide">
           <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')">{{scheduleVideo.title}}</p>
           <p class="cur_pointer" (click)="enrouteCase(scheduleVideo,'scheduleCase')"
@@ -86,7 +86,7 @@
               <div>
                 <div class="flex_align mr-2 cur_pointer" style="justify-content: flex-start;"
                   (click)="enrouteCase(case,'case')">
-                  <img class="col-6" height="100" width="200" aspectratio="2:1" [src]="case.thumbnail"
+                  <img class="col-6" height="100" width="200" style="aspect-ratio: 2/1;" [src]="case.thumbnail"
                     alt="Video Thumbnail">
                   <div class="ml-3 caseDetails">
                     <p class="case_title">{{ case.title }}</p>
@@ -117,7 +117,7 @@
               <ng-container *ngIf="currentIndex==i">
                 <!-- role="listbox" -->
                 <div class="carousel-inner cur_pointer" (click)="enrouteCase(list,'case')">
-                  <img aspectratio="2:1" class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
+                  <img width="100%" height="auto" style="aspect-ratio: 2/1;" class="col-12 mb-2" src="{{ list.thumbnail}}" alt="slide">
                   <label class="mb-2 cursor-pointer">{{list.title}}</label>
                 </div>
               </ng-container>
@@ -168,7 +168,7 @@
     </div>
   </div> -->
   <div class="widget_accordion">
-    <app-home-carousel role="img" [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
+    <app-home-carousel role="img" width="100%" height="auto" style="aspect-ratio: 2/1;" [caseOfTheWeekList]="caseOfTheWeekList"></app-home-carousel>
   </div>
   <div class="widget_accordion">
     <div class="media_list">
